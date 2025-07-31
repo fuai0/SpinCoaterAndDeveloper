@@ -44,6 +44,7 @@ namespace SpinCoaterAndDeveloper.App.ViewModels
             SettingMenuBars.Add(new MenuBar() { Icon = "LayersOffOutline", LanguageKey = "FunctionShieldDebug", NameSpace = nameof(MCFunctionShieldDebugView) });
             SettingMenuBars.Add(new MenuBar() { Icon = "TextSearch", LanguageKey = "SerialPort", NameSpace = "SerialPortDebugView" });
             SettingMenuBars.Add(new MenuBar() { Icon = "Thermometer", LanguageKey = "TemperatureController", NameSpace = "TemperatureControllerView" });
+            SettingMenuBars.Add(new MenuBar() { Icon = "Thermometer", LanguageKey = "GluePump", NameSpace = "GluePumpView" });
             SettingMenuBars.Add(new MenuBar() { Icon = "CookieCogOutline", LanguageKey = "SystemCfg", NameSpace = nameof(SystemSettingView) });
 
             eventAggregator.GetEvent<MessageEvent>().Subscribe(x => { LanguageChanged(); }, ThreadOption.UIThread, true, x => x.Filter.Equals("LanguageChangeNavigate"));

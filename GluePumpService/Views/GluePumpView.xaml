@@ -1,12 +1,369 @@
-﻿<UserControl x:Class="GluePumpService.Views.GluePumpView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:GluePumpService.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+﻿<UserControl
+    x:Class="GluePumpService.Views.GluePumpView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cv="clr-namespace:GluePumpService.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:listbox="clr-namespace:GluePumpService.Extensions"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    d:DesignHeight="800"
+    d:DesignWidth="1200"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <!-- 转换器资源 -->
+        <cv:BoolToForegroundConverter x:Key="BoolToForegroundConverter" />
+        <cv:BoolToStringConverter x:Key="BoolToStringConverter" />
+        <cv:DataRecordTypeToStringConverter x:Key="DataRecordTypeToStringConverter" />
+    </UserControl.Resources>
+
+    <Grid Margin="10">
+        <!-- 胶泵设备列表 -->
+        <ItemsControl ItemsSource="{Binding GluePumpCollection}">
+            <ItemsControl.Template>
+                <ControlTemplate>
+                    <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto">
+                        <VirtualizingStackPanel IsItemsHost="True" />
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ItemsControl.Template>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <!-- 每个胶泵设备的分组框 -->
+                    <GroupBox
+                    Margin="5"
+                    Header="{Binding IocDiName}"
+                    Style="{StaticResource MaterialDesignGroupBox}">
+                        <DockPanel LastChildFill="True">
+                            <!-- 左侧：设备配置区域 -->
+                            <StackPanel
+                            Width="250"
+                            Margin="5"
+                            DockPanel.Dock="Left"
+                            Orientation="Vertical"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth1">
+
+                                <!-- 连接状态显示 -->
+                                <TextBlock
+                                Margin="0,5,0,10"
+                                FontSize="14"
+                                FontWeight="Bold"
+                                Foreground="{Binding IsConnected, Converter={StaticResource BoolToForegroundConverter}}"
+                                Text="{Binding IsConnected, Converter={StaticResource BoolToStringConverter}, ConverterParameter='已连接|未连接'}" />
+
+                                <!-- 串口参数配置 -->
+                                <!-- 端口 -->
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock
+                                    Width="60"
+                                    Margin="0 0 -12 0"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource SerialPort_PortName}" />
+                                    <ComboBox
+                                    Width="150"
+                                    Margin="0,0,15,0"
+                                    HorizontalContentAlignment="Center"
+                                    ItemsSource="{Binding SerialPortPortNameCollection}"
+                                    SelectedItem="{Binding PortName}" />
+                                </StackPanel>
+
+                                <!-- 波特率 -->
+                                <StackPanel Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock
+                                    Width="60"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource SerialPort_BaudRate}" />
+                                    <ComboBox
+                                    Width="150"
+                                    Margin="0,0,15,0"
+                                    HorizontalContentAlignment="Center"
+                                    ItemsSource="{Binding SerialPortBaudRateCollection}"
+                                    SelectedItem="{Binding BaudRate}" />
+                                </StackPanel>
+
+                                <!-- 校验位 -->
+                                <StackPanel Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock
+                                    Width="60"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource SerialPort_Parity}" />
+                                    <ComboBox
+                                    Width="150"
+                                    Margin="0,0,15,0"
+                                    HorizontalContentAlignment="Center"
+                                    ItemsSource="{Binding SerialPortParityCollection}"
+                                    SelectedItem="{Binding Parity}" />
+                                </StackPanel>
+
+                                <!-- 停止位 -->
+                                <StackPanel Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock
+                                    Width="60"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource SerialPort_StopBits}" />
+                                    <ComboBox
+                                    Width="150"
+                                    Margin="0,0,15,0"
+                                    HorizontalContentAlignment="Center"
+                                    ItemsSource="{Binding SerialPortStopBitsCollection}"
+                                    SelectedItem="{Binding StopBits}" />
+                                </StackPanel>
+
+                                <!-- 数据位 -->
+                                <StackPanel Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock
+                                    Width="60"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource SerialPort_DataBits}" />
+                                    <ComboBox
+                                    Width="150"
+                                    Margin="0,0,15,0"
+                                    HorizontalContentAlignment="Center"
+                                    ItemsSource="{Binding SerialPortDataBitsCollection}"
+                                    SelectedItem="{Binding DataBits}" />
+                                </StackPanel>
+
+                                <!-- 控制器ID -->
+                                <StackPanel Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock
+                                    Width="60"
+                                    VerticalAlignment="Center"
+                                    Text="控制器ID:" />
+                                    <TextBox
+                                    Width="150"
+                                    Margin="10,0,15,0"
+                                    HorizontalContentAlignment="Center"
+                                    Text="{Binding ControllerId}" />
+                                </StackPanel>
+
+                                <!-- 超时时间 -->
+                                <StackPanel Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBlock
+                                    Width="60"
+                                    VerticalAlignment="Center"
+                                    Text="超时时间:" />
+                                    <TextBox
+                                    Width="133"
+                                    Margin="10,0,0,0"
+                                    HorizontalContentAlignment="Center"
+                                    Text="{Binding Timeout}" />
+                                    <TextBlock
+                                    Margin="0,0,15,0"
+                                    VerticalAlignment="Center"
+                                    Text="ms" />
+                                </StackPanel>
+
+                                <!-- 操作按钮 -->
+                                <!-- 保存 -->
+                                <Button
+                                Margin="0,20,0,10"
+                                Command="{Binding DataContext.SaveConfigCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                CommandParameter="{Binding}"
+                                Content="{DynamicResource SerialPort_SaveSetting}"
+                                IsEnabled="{Binding OpenButtonIsEnabled}"
+                                Style="{StaticResource MaterialDesignRaisedButton}" />
+
+                                <!-- 连接 -->
+                                <Button
+                                Margin="0,5,0,10"
+                                Command="{Binding DataContext.ConnectCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                CommandParameter="{Binding}"
+                                Content="连接设备"
+                                IsEnabled="{Binding OpenButtonIsEnabled}"
+                                Style="{StaticResource MaterialDesignRaisedButton}" />
+
+                                <!-- 断开 -->
+                                <Button
+                                Margin="0,5,0,10"
+                                Command="{Binding DataContext.DisconnectCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                CommandParameter="{Binding}"
+                                Content="断开连接"
+                                IsEnabled="{Binding CloseButtonIsEnabled}"
+                                Style="{StaticResource MaterialDesignRaisedButton}" />
+                            </StackPanel>
+
+                            <!-- 右侧：胶泵控制与历史区域 -->
+                            <StackPanel Margin="10,5,5,5" Orientation="Vertical">
+                                <!-- 流量显示与控制 -->
+                                <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                                    <!-- 当前流量 -->
+                                    <StackPanel Margin="20,0,20,0" Orientation="Vertical">
+                                        <TextBlock
+                                        Margin="0,0,0,5"
+                                        FontSize="18"
+                                        Text="当前流量" />
+                                        <TextBlock
+                                        FontSize="24"
+                                        FontWeight="Bold"
+                                        Margin="5,10,0,5"
+                                        Foreground="DodgerBlue"
+                                        Text="{Binding CurrentFlowRate, StringFormat={}{0:0.0} L/min}" />
+                                    </StackPanel>
+
+                                    <!-- 目标流量设置 -->
+                                    <StackPanel Margin="30,0,20,0" Orientation="Vertical">
+                                        <TextBlock
+                                        Margin="5,0,0,5"
+                                        FontSize="18"
+                                        Text="目标流量" />
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBox
+                                            Width="80"
+                                            FontSize="24"
+                                            Margin="0,5,0,0"
+                                            TextAlignment="Center"
+                                            Text="{Binding TargetFlowRate, StringFormat={}{0:0.0}}" />
+                                            <TextBlock
+                                            Margin="5,10,0,0"
+                                            FontSize="24"
+                                            Text="L/min" />
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <!-- 流量操作按钮 -->
+                                    <StackPanel Margin="20,0,0,0" Orientation="Vertical">
+                                        <Button
+                                        Width="120"
+                                        Margin="0,0,0,5"
+                                        Command="{Binding DataContext.ReadFlowRateCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}"
+                                        Content="读取流量"
+                                        IsEnabled="{Binding ControlButtonsIsEnabled}"
+                                        Style="{StaticResource MaterialDesignRaisedButton}" />
+
+                                        <Button
+                                        Width="120"
+                                        Command="{Binding DataContext.SetFlowRateCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}"
+                                        Content="设置流量"
+                                        IsEnabled="{Binding ControlButtonsIsEnabled}"
+                                        Style="{StaticResource MaterialDesignRaisedButton}" />
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <!-- 配方操作区域 -->
+                                <StackPanel Margin="0,10,0,10" Orientation="Horizontal">
+                                    <StackPanel Margin="20,0,20,0" Orientation="Vertical">
+                                        <TextBlock
+                                        Margin="0,0,0,5"
+                                        FontSize="18"
+                                        Text="配方选择" />
+                                        <ComboBox
+                                        Width="120"
+                                        Margin="5,0,0,0"
+                                        HorizontalContentAlignment="Center"
+                                        ItemsSource="{Binding RecipeNumberCollection}"
+                                        SelectedItem="{Binding SelectedRecipe}" />
+                                    </StackPanel>
+
+                                    <StackPanel Margin="20,0,0,0" Orientation="Vertical">
+                                        <Button
+                                        Width="120"
+                                        Margin="0,0,0,5"
+                                        Command="{Binding DataContext.RunRecipeCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}"
+                                        Content="运行配方"
+                                        IsEnabled="{Binding ControlButtonsIsEnabled}"
+                                        Style="{StaticResource MaterialDesignRaisedButton}" />
+
+                                        <Button
+                                        Width="120"
+                                        Command="{Binding DataContext.StopRunningCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}"
+                                        Content="停止运行"
+                                        IsEnabled="{Binding ControlButtonsIsEnabled}"
+                                        Style="{StaticResource MaterialDesignRaisedButton}" />
+                                    </StackPanel>
+
+                                    <StackPanel Margin="20,0,0,0" Orientation="Vertical">
+                                        <Button
+                                        Width="120"
+                                        Margin="0,0,0,5"
+                                        Command="{Binding DataContext.ReturnToOriginCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}"
+                                        Content="回原点"
+                                        IsEnabled="{Binding ControlButtonsIsEnabled}"
+                                        Style="{StaticResource MaterialDesignRaisedButton}" />
+
+                                        <Button
+                                        Width="120"
+                                        Command="{Binding DataContext.GetAlarmStatusCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}"
+                                        Content="读取报警"
+                                        IsEnabled="{Binding ControlButtonsIsEnabled}"
+                                        Style="{StaticResource MaterialDesignRaisedButton}" />
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <!-- 状态消息 -->
+                                <TextBlock
+                                Margin="0,5,0,10"
+                                Foreground="Gray"
+                                Text="{Binding StatusMessage}" />
+
+                                <!-- 运行状态显示 -->
+                                <StackPanel Margin="0,5,0,10" Orientation="Horizontal">
+                                    <TextBlock
+                                    Margin="20,0,10,0"
+                                    Text="运行状态:" />
+                                    <TextBlock
+                                    Text="{Binding IsRunning, Converter={StaticResource BoolToStringConverter}, ConverterParameter='运行中|停止'}"
+                                    Foreground="{Binding IsRunning, Converter={StaticResource BoolToForegroundConverter}}" />
+
+                                    <TextBlock
+                                    Margin="20,0,10,0"
+                                    Text="原点状态:" />
+                                    <TextBlock
+                                    Text="{Binding IsOriginReturned, Converter={StaticResource BoolToStringConverter}, ConverterParameter='已回原点|未回原点'}"
+                                    Foreground="{Binding IsOriginReturned, Converter={StaticResource BoolToForegroundConverter}}" />
+
+                                    <TextBlock
+                                    Margin="20,0,10,0"
+                                    Text="报警状态:" />
+                                    <TextBlock
+                                    Text="{Binding IsAlarm, Converter={StaticResource BoolToStringConverter}, ConverterParameter='报警|正常'}"
+                                    Foreground="{Binding IsAlarm, Converter={StaticResource BoolToForegroundConverter}}" />
+                                </StackPanel>
+
+                                <!-- 历史记录区域 -->
+                                <Border
+                                Height="300"
+                                BorderBrush="LightGray"
+                                BorderThickness="1"
+                                CornerRadius="4">
+                                    <ListBox ItemsSource="{Binding GluePumpHistory}">
+                                        <i:Interaction.Behaviors>
+                                            <listbox:ListBoxScrollToBottomExtensions />
+                                        </i:Interaction.Behaviors>
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <DockPanel Margin="2">
+                                                    <TextBlock
+                                                    Width="180"
+                                                    DockPanel.Dock="Left"
+                                                    Text="{Binding Time, StringFormat={}{0:yyyy-MM-dd HH:mm:ss.fff}}" />
+                                                    <TextBlock
+                                                    Width="80"
+                                                    DockPanel.Dock="Left"
+                                                    Text="{Binding Type, Converter={StaticResource DataRecordTypeToStringConverter}}" />
+                                                    <TextBlock
+                                                    DockPanel.Dock="Left"
+                                                    Text="{Binding Message}" />
+                                                </DockPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Border>
+                            </StackPanel>
+                        </DockPanel>
+                    </GroupBox>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>

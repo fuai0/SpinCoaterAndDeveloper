@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/image/cetc.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("gluepumpservice.dll")]
 
 

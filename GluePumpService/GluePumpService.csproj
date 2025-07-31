@@ -69,7 +69,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Converters\BoolToForegroundConverter.cs" />
+    <Compile Include="Common\Converters\BoolToStringConverter.cs" />
+    <Compile Include="Common\Converters\DataRecordTypeToStringConverter.cs" />
     <Compile Include="Common\Model\GluePumpModel.cs" />
+    <Compile Include="Extensions\ListBoxScrollToBottomExtensions.cs" />
     <Compile Include="GluePumpServiceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\GluePumpConfig.cs" />
@@ -79,11 +83,10 @@
       <DependentUpon>GluePumpView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="GluePumpService.config" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Resources\en-us.xaml">
@@ -107,4 +110,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>if $(Configuration)==Debug (
+copy "$(SolutionDir)$(ProjectName)\bin\Debug\GluePumpService.dll" "$(SolutionDir)SpinCoaterAndDeveloper.Shared\GluePumpService.dll"; /Y
+copy "$(SolutionDir)$(ProjectName)\GluePumpService.config" "$(SolutionDir)SpinCoaterAndDeveloper.Shared\GluePumpService.config"; /Y
+)</PostBuildEvent>
+  </PropertyGroup>
 </Project>

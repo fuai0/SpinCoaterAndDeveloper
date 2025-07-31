@@ -31,3 +31,4 @@ D:\MyWorker\SpinCoaterAndDeveloper\SpinCoaterAndDeveloper\GluePumpService\obj\De
 D:\MyWorker\SpinCoaterAndDeveloper\SpinCoaterAndDeveloper\GluePumpService\obj\Debug\GluePump.00348FFB.Up2Date
 D:\MyWorker\SpinCoaterAndDeveloper\SpinCoaterAndDeveloper\GluePumpService\obj\Debug\GluePumpService.dll
 D:\MyWorker\SpinCoaterAndDeveloper\SpinCoaterAndDeveloper\GluePumpService\obj\Debug\GluePumpService.pdb
+D:\MyWorker\SpinCoaterAndDeveloper\SpinCoaterAndDeveloper\GluePumpService\obj\Debug\GeneratedInternalTypeHelper.g.cs
