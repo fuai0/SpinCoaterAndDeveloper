@@ -29,6 +29,8 @@
     <s:String x:Key="InterpolationPathView">插补运动配置</s:String>
     <s:String x:Key="FunctionShieldCfg">功能屏蔽配置</s:String>
     <s:String x:Key="FunctionShieldDebug">功能屏蔽调试</s:String>
+    <s:String x:Key="SerialPort">串口</s:String>
+    <s:String x:Key="TemperatureController">温控器</s:String>
     <s:String x:Key="VisionCalibration">视觉标定</s:String>
     <s:String x:Key="VisionCompensation">视觉补偿</s:String>
     <s:String x:Key="VisionTest">视觉测试</s:String>

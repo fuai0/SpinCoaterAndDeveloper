@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TemperatureControllerService.Service;
 using TemperatureControllerService.ViewModels;
-using SerialPortServiceInterface;
 using TemperatureControllerService.Views;
 using Prism.Services.Dialogs;
 using System.Windows;
@@ -21,15 +20,14 @@ namespace TemperatureControllerService
         {
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("pack://application:,,,/SerialPortService;component/Resources/zh-cn.xaml") });
             Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("pack://application:,,,/SerialPortService;component/Resources/en-us.xaml") });
-
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<TemperatureControllerView, TemperatureControllerViewModel>();
 
-            TemperatureControllerConfig SerialPortConfig = new TemperatureControllerConfig();
-            var services = SerialPortConfig.LoadConfigFromFile();
+            TemperatureControllerConfig TemperatureControllerConfig = new TemperatureControllerConfig();
+            ServiceTemperatureControllerConfigurationSection services = TemperatureControllerConfig.LoadConfigFromFile();
 
             if (services != null)
             {
@@ -37,7 +35,7 @@ namespace TemperatureControllerService
                 {
                     ModbusHelper ModbusClient = new ModbusHelper();
                     ModbusClient.IocName = service.IocName;
-                    containerRegistry.RegisterInstance(typeof(ISerialPort), ModbusClient, service.IocName);
+                    containerRegistry.RegisterInstance(typeof(ModbusHelper), ModbusClient, service.IocName);
                 }
             }
         }

@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <s:String x:Key="SerialPort_SaveSetting">Save Setting</s:String>
+    <s:String x:Key="SerialPort_Send">Send</s:String>
+    <s:String x:Key="SerialPort_Clear">Clear</s:String>
+    <s:String x:Key="SerialPort_Close">Close</s:String>
+    <s:String x:Key="SerialPort_Open">Open</s:String>
+    <s:String x:Key="SerialPort_ConnectionSuccessful">SerialPort Open Successful</s:String>
+    <s:String x:Key="SerialPort_ConnectionFail">SerialPort Open Fail</s:String>
+    <s:String x:Key="SerialPort_PortName">COM:</s:String>
+    <s:String x:Key="SerialPort_BaudRate">BaudRate:</s:String>
+    <s:String x:Key="SerialPort_Parity">Parity:</s:String>
+    <s:String x:Key="SerialPort_StopBits">StopBits:</s:String>
+    <s:String x:Key="SerialPort_DataBits">DataBits:</s:String>
+    <s:String x:Key="SerialPort_StopSend">Stop Send</s:String>
+    <s:String x:Key="SerialPort_CodeScanSuccessful">Code Scan Successful</s:String>
+    <s:String x:Key="SerialPort_CodeScanFail">Code Scan Fail</s:String>
+    <s:String x:Key="SerialPort_Successful">Successful</s:String>
+    <s:String x:Key="SerialPort_Timeout">Timeout:</s:String>
+    <s:String x:Key="SerialPort_Fail">Fail</s:String>
+
+</ResourceDictionary>

@@ -172,3 +172,382 @@
 [Error] 2025-07-31 08:20:59.860 thread:[027] DB : GetEcatErrorCode failed. Error code:80198018
 [Info] 2025-07-31 08:21:00.341 thread:[001] DB : 用户进入功能屏蔽调试页面
 [Error] 2025-07-31 08:21:00.462 thread:[027] DB : GetEcatErrorCode failed. Error code:80198018
+
+/**************************************   2025/7/31 8:46:42日志服务启动成功!   **************************************/
+
+[Info] 2025-07-31 08:46:45.006 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:46:45.007 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:46:45.007 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:46:45.007 thread:[003] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:46:45.008 thread:[003] DB : TemperatureControllerService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-31 08:46:47.162 thread:[004] DB : 备份数据库异常:目录名称无效。 : 错误信息：目录名称无效。
+错误源：System
+错误堆栈：   在 System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   在 DataBaseService.DataBaseService.RunCmd(String mysqldumPath, String strCmd)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.ComponentModel.Win32Exception
+错误方法：Boolean StartWithCreateProcess(System.Diagnostics.ProcessStartInfo)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-31 08:46:47.162 thread:[004] DB : 备份数据库异常:目录名称无效。
+[Error] 2025-07-31 08:46:47.162 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-31 08:46:47.250 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-31 08:46:47.250 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-31 08:46:47.986 thread:[001] DB : 用户进入首页
+[Info] 2025-07-31 08:46:56.775 thread:[001] DB : 用户离开首页
+[Info] 2025-07-31 08:46:56.785 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-31 08:46:56.812 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 08:46:57.014 thread:[013] DB : GetEcatErrorCode failed. Error code:80198018
+
+/**************************************   2025/7/31 8:52:32日志服务启动成功!   **************************************/
+
+[Info] 2025-07-31 08:52:34.235 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:52:34.235 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:52:34.235 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:52:34.236 thread:[003] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:52:34.236 thread:[003] DB : TemperatureControllerService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-31 08:52:36.317 thread:[004] DB : 备份数据库异常:目录名称无效。 : 错误信息：目录名称无效。
+错误源：System
+错误堆栈：   在 System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   在 DataBaseService.DataBaseService.RunCmd(String mysqldumPath, String strCmd)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.ComponentModel.Win32Exception
+错误方法：Boolean StartWithCreateProcess(System.Diagnostics.ProcessStartInfo)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-31 08:52:36.317 thread:[004] DB : 备份数据库异常:目录名称无效。
+[Error] 2025-07-31 08:52:36.317 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-31 08:52:36.401 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-31 08:52:36.402 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-31 08:52:37.138 thread:[001] DB : 用户进入首页
+[Info] 2025-07-31 08:52:38.084 thread:[001] DB : 用户离开首页
+[Info] 2025-07-31 08:52:38.094 thread:[001] DB : 用户进入配置页面
+[Info] 2025-07-31 08:52:38.156 thread:[001] DB : 用户进入轴配置页面
+[Info] 2025-07-31 08:52:39.306 thread:[001] DB : 用户进入输入点位配置页面
+[Info] 2025-07-31 08:52:39.834 thread:[001] DB : 用户进入输出点位配置页面
+[Info] 2025-07-31 08:52:40.496 thread:[001] DB : 用户进入气缸配置页面
+[Info] 2025-07-31 08:52:43.976 thread:[001] DB : 用户进入参数配置页面
+[Info] 2025-07-31 08:52:44.988 thread:[001] DB : 用户进入点位配置页面
+[Info] 2025-07-31 08:52:46.143 thread:[001] DB : 用户进入功能屏蔽配置页面
+[Info] 2025-07-31 08:52:48.554 thread:[001] DB : 用户进入参数配置页面
+[Info] 2025-07-31 08:52:49.083 thread:[001] DB : 用户进入输出点位配置页面
+[Info] 2025-07-31 08:52:49.599 thread:[001] DB : 用户进入气缸配置页面
+[Info] 2025-07-31 08:52:50.166 thread:[001] DB : 用户进入输出点位配置页面
+[Info] 2025-07-31 08:52:51.924 thread:[001] DB : 用户离开配置页面
+[Info] 2025-07-31 08:52:52.007 thread:[001] DB : 用户进入数据页面
+[Info] 2025-07-31 08:52:52.346 thread:[001] DB : 用户离开数据页面
+[Info] 2025-07-31 08:52:52.377 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-31 08:52:52.387 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 08:52:52.589 thread:[025] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-31 08:52:53.386 thread:[001] DB : 用户进入参数调试页面
+[Error] 2025-07-31 08:52:53.393 thread:[025] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-31 08:52:53.858 thread:[001] DB : 用户进入功能屏蔽调试页面
+[Info] 2025-07-31 08:53:56.897 thread:[001] DB : 用户进入点位调试页面
+[Info] 2025-07-31 08:53:57.547 thread:[001] DB : 用户进入功能屏蔽调试页面
+[Info] 2025-07-31 08:53:57.932 thread:[001] DB : 用户进入点位调试页面
+[Info] 2025-07-31 08:54:01.310 thread:[001] DB : 用户进入参数调试页面
+[Info] 2025-07-31 08:54:01.991 thread:[001] DB : 用户进入气缸调试页面
+[Info] 2025-07-31 08:54:03.038 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 08:54:03.239 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-31 08:54:15.027 thread:[001] DB : 用户进入功能屏蔽调试页面
+[Info] 2025-07-31 08:54:37.102 thread:[001] DB : 用户进入点位调试页面
+[Info] 2025-07-31 08:54:38.197 thread:[001] DB : 用户进入参数调试页面
+[Info] 2025-07-31 08:54:38.669 thread:[001] DB : 用户进入点位调试页面
+
+/**************************************   2025/7/31 9:26:37日志服务启动成功!   **************************************/
+
+[Info] 2025-07-31 09:26:39.763 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 09:26:39.764 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 09:26:39.764 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-31 09:26:39.765 thread:[003] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 09:26:39.765 thread:[003] DB : TemperatureControllerService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-31 09:26:42.082 thread:[004] DB : 备份数据库异常:目录名称无效。 : 错误信息：目录名称无效。
+错误源：System
+错误堆栈：   在 System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   在 DataBaseService.DataBaseService.RunCmd(String mysqldumPath, String strCmd)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.ComponentModel.Win32Exception
+错误方法：Boolean StartWithCreateProcess(System.Diagnostics.ProcessStartInfo)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-31 09:26:42.082 thread:[004] DB : 备份数据库异常:目录名称无效。
+[Error] 2025-07-31 09:26:42.082 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-31 09:26:42.181 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-31 09:26:42.181 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-31 09:26:42.942 thread:[001] DB : 用户进入首页
+[Info] 2025-07-31 09:26:44.116 thread:[001] DB : 用户离开首页
+[Info] 2025-07-31 09:26:44.127 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-31 09:26:44.175 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 09:26:44.378 thread:[029] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-31 09:26:45.215 thread:[001] DB : 用户进入参数调试页面
+[Error] 2025-07-31 09:26:45.384 thread:[029] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-31 09:26:45.527 thread:[001] DB : 用户进入点位调试页面
+[Info] 2025-07-31 09:26:45.724 thread:[001] DB : 用户进入功能屏蔽调试页面
+[Info] 2025-07-31 09:26:47.995 thread:[001] DB : 用户进入参数调试页面
+[Info] 2025-07-31 09:26:48.750 thread:[001] DB : 用户进入气缸调试页面
+[Info] 2025-07-31 09:26:52.022 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 09:26:52.223 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-31 09:26:52.532 thread:[001] DB : 用户进入气缸调试页面
+[Error] 2025-07-31 09:26:52.624 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-31 09:26:53.483 thread:[001] DB : 用户进入系统调试页面
+
+/*************************************   2025/7/31 10:05:15日志服务启动成功!   **************************************/
+
+[Info] 2025-07-31 10:05:17.262 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 10:05:17.262 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 10:05:17.263 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-31 10:05:17.263 thread:[003] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 10:05:17.263 thread:[003] DB : TemperatureControllerService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-31 10:05:19.476 thread:[004] DB : 备份数据库异常:目录名称无效。 : 错误信息：目录名称无效。
+错误源：System
+错误堆栈：   在 System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   在 DataBaseService.DataBaseService.RunCmd(String mysqldumPath, String strCmd)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.ComponentModel.Win32Exception
+错误方法：Boolean StartWithCreateProcess(System.Diagnostics.ProcessStartInfo)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-31 10:05:19.476 thread:[004] DB : 备份数据库异常:目录名称无效。
+[Error] 2025-07-31 10:05:19.476 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-31 10:05:19.572 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-31 10:05:19.572 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-31 10:05:20.318 thread:[001] DB : 用户进入首页
+
+/*************************************   2025/7/31 10:05:40日志服务启动成功!   **************************************/
+
+
+/*************************************   2025/7/31 10:08:15日志服务启动成功!   **************************************/
+
+[Info] 2025-07-31 10:08:17.901 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 10:08:17.901 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 10:08:17.902 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-31 10:08:17.902 thread:[003] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 10:08:17.902 thread:[003] DB : TemperatureControllerService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-31 10:08:19.996 thread:[004] DB : 备份数据库异常:目录名称无效。 : 错误信息：目录名称无效。
+错误源：System
+错误堆栈：   在 System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   在 DataBaseService.DataBaseService.RunCmd(String mysqldumPath, String strCmd)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.ComponentModel.Win32Exception
+错误方法：Boolean StartWithCreateProcess(System.Diagnostics.ProcessStartInfo)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-31 10:08:19.996 thread:[004] DB : 备份数据库异常:目录名称无效。
+[Error] 2025-07-31 10:08:19.996 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-31 10:08:20.083 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-31 10:08:20.084 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-31 10:08:20.822 thread:[001] DB : 用户进入首页
+[Info] 2025-07-31 10:08:21.866 thread:[001] DB : 用户离开首页
+[Info] 2025-07-31 10:08:21.876 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-31 10:08:21.908 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 10:08:22.109 thread:[013] DB : GetEcatErrorCode failed. Error code:80198018
+
+/*************************************   2025/7/31 10:52:00日志服务启动成功!   **************************************/
+
+
+/*************************************   2025/7/31 10:59:29日志服务启动成功!   **************************************/
+
+[Info] 2025-07-31 10:59:31.778 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 10:59:31.779 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 10:59:31.779 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-31 10:59:31.779 thread:[003] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 10:59:31.780 thread:[003] DB : TemperatureControllerService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-31 10:59:33.896 thread:[004] DB : 备份数据库异常:目录名称无效。 : 错误信息：目录名称无效。
+错误源：System
+错误堆栈：   在 System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   在 DataBaseService.DataBaseService.RunCmd(String mysqldumPath, String strCmd)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.ComponentModel.Win32Exception
+错误方法：Boolean StartWithCreateProcess(System.Diagnostics.ProcessStartInfo)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-31 10:59:33.896 thread:[004] DB : 备份数据库异常:目录名称无效。
+[Error] 2025-07-31 10:59:33.896 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-31 10:59:33.991 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-31 10:59:33.991 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-31 10:59:34.747 thread:[001] DB : 用户进入首页
+[Info] 2025-07-31 10:59:35.954 thread:[001] DB : 用户离开首页
+[Info] 2025-07-31 10:59:35.965 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-31 10:59:36.009 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 10:59:36.212 thread:[032] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-31 10:59:39.267 thread:[001] DB : Modbus RTU初始化成功，串口：COM1
+[Info] 2025-07-31 10:59:42.164 thread:[001] DB : Modbus连接已关闭
+[Error] 2025-07-31 10:59:45.204 thread:[001] DB : Modbus RTU初始化失败：对端口“COM3”的访问被拒绝。
+[Info] 2025-07-31 10:59:48.042 thread:[001] DB : Modbus RTU初始化成功，串口：COM1
+[Info] 2025-07-31 10:59:49.198 thread:[001] DB : Modbus连接已关闭
+
+/*************************************   2025/7/31 11:13:50日志服务启动成功!   **************************************/
+
+[Info] 2025-07-31 11:13:52.285 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 11:13:52.285 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 11:13:52.285 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-31 11:13:52.286 thread:[003] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 11:13:52.286 thread:[003] DB : TemperatureControllerService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-31 11:13:54.397 thread:[004] DB : 备份数据库异常:目录名称无效。 : 错误信息：目录名称无效。
+错误源：System
+错误堆栈：   在 System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   在 DataBaseService.DataBaseService.RunCmd(String mysqldumPath, String strCmd)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.ComponentModel.Win32Exception
+错误方法：Boolean StartWithCreateProcess(System.Diagnostics.ProcessStartInfo)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-31 11:13:54.397 thread:[004] DB : 备份数据库异常:目录名称无效。
+[Error] 2025-07-31 11:13:54.397 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-31 11:13:54.481 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-31 11:13:54.481 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-31 11:13:55.219 thread:[001] DB : 用户进入首页
+[Info] 2025-07-31 11:13:56.258 thread:[001] DB : 用户离开首页
+[Info] 2025-07-31 11:13:56.268 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-31 11:13:56.304 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 11:13:56.506 thread:[018] DB : GetEcatErrorCode failed. Error code:80198018
+
+/*************************************   2025/7/31 11:24:53日志服务启动成功!   **************************************/
+
+
+/*************************************   2025/7/31 11:25:04日志服务启动成功!   **************************************/
+
+[Info] 2025-07-31 11:25:06.452 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 11:25:06.453 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 11:25:06.453 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-31 11:25:06.453 thread:[003] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 11:25:06.454 thread:[003] DB : TemperatureControllerService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-31 11:25:09.629 thread:[004] DB : 备份数据库异常:目录名称无效。 : 错误信息：目录名称无效。
+错误源：System
+错误堆栈：   在 System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   在 DataBaseService.DataBaseService.RunCmd(String mysqldumPath, String strCmd)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.ComponentModel.Win32Exception
+错误方法：Boolean StartWithCreateProcess(System.Diagnostics.ProcessStartInfo)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-31 11:25:09.629 thread:[004] DB : 备份数据库异常:目录名称无效。
+[Error] 2025-07-31 11:25:09.630 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-31 11:25:09.740 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-31 11:25:09.741 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-31 11:25:10.480 thread:[001] DB : 用户进入首页
+[Info] 2025-07-31 11:25:11.500 thread:[001] DB : 用户离开首页
+[Info] 2025-07-31 11:25:11.514 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-31 11:25:11.565 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 11:25:11.768 thread:[005] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-31 11:25:14.609 thread:[001] DB : Modbus RTU初始化成功，串口：COM1
+[Info] 2025-07-31 11:25:30.078 thread:[001] DB : Modbus连接已关闭
+[Info] 2025-07-31 11:25:30.474 thread:[001] DB : 用户进入功能屏蔽调试页面
+[Info] 2025-07-31 11:25:31.037 thread:[001] DB : 用户进入点位调试页面
+[Info] 2025-07-31 11:25:31.456 thread:[001] DB : 用户进入参数调试页面
+[Info] 2025-07-31 11:25:31.959 thread:[001] DB : 用户进入气缸调试页面
+[Info] 2025-07-31 11:25:32.599 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 11:25:32.800 thread:[031] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-31 11:25:33.104 thread:[001] DB : 用户进入功能屏蔽调试页面
+[Error] 2025-07-31 11:25:33.200 thread:[031] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-31 11:25:55.517 thread:[001] DB : Modbus RTU初始化成功，串口：COM1
+[Info] 2025-07-31 11:25:59.357 thread:[003] DB : 发送Modbus帧：01-06-00-01-00-64-D9-E1
+[Info] 2025-07-31 11:25:59.390 thread:[003] DB : 接收Modbus帧：01-06-00-01-00-64-D9-E1
+[Info] 2025-07-31 11:26:00.988 thread:[003] DB : 发送Modbus帧：01-03-00-00-00-02-C4-0B
+[Info] 2025-07-31 11:26:01.021 thread:[003] DB : 接收Modbus帧：01-03-04-00-00-00-64-FB-D8
+[Info] 2025-07-31 11:26:08.289 thread:[003] DB : 发送Modbus帧：01-03-00-00-00-02-C4-0B
+[Info] 2025-07-31 11:26:08.333 thread:[003] DB : 接收Modbus帧：01-03-04-00-32-00-64-5A-17
+
+/*************************************   2025/7/31 11:32:23日志服务启动成功!   **************************************/
+
+[Info] 2025-07-31 11:32:25.325 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 11:32:25.325 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 11:32:25.326 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-31 11:32:25.326 thread:[003] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 11:32:25.326 thread:[003] DB : TemperatureControllerService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-31 11:32:27.398 thread:[004] DB : 备份数据库异常:目录名称无效。 : 错误信息：目录名称无效。
+错误源：System
+错误堆栈：   在 System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   在 DataBaseService.DataBaseService.RunCmd(String mysqldumPath, String strCmd)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.ComponentModel.Win32Exception
+错误方法：Boolean StartWithCreateProcess(System.Diagnostics.ProcessStartInfo)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-31 11:32:27.398 thread:[004] DB : 备份数据库异常:目录名称无效。
+[Error] 2025-07-31 11:32:27.398 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-31 11:32:27.480 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-31 11:32:27.480 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-31 11:32:28.229 thread:[001] DB : 用户进入首页
+[Info] 2025-07-31 11:32:29.307 thread:[001] DB : 用户离开首页
+[Info] 2025-07-31 11:32:29.317 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-31 11:32:29.380 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 11:32:29.583 thread:[029] DB : GetEcatErrorCode failed. Error code:80198018
+
+/*************************************   2025/7/31 13:32:57日志服务启动成功!   **************************************/
+
+[Info] 2025-07-31 13:32:59.758 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 13:32:59.758 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 13:32:59.758 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-31 13:32:59.758 thread:[003] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 13:32:59.759 thread:[003] DB : TemperatureControllerService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-31 13:33:02.031 thread:[004] DB : 备份数据库异常:目录名称无效。 : 错误信息：目录名称无效。
+错误源：System
+错误堆栈：   在 System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   在 DataBaseService.DataBaseService.RunCmd(String mysqldumPath, String strCmd)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.ComponentModel.Win32Exception
+错误方法：Boolean StartWithCreateProcess(System.Diagnostics.ProcessStartInfo)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-31 13:33:02.031 thread:[004] DB : 备份数据库异常:目录名称无效。
+[Error] 2025-07-31 13:33:02.032 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-31 13:33:02.124 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-31 13:33:02.124 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-31 13:33:02.881 thread:[001] DB : 用户进入首页
+[Info] 2025-07-31 13:33:04.038 thread:[001] DB : 用户离开首页
+[Info] 2025-07-31 13:33:04.051 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-31 13:33:04.099 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 13:33:04.300 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-31 13:33:04.884 thread:[001] DB : 用户进入系统调试页面
+[Error] 2025-07-31 13:33:04.902 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018

@@ -15,7 +15,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using SerialPortServiceInterface;
 
 namespace TemperatureControllerService.ViewModels
 {
@@ -351,8 +350,9 @@ namespace TemperatureControllerService.ViewModels
         #endregion
 
         #region 导航接口实现（Prism区域导航）
+
         /// <summary>
-        /// 导航到页面时加载多语言资源
+        /// 导航到页面时加载多语言资源并加载配置
         /// </summary>
         /// <param name="navigationContext">导航上下文</param>
         public void OnNavigatedTo(NavigationContext navigationContext)

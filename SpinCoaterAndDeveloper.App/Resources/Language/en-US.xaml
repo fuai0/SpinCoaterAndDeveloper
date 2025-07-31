@@ -29,6 +29,8 @@
     <s:String x:Key="InterpolationPathView">Interpolation Config</s:String>
     <s:String x:Key="FunctionShieldCfg">Function Shield</s:String>
     <s:String x:Key="FunctionShieldDebug">Function Shield</s:String>
+    <s:String x:Key="SerialPort">Serial Port</s:String>
+    <s:String x:Key="TemperatureController">Temperature Controller</s:String>
     <s:String x:Key="VisionCalibration">Vision Calibration</s:String>
     <s:String x:Key="VisionCompensation">Vision Compensation</s:String>
     <s:String x:Key="VisionTest">Vision Test</s:String>

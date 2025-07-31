@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Prism.Ioc;
-using SerialPortServiceInterface;
 
 namespace TemperatureControllerService.Common.Model
 {

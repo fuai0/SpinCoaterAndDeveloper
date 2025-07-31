@@ -13,8 +13,6 @@
     <s:String x:Key="SerialPort_StopBits">停止位:</s:String>
     <s:String x:Key="SerialPort_DataBits">数据位:</s:String>
     <s:String x:Key="SerialPort_StopSend">停止扫码</s:String>
-    <s:String x:Key="SerialPort_CodeScanSuccessful">扫码成功</s:String>
-    <s:String x:Key="SerialPort_CodeScanFail">扫码失败</s:String>
     <s:String x:Key="SerialPort_Successful">成功</s:String>
     <s:String x:Key="SerialPort_Timeout">超时时间:</s:String>
     <s:String x:Key="SerialPort_Fail">失败</s:String>

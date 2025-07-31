@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\WorkSpace\NewPrivite\Test\SpinCoaterAndDeveloper\TemperatureControllerService\obj\Debug\
+D:\MyWorker\SpinCoaterAndDeveloper\SpinCoaterAndDeveloper\TemperatureControllerService\obj\Debug\
 TemperatureControllerService
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 32080156685
 
 131113782359
-22-1385175150
+2144747732
 Resources\en-us.xaml;Resources\zh-cn.xaml;Views\TemperatureControllerView.xaml;
 
 True

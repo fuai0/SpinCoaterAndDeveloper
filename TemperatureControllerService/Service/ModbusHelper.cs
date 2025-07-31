@@ -1,5 +1,4 @@
-﻿using SerialPortServiceInterface;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
@@ -12,7 +11,7 @@ namespace TemperatureControllerService.Service
     /// <summary>
     /// Modbus RTU协议助手类，基于串口通信，支持多种功能码
     /// </summary>
-    public class ModbusHelper : ISerialPort
+    public class ModbusHelper 
     {
         #region 私有字段
 
@@ -25,15 +24,6 @@ namespace TemperatureControllerService.Service
         #region 公有属性
 
         public string IocName { get; internal set; }
-
-        public string PortName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int BaudRate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Parity Parity { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public StopBits StopBits { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int DataBits { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Timeout { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public bool IsConnected => throw new NotImplementedException();
 
         #endregion
 
@@ -408,21 +398,6 @@ namespace TemperatureControllerService.Service
                 LogExtension.Log(LogLevel.INFO, "Modbus连接已关闭");
             }
             _isConnected = false;
-        }
-
-        public bool Write(string data)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Write(byte[] data)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ReadData(ref string data)
-        {
-            throw new NotImplementedException();
         }
 
         /// <summary>

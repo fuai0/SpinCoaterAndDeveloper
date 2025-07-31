@@ -89,12 +89,6 @@
     <None Include="TemperatureControllerService.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SerialPortServiceInterface\SerialPortServiceInterface.csproj">
-      <Project>{fe2a8655-e3c8-477a-aa3e-c9fbccba5d7a}</Project>
-      <Name>SerialPortServiceInterface</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="Resources\en-us.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -15,8 +15,6 @@
     <s:String x:Key="SerialPort_StopBits">StopBits:</s:String>
     <s:String x:Key="SerialPort_DataBits">DataBits:</s:String>
     <s:String x:Key="SerialPort_StopSend">Stop Send</s:String>
-    <s:String x:Key="SerialPort_CodeScanSuccessful">Code Scan Successful</s:String>
-    <s:String x:Key="SerialPort_CodeScanFail">Code Scan Fail</s:String>
     <s:String x:Key="SerialPort_Successful">Successful</s:String>
     <s:String x:Key="SerialPort_Timeout">Timeout:</s:String>
     <s:String x:Key="SerialPort_Fail">Fail</s:String>
