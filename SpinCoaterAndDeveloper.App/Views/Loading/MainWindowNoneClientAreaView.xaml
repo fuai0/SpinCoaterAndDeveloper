@@ -1,0 +1,93 @@
+﻿<UserControl
+    x:Class="SpinCoaterAndDeveloper.App.Views.MainWindowNoneClientAreaView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:valueConverter="clr-namespace:ValueConverters;assembly=ValueConverters"
+    xmlns:viewmodels="clr-namespace:SpinCoaterAndDeveloper.App.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowNoneClientAreaViewModel}"
+    d:DesignHeight="700"
+    d:DesignWidth="1280"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <valueConverter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <Style
+            x:Key="TitleButtonStyle"
+            BasedOn="{StaticResource ButtonStyle.Flat}"
+            TargetType="Button">
+            <Setter Property="Width" Value="46" />
+            <Setter Property="Margin" Value="4,0,0,0" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#E5E5E5" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <DockPanel LastChildFill="False">
+            <ToggleButton
+                x:Name="MenuToggleButton"
+                VerticalAlignment="Center"
+                AutomationProperties.Name="HamburgerToggleButton"
+                Command="{Binding ChangeLeftDrawerCommand}"
+                DockPanel.Dock="Left"
+                Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                IsChecked="{Binding ToggleButtonIsCheck}"
+                Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
+            <StackPanel
+                VerticalAlignment="Center"
+                DockPanel.Dock="Right"
+                Orientation="Horizontal">
+                <Button
+                    VerticalAlignment="Center"
+                    Command="{Binding GlobalLogCommand}"
+                    Style="{StaticResource TitleButtonStyle}">
+                    <materialDesign:PackIcon Foreground="{StaticResource MainWindowTitleForeground}" Kind="Text" />
+                </Button>
+                <materialDesign:PopupBox PlacementMode="BottomAndAlignCentres">
+                    <materialDesign:PopupBox.ToggleContent>
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Text="{Binding ElementName=LanguageList, Path=SelectedItem.Name}"
+                            TextAlignment="Center" />
+                    </materialDesign:PopupBox.ToggleContent>
+                    <ListBox
+                        x:Name="LanguageList"
+                        DisplayMemberPath="Name"
+                        ItemsSource="{Binding LanguageList}"
+                        SelectedItem="{Binding CurrentLanguageSelect}"
+                        Style="{StaticResource MaterialDesignToolVerticalToggleListBox}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding LanguageChangeCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBox>
+                </materialDesign:PopupBox>
+            </StackPanel>
+            <materialDesign:PopupBox
+                DockPanel.Dock="Right"
+                PlacementMode="BottomAndAlignCentres"
+                Visibility="{Binding AppleUIEnable, Converter={StaticResource BoolToVisibilityConverter}}">
+                <materialDesign:PopupBox.ToggleContent>
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        d:Text="用户名"
+                        FontSize="14"
+                        Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                        Text="{Binding UserName}" />
+                </materialDesign:PopupBox.ToggleContent>
+                <StackPanel>
+                    <Button Command="{Binding LoginInOutCommand}" Content="{Binding LoginContent}" />
+                </StackPanel>
+            </materialDesign:PopupBox>
+        </DockPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,290 @@
+﻿
+/**************************************   2025/7/28 8:03:04日志服务启动成功!   **************************************/
+
+[Info] 2025-07-28 08:03:07.184 thread:[004] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-28 08:03:07.186 thread:[004] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-28 08:03:07.187 thread:[004] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-28 08:03:17.392 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-28 08:03:17.393 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-28 08:03:17.393 thread:[004] DB : 备份数据库失败
+[Info] 2025-07-28 08:03:17.583 thread:[004] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-28 08:03:17.583 thread:[004] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-28 08:03:18.434 thread:[001] DB : 用户进入首页
+[Info] 2025-07-28 08:03:23.405 thread:[001] DB : 用户离开首页
+[Info] 2025-07-28 08:03:23.426 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-28 08:03:23.486 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-28 08:03:23.689 thread:[029] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-28 08:03:25.457 thread:[001] DB : 用户离开调试页面
+[Error] 2025-07-28 08:03:25.495 thread:[029] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-28 08:03:25.506 thread:[001] DB : 用户进入首页
+
+/**************************************   2025/7/28 8:31:59日志服务启动成功!   **************************************/
+
+[Info] 2025-07-28 08:32:02.056 thread:[004] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-28 08:32:02.057 thread:[004] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-28 08:32:02.058 thread:[004] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-28 08:32:11.460 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-28 08:32:11.460 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-28 08:32:11.460 thread:[004] DB : 备份数据库失败
+[Info] 2025-07-28 08:32:11.637 thread:[004] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-28 08:32:11.637 thread:[004] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-28 08:32:12.503 thread:[001] DB : 用户进入首页
+
+/**************************************   2025/7/28 9:01:37日志服务启动成功!   **************************************/
+
+[Info] 2025-07-28 09:01:40.726 thread:[004] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-28 09:01:40.727 thread:[004] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-28 09:01:40.728 thread:[004] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-28 09:01:49.207 thread:[014] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-28 09:01:49.207 thread:[014] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-28 09:01:49.207 thread:[004] DB : 备份数据库失败
+[Info] 2025-07-28 09:01:49.381 thread:[004] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-28 09:01:49.382 thread:[004] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-28 09:01:50.236 thread:[001] DB : 用户进入首页
+[Info] 2025-07-28 09:02:13.149 thread:[001] DB : 用户离开首页
+[Info] 2025-07-28 09:02:13.262 thread:[001] DB : 用户进入报警页面
+[Info] 2025-07-28 09:02:18.783 thread:[001] DB : 用户离开报警页面
+[Info] 2025-07-28 09:02:18.822 thread:[001] DB : 用户进入配置页面
+[Info] 2025-07-28 09:02:18.874 thread:[001] DB : 用户进入轴配置页面
+[Info] 2025-07-28 09:02:40.996 thread:[001] DB : 用户离开配置页面
+[Info] 2025-07-28 09:02:41.192 thread:[001] DB : 用户进入数据页面
+[Info] 2025-07-28 09:02:43.979 thread:[001] DB : 用户离开数据页面
+[Info] 2025-07-28 09:02:44.037 thread:[001] DB : 用户进入Vision页面
+[Info] 2025-07-28 09:03:02.925 thread:[001] DB : 用户离开Vision页面
+[Info] 2025-07-28 09:03:02.939 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-28 09:03:02.962 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-28 09:03:03.166 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:03:23.815 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:03:24.018 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:03:44.603 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:03:44.809 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:04:05.433 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:04:05.634 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:04:26.303 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:04:26.505 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:04:47.150 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:04:47.353 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:05:07.932 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:05:08.133 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:05:28.761 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:05:28.966 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:05:49.539 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:05:49.744 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:06:10.313 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:06:10.517 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:06:31.139 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:06:31.342 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:06:51.958 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:06:52.170 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:07:12.751 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:07:12.955 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:07:33.552 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:07:33.757 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:07:54.354 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:07:54.558 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:08:15.233 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:08:15.438 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:08:36.083 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:08:36.288 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:08:56.903 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:08:57.108 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:09:17.738 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:09:17.942 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:09:38.540 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:09:38.745 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:09:59.349 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:09:59.551 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:10:20.078 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:10:20.279 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:10:40.870 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:10:41.074 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:11:01.680 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:11:01.884 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:11:22.434 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:11:22.639 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:11:43.166 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:11:43.370 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:12:04.020 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:12:04.223 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:12:24.869 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:12:25.072 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:12:45.675 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:12:45.877 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:13:06.438 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:13:06.639 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:13:27.291 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:13:27.492 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:13:48.245 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:13:48.448 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:14:09.062 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:14:09.265 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:14:29.889 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:14:30.093 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:14:50.704 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:14:50.907 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:15:11.492 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:15:11.697 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:15:32.335 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:15:32.538 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:15:53.105 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:15:53.309 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:16:13.874 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:16:14.077 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:16:34.633 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:16:34.837 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:16:55.432 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:16:55.634 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:17:16.208 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:17:16.413 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:17:37.002 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:17:37.206 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:17:57.771 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:17:57.974 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:18:18.491 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:18:18.694 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:18:39.297 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:18:39.498 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:19:00.199 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:19:00.403 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:19:21.029 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:19:21.234 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:19:41.834 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:19:42.035 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:20:02.690 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:20:02.891 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:20:23.585 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:20:23.787 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:20:44.390 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:20:44.596 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:21:05.376 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:21:05.576 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:21:26.205 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:21:26.408 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:21:47.008 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:21:47.211 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:22:07.774 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:22:07.976 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:22:28.607 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:22:28.811 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:22:49.461 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:22:49.664 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:23:10.221 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:23:10.426 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:23:30.972 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:23:31.180 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:23:51.740 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:23:51.944 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:24:12.525 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:24:12.728 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:24:33.368 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:24:33.572 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:24:54.202 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:24:54.419 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:25:15.023 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:25:15.225 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-28 09:25:35.796 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-28 09:25:36.002 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-28 09:25:53.319 thread:[001] DB : 用户离开调试页面
+[Info] 2025-07-28 09:25:53.353 thread:[001] DB : 用户进入首页
+[Error] 2025-07-28 09:25:53.380 thread:[028] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-28 09:28:51.369 thread:[001] DB : 用户离开首页
+[Info] 2025-07-28 09:28:51.409 thread:[001] DB : 用户进入报警页面
+[Info] 2025-07-28 09:28:52.536 thread:[001] DB : 用户离开报警页面
+[Info] 2025-07-28 09:28:52.593 thread:[001] DB : 用户进入配置页面
+[Info] 2025-07-28 09:28:52.683 thread:[001] DB : 用户进入轴配置页面
+[Info] 2025-07-28 09:28:53.173 thread:[001] DB : 用户离开配置页面
+[Info] 2025-07-28 09:28:53.370 thread:[001] DB : 用户进入数据页面
+[Info] 2025-07-28 09:28:53.870 thread:[001] DB : 用户离开数据页面
+[Info] 2025-07-28 09:28:53.941 thread:[001] DB : 用户进入报警页面
+[Info] 2025-07-28 09:31:23.172 thread:[001] DB : 用户离开报警页面
+[Info] 2025-07-28 09:31:23.223 thread:[001] DB : 用户进入首页
+
+/*************************************   2025/7/28 11:10:52日志服务启动成功!   **************************************/
+
+[Info] 2025-07-28 11:10:59.423 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-28 11:10:59.423 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-28 11:10:59.424 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-28 11:10:59.424 thread:[003] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-28 11:11:08.176 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-28 11:11:08.176 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-28 11:11:08.176 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-28 11:11:08.353 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-28 11:11:08.353 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-28 11:11:09.209 thread:[001] DB : 用户进入首页
+
+/*************************************   2025/7/28 19:20:22日志服务启动成功!   **************************************/
+
+[Info] 2025-07-28 19:20:26.108 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-28 19:20:26.109 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-28 19:20:26.110 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-28 19:20:26.110 thread:[003] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-28 19:20:33.958 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-28 19:20:33.958 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-28 19:20:33.958 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-28 19:20:34.150 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-28 19:20:34.150 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-28 19:20:35.070 thread:[001] DB : 用户进入首页
+[Info] 2025-07-28 19:20:38.378 thread:[001] DB : 用户离开首页
+[Info] 2025-07-28 19:20:38.402 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-28 19:20:38.458 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-28 19:20:38.665 thread:[030] DB : GetEcatErrorCode failed. Error code:80198018

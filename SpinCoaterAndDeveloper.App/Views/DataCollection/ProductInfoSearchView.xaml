@@ -1,0 +1,136 @@
+﻿<UserControl
+    x:Class="SpinCoaterAndDeveloper.App.Views.ProductInfoSearchView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vc="clr-namespace:ValueConverters;assembly=ValueConverters"
+    d:DesignHeight="700"
+    d:DesignWidth="1280"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <vc:BoolToBrushConverter
+            x:Key="BoolToForegroundConverter"
+            FalseValue="Red"
+            TrueValue="Green" />
+    </UserControl.Resources>
+    <Grid Background="{StaticResource AppleHeavyBackGroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <UniformGrid Margin="0,5,0,0" Columns="10">
+            <DatePicker
+                Margin="5,0,0,0"
+                Padding="0"
+                VerticalAlignment="Center"
+                materialDesign:HintAssist.Hint="{DynamicResource SelectStartDate}"
+                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                Text="{Binding ProductStartDate, Mode=TwoWay}" />
+            <materialDesign:TimePicker
+                Margin="10,0,0,0"
+                Padding="0"
+                VerticalAlignment="Center"
+                materialDesign:HintAssist.Hint="{DynamicResource SelectStartTime}"
+                Is24Hours="True"
+                Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+                Text="{Binding ProductStartTime, Mode=TwoWay}" />
+            <DatePicker
+                Margin="10,0,0,0"
+                Padding="0"
+                VerticalAlignment="Center"
+                materialDesign:HintAssist.Hint="{DynamicResource SelectEndDate}"
+                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                Text="{Binding ProductEndDate, Mode=TwoWay}" />
+            <materialDesign:TimePicker
+                Margin="10,0,0,0"
+                Padding="0"
+                VerticalAlignment="Center"
+                materialDesign:HintAssist.Hint="{DynamicResource SelectEndTime}"
+                Is24Hours="True"
+                Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+                Text="{Binding ProductEndTime, Mode=TwoWay}" />
+            <ComboBox
+                Margin="10,0,0,0"
+                Padding="0"
+                VerticalAlignment="Center"
+                materialDesign:HintAssist.Hint="{DynamicResource SelectSearchNum}"
+                materialDesign:HintAssist.IsFloating="True"
+                materialDesign:TextFieldAssist.HasClearButton="True"
+                Text="{Binding ProductLogNums}">
+                <ComboBoxItem Content="100" />
+                <ComboBoxItem Content="1000" />
+                <ComboBoxItem Content="10000" />
+            </ComboBox>
+            <TextBox
+                Margin="10,0,0,0"
+                Padding="0"
+                VerticalAlignment="Bottom"
+                materialDesign:HintAssist.Hint="{DynamicResource ProductCode}"
+                Text="{Binding ProductCode}" />
+            <Button
+                Margin="20,0,0,0"
+                VerticalAlignment="Center"
+                Command="{Binding SearchProductCommand}"
+                Content="{DynamicResource Search}"
+                Cursor="Hand" />
+            <Button
+                Margin="20,0,0,0"
+                VerticalAlignment="Center"
+                Command="{Binding SaveDataToExcelProductCommand}"
+                Content="{DynamicResource Export}"
+                Cursor="Hand" />
+        </UniformGrid>
+        <DataGrid
+            Grid.Row="1"
+            Margin="5,0,5,0"
+            materialDesign:DataGridAssist.CellPadding="20 2 2 2"
+            materialDesign:DataGridAssist.ColumnHeaderPadding="20 2 2 2"
+            materialDesign:DataGridAssist.SelectedCellBorderBrush="Transparent"
+            AutoGenerateColumns="False"
+            Background="{StaticResource AppleHeavyBackGroundBrush}"
+            CanUserAddRows="False"
+            CanUserSortColumns="False"
+            HeadersVisibility="All"
+            IsReadOnly="True"
+            ItemsSource="{Binding ProductInfoCollections}"
+            RowHeaderWidth="1"
+            SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    MinWidth="150"
+                    Binding="{Binding ProductCode}"
+                    Header="{DynamicResource ProductCode}" />
+                <DataGridTemplateColumn Width="60">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{DynamicResource Result}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Foreground="{Binding ProductResult, Converter={StaticResource BoolToForegroundConverter}}" Text="{Binding ProductResult}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn
+                    MinWidth="180"
+                    Binding="{Binding ProductStartTime, StringFormat='yyyy-MM-dd HH:mm:ss'}"
+                    Header="{DynamicResource ProductStartTime}" />
+                <DataGridTextColumn
+                    MinWidth="180"
+                    Binding="{Binding ProductEndTime, StringFormat='yyyy-MM-dd HH:mm:ss'}"
+                    Header="{DynamicResource ProductEndTime}" />
+                <DataGridTextColumn
+                    Width="100"
+                    Binding="{Binding ProductCT}"
+                    Header="CT" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</UserControl>

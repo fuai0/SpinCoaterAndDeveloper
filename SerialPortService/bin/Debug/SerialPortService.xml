@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SerialPortService</name>
+    </assembly>
+    <members>
+        <member name="T:SerialPortService.Service.SerialPortHelper">
+            <summary>
+            串口通讯类
+            </summary>
+        </member>
+        <member name="P:SerialPortService.Service.SerialPortHelper.PortName">
+            <summary>
+            COM口
+            </summary>
+        </member>
+        <member name="P:SerialPortService.Service.SerialPortHelper.BaudRate">
+            <summary>
+            波特率
+            </summary>
+        </member>
+        <member name="P:SerialPortService.Service.SerialPortHelper.Parity">
+            <summary>
+            校验位
+            </summary>
+        </member>
+        <member name="P:SerialPortService.Service.SerialPortHelper.StopBits">
+            <summary>
+            停止位
+            </summary>
+        </member>
+        <member name="P:SerialPortService.Service.SerialPortHelper.DataBits">
+            <summary>
+            数据位
+            </summary>
+        </member>
+        <member name="P:SerialPortService.Service.SerialPortHelper.Timeout">
+            <summary>
+            超时时间
+            </summary>
+        </member>
+        <member name="T:SerialPortService.Views.SerialPortDebugView">
+            <summary>
+            Interaction logic for SerialPortDebugView
+            </summary>
+            <summary>
+            SerialPortDebugView
+            </summary>
+        </member>
+        <member name="M:SerialPortService.Views.SerialPortDebugView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SerialPortService.Views.SerialPortMessageView">
+            <summary>
+            Interaction logic for SerialPortMessageView
+            </summary>
+            <summary>
+            SerialPortMessageView
+            </summary>
+        </member>
+        <member name="M:SerialPortService.Views.SerialPortMessageView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

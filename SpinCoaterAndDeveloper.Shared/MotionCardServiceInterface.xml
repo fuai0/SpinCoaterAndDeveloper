@@ -1,0 +1,697 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MotionCardServiceInterface</name>
+    </assembly>
+    <members>
+        <member name="T:MotionCardServiceInterface.IMotionCardService">
+            <summary>
+            运动控制卡服务接口
+            </summary>
+        </member>
+        <member name="P:MotionCardServiceInterface.IMotionCardService.InitSuccess">
+            <summary>
+            运动控制卡初始化成功标志
+            </summary>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.Init">
+            <summary>
+            初始化运动控制卡
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.StartHoming(System.Int16,System.Int16,System.Int32,System.UInt32,System.UInt32,System.UInt32,System.UInt32,System.Int16)">
+            <summary>
+            启动回原点
+            </summary>
+            <param name="homingAxNo"></param>
+            <param name="homeMethod"></param>
+            <param name="offset"></param>
+            <param name="highVel"></param>
+            <param name="lowVel"></param>
+            <param name="acc"></param>
+            <param name="overtime"></param>
+            <param name="posSrc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetHomingSts(System.Int16)">
+            <summary>
+            获取回原状态
+            </summary>
+            <param name="homingAxNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.StopHoming(System.Int16)">
+            <summary>
+            停止回原
+            </summary>
+            <param name="homingAxNo"></param>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.FinishHoming(System.Int16)">
+            <summary>
+            结束回原
+            </summary>
+            <param name="homingAxNo"></param>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.Close">
+            <summary>
+            关闭板卡不复位
+            </summary>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.CloseWithReset">
+            <summary>
+            关闭并复位板卡
+            </summary>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.JogMoveStart(System.Int16,System.Double,MotionCardServiceInterface.Direction,System.Double,System.Double,System.Double)">
+            <summary>
+            Jog运动启动
+            </summary>
+            <param name="axNo"></param>
+            <param name="tgVel"></param>
+            <param name="dir"></param>
+            <param name="acc"></param>
+            <param name="dec"></param>
+            <param name="dsParaLTDMC">雷赛板卡S段速度参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.JogMoveStop(System.Int16)">
+            <summary>
+            Jog运动停止
+            </summary>
+            <param name="axNo"></param>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.AxisServo(System.Int16,System.Boolean)">
+            <summary>
+            轴上/下使能
+            </summary>
+            <param name="axNo"></param>
+            <param name="enable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxPrfMode(System.Int16,System.Int16)">
+            <summary>
+            获取轴规划模式
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxSts(System.Int16,System.Int16)">
+            <summary>
+            获取轴状态
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxPrfPos(System.Int16,System.Int16)">
+            <summary>
+            获取规划位置
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxPrfVel(System.Int16,System.Int16)">
+            <summary>
+            获取规划速度
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxPrfAcc(System.Int16,System.Int16)">
+            <summary>
+            获取规划加速度
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxEncPos(System.Int16,System.Int16)">
+            <summary>
+            获取当前位置
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxEncVel(System.Int16,System.Int16)">
+            <summary>
+            获取当前速度
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxEncAcc(System.Int16,System.Int16)">
+            <summary>
+            获取当前加速度
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetEcatDiBit(System.Int16)">
+            <summary>
+            按Bit获取Di
+            </summary>
+            <param name="diNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetEcatDoBit(System.Int16)">
+            <summary>
+            按Bit获取Do
+            </summary>
+            <param name="doNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetEcatGrpDi(System.Int16)">
+            <summary>
+            按组获取Di
+            </summary>
+            <param name="groupNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetEcatGrpDo(System.Int16)">
+            <summary>
+            按组获取Do
+            </summary>
+            <param name="groupNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.SetEcatDoBit(System.Int16,System.Boolean)">
+            <summary>
+            按Bit设定Do
+            </summary>
+            <param name="doNo"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.SetEcatGrpDo(System.Int16,System.Int16)">
+            <summary>
+            按组设定Do
+            </summary>
+            <param name="groupNo"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.StartMoveAbs(System.Int16,System.Int16,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            轴绝对运动
+            </summary>
+            <param name="axNo"></param>
+            <param name="velType">0:T形速度</param>
+            <param name="ratio">0</param>
+            <param name="vel"></param>
+            <param name="acc"></param>
+            <param name="dec"></param>
+            <param name="tgtPos"></param>
+            <param name="dsParaLTDMC">雷赛板卡S段速度参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.StartMoveRel(System.Int16,System.Int16,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            轴相对运动
+            </summary>
+            <param name="axNo"></param>
+            <param name="velType">0:T形速度</param>
+            <param name="ratio">0</param>
+            <param name="vel"></param>
+            <param name="acc"></param>
+            <param name="dec"></param>
+            <param name="tgtPos"></param>
+            <param name="dsParaLTDMC">雷赛板卡S段速度参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.StopMove(System.Int16,System.Int16)">
+            <summary>
+            停止轴运动
+            </summary>
+            <param name="axNo"></param>
+            <param name="stopType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.PauseMove(System.Int16)">
+            <summary>
+            暂停轴运动
+            </summary>
+            <param name="axNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.ResumeMove(System.Int16)">
+            <summary>
+            恢复轴运动
+            </summary>
+            <param name="axNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.ClearAxSts(System.Int16)">
+            <summary>
+            清除轴错误
+            </summary>
+            <param name="axNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.EmgStop">
+            <summary>
+            板卡急停
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.EmgStopCancel">
+            <summary>
+            板卡急停取消
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxErrorCode(System.Int16)">
+            <summary>
+            获取轴报错码
+            </summary>
+            <param name="axNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.SetSingleCompareOut(System.Int16,System.Int16,System.Int16,System.Int16,System.Int32)">
+            <summary>
+            设置单轴比较输出,伺服分频到端子板的高速IO进行输出(分频到编码器通道).
+            需要配置端子板的编码器通道,仅支持ECAT伺服轴,输出脉冲,比较位置为绝对位置
+            </summary>
+            <param name="outPort">一维比较输出端口,汇川为0~3(端子板高速DO)</param>
+            <param name="boardEncoderChannel">伺服分频到端子版的编码器通道,单轴通道值为0~5.(pCmpType由于是伺服分频到端子板编码器通道,因此pCmpType使用是使用外部编码器(使用的是伺服接过来的编码器线))</param>
+            <param name="cmpStLevel">输出电平是否取反</param>
+            <param name="cmpPluseWidth">脉冲输出宽度,单位us</param>
+            <param name="encPos">编码器当前位置</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.StartSingleCompareOut(System.Int16,System.Int32[])">
+            <summary>
+            启动比较输出(先结束比较,在压入新数据,在启动比较),每次进行比较都需要重新启动比较输出
+            </summary>
+            <param name="outPort">一维比较输出端口,汇川为0~3(端子板高速DO)</param>
+            <param name="cmpPosData">比较位置(绝对位置类型)</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.SetMultiCompareOut(System.Int16,System.Int16[],System.Int16,System.Int16,System.Int16)">
+            <summary>
+            设置多维比较输出,伺服分频到端子板的高速IO进行输出(多个伺服分频到多个编码器通道).
+            需要配置端子板的编码器通道,仅支持ECAT伺服轴,输出脉冲,比较位置为绝对位置
+            </summary>
+            <param name="outPort">多维比较输出端口,汇川为4,5(端子板高速DO)</param>
+            <param name="boardEncoderChannel">端子板编码器通道被连接的通道,如{2,4}即为连接到端子板2与4通道,范围0-5,最多支持3维</param>
+            <param name="cmpStLevel">输出电平是否取反</param>
+            <param name="cmpPluseWidth">脉冲输出宽度,单位us</param>
+            <param name="cmpError">比较位置容差,单位pulse</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.StartMultiCompareOut(System.Int16,System.Collections.Generic.List{System.Int32[]})">
+            <summary>
+            启动多维比较输出.每次进行比较都需要重新启动比较输出
+            </summary>
+            <param name="outPort">多维比较输出端口,汇川为4,5(端子板高速DO)</param>
+            <param name="cmpPosData">比较位置.list中的int数组为2,即二维.函数内部会将二维数组自动组合成三维数组进行设定</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationPrepare(System.Int16,System.Int16[])">
+            <summary>
+            插补准备,建立坐标系插补运动全局设置参数
+            </summary>
+            <param name="coordinate">坐标系号,汇川板卡支持4个坐标系,值范围0~3</param>
+            <param name="axMapping">轴映射,如果只有两个实轴坐标系,可以将另外一个轴不挂接实际的物理输出,第三个轴映射值为-1</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationSendData(System.Int16)">
+            <summary>
+            将插补数据从PC缓冲区压入运动控制卡.
+            压入失败会直接退出,PC缓冲区及运动控制卡中此时有插补数据,需要清除后才能重新压入
+            压入数据源为直线插补/圆弧插补等函数的执行
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationStart(System.Int16)">
+            <summary>
+            启动插补运动
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationRunSts(System.Int16)">
+            <summary>
+            插补过程中判断插补是否正常运行
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <returns>true为正常,false为异常</returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationFinishSts(System.Int16)">
+            <summary>
+            检测插补运动是否完成.暂停后,此值也位0不会为1.
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationStop(System.Int16)">
+            <summary>
+            插补结束处理,清理队列数据,销毁坐标系
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationLineXY(System.Int16,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            XY平面直线插补
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <param name="xPos">X坐标,绝对编码器值</param>
+            <param name="yPos">Y坐标,绝对编码器值</param>
+            <param name="tgtVel">速度</param>
+            <param name="tgtAcc">加速度</param>
+            <param name="tgtDec">减速度</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationLineYZ(System.Int16,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            YZ平面直线插补
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <param name="yPos">Y坐标,绝对编码器值</param>
+            <param name="zPos">Z坐标,绝对编码器值</param>
+            <param name="tgtVel">速度</param>
+            <param name="tgtAcc">加速度</param>
+            <param name="tgtDec">减速度</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationLineZX(System.Int16,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            ZX平面直线插补
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <param name="zPos">Z坐标,绝对编码器值</param>
+            <param name="xPos">X坐标,绝对编码器值</param>
+            <param name="tgtVel">速度</param>
+            <param name="tgtAcc">加速度</param>
+            <param name="tgtDec">减速度</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationLineXYZ(System.Int16,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            XYZ3轴直线插补
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <param name="xPos">X坐标,绝对编码器值</param>
+            <param name="yPos">Y坐标,绝对编码器值</param>
+            <param name="zPos">Z坐标,绝对编码器值</param>
+            <param name="tgtVel">速度</param>
+            <param name="tgtAcc">加速度</param>
+            <param name="tgtDec">减速度</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationLineXYZR(System.Int16,System.Double,System.Double,System.Double,System.Int16,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            XYZR 4轴插补运动,R轴为同步跟随轴
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <param name="xPos">X坐标,绝对编码器</param>
+            <param name="yPos">Y坐标,绝对编码器</param>
+            <param name="zPos">Z坐标,绝对编码器</param>
+            <param name="rAxNo">R轴轴号</param>
+            <param name="rAngle">R角度,绝对编码器</param>
+            <param name="tgtVel">速度</param>
+            <param name="tgtAcc">加速度</param>
+            <param name="tgtDec">减速度</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationLineXYZRA(System.Int16,System.Double,System.Double,System.Double,System.Int16,System.Double,System.Int16,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            XYZRA 5轴插补运动,R,A轴为同步跟随轴
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <param name="xPos">X坐标,绝对编码器</param>
+            <param name="yPos">Y坐标,绝对编码器</param>
+            <param name="zPos">Z坐标,绝对编码器</param>
+            <param name="rAxNo">R轴轴号</param>
+            <param name="rAngle">R角度,绝对编码器</param>
+            <param name="aAxNo">A轴轴号</param>
+            <param name="aAngle">A角度,绝对编码器</param>
+            <param name="tgtVel">速度</param>
+            <param name="tgtAcc">加速度</param>
+            <param name="tgtDec">减速度</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationArcThreePointXYZ(System.Int16,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            3D圆弧插补,不支持整圆规划,不知道多圈圆,可用于平面圆弧插补
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <param name="xMidPos">圆弧中任意一点X坐标,绝对编码器</param>
+            <param name="yMidPos">圆弧中任意一点Y坐标,绝对编码器</param>
+            <param name="zMidPos">圆弧中任意一点Z坐标,绝对编码器</param>
+            <param name="xEndPos">圆弧终点X坐标,绝对编码器</param>
+            <param name="yEndPos">圆弧终点Y坐标,绝对编码器</param>
+            <param name="zEndPos">圆弧终点Z坐标,绝对编码器</param>
+            <param name="tgtVel">速度</param>
+            <param name="tgtAcc">加速度</param>
+            <param name="tgtDec">减速度</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationArcThreePointXYZR(System.Int16,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Int16,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            XYZR圆弧插补,不支持整圆规划,不知道多圈圆
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <param name="xMidPos">圆弧中任意一点X坐标,绝对编码器</param>
+            <param name="yMidPos">圆弧中任意一点Y坐标,绝对编码器</param>
+            <param name="zMidPos">圆弧中任意一点Z坐标,绝对编码器</param>
+            <param name="xEndPos">圆弧终点X坐标,绝对编码器</param>
+            <param name="yEndPos">圆弧终点Y坐标,绝对编码器</param>
+            <param name="zEndPos">圆弧终点Z坐标,绝对编码器</param>
+            <param name="rAxNo">同步轴R轴号</param>
+            <param name="rAngle">同步轴R终点角度,绝对编码器</param>
+            <param name="tgtVel">速度</param>
+            <param name="tgtAcc">加速度</param>
+            <param name="tgtDec">减速度</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationArcThreePointXYZRA(System.Int16,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Int16,System.Double,System.Int16,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            XYZRA圆弧插补,不支持整圆规划,不知道多圈圆
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <param name="xMidPos">圆弧中任意一点X坐标,绝对编码器</param>
+            <param name="yMidPos">圆弧中任意一点Y坐标,绝对编码器</param>
+            <param name="zMidPos">圆弧中任意一点Z坐标,绝对编码器</param>
+            <param name="xEndPos">圆弧终点X坐标,绝对编码器</param>
+            <param name="yEndPos">圆弧终点Y坐标,绝对编码器</param>
+            <param name="zEndPos">圆弧终点Z坐标,绝对编码器</param>
+            <param name="rAxNo">同步轴R轴号</param>
+            <param name="rAngle">同步轴R终点角度,绝对编码器</param>
+            <param name="aAxNo">同步轴A轴号</param>
+            <param name="aAngle">同步轴A终点角度,绝对编码器</param>
+            <param name="tgtVel">速度</param>
+            <param name="tgtAcc">加速度</param>
+            <param name="tgtDec">减速度</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationWaitTime(System.Int16,System.Int32)">
+            <summary>
+            设定插补缓冲区等待延时
+            </summary>
+            <param name="coordinate">坐标系</param>
+            <param name="waitTime">等待时间,单位ms</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationDO(System.Int16,System.Int16,System.Int16)">
+            <summary>
+            设定插补缓冲区输出DO
+            </summary>
+            <param name="coordinate">坐标系编号</param>
+            <param name="portDO">输出端口号</param>
+            <param name="levelDO">输出电平</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationPause(System.Int16)">
+            /// <summary>
+            插补运动暂停
+            </summary>
+            <param name="coordinate">坐标系号</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationResume(System.Int16)">
+            <summary>
+            插补运动暂停恢复
+            </summary>
+            <param name="coordinate">坐标系号</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationImmediateLine(System.Int16[],System.Double[],System.Double,System.Double,System.Double)">
+            <summary>
+            立即直线插补(所有轴合成速度,加减速规划)最多16轴,绝对位置编程,停止使用StopMove,轴号填任意一个参与轴轴号
+            </summary>
+            <param name="axNo">参与轴轴号</param>
+            <param name="endPos">参与轴终点(绝对位置)</param>
+            <param name="vel">合成速度</param>
+            <param name="acc">合成加速度</param>
+            <param name="dec">合成减速度</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.InterpolationImmediateArc(System.Int16[],System.Double[],System.Double[],System.Double,System.Double,System.Double)">
+            <summary>
+            立即圆弧插补(所有轴合成速度,加减速规划),绝对位置编程,停止使用StopMove,轴号填任意一个参与轴轴号
+            </summary>
+            <param name="axNo">参与轴轴号</param>
+            <param name="midPos">圆弧中间点(绝对位置)</param>
+            <param name="endPos">圆弧终点(绝对位置)</param>
+            <param name="vel">速度</param>
+            <param name="acc">加速度</param>
+            <param name="dec">减速度</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetEcatErrorCode(System.UInt32@)">
+            <summary>
+            获取EtherCAT从站通讯错误码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.SetAxisSoftLimit(System.Int16,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            设置软极限是否启用
+            </summary>
+            <param name="axNo"></param>
+            <param name="enable"></param>
+            <param name="softPosLimitPos"></param>
+            <param name="softNegLimitPos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.RTCP_G_SetRtcpPar(System.UInt16,System.Double,System.Double,System.Double,System.Double,System.Double,System.UInt16[],System.UInt16,System.Int32[],System.Double[],System.Double,System.Double,System.Double,System.Double,System.Collections.Generic.Dictionary{System.String,System.UInt16})">
+            <summary>
+            设置G代码五轴插补参数
+            </summary>
+            <param name="CardNo">卡号</param>
+            <param name="Crd">坐标系号</param>
+            <param name="minVel">最小速度,单位mm/min</param>
+            <param name="maxVel">最大速度,单位mm/min</param>
+            <param name="tacc">加速时间,单位s</param>
+            <param name="tdec">减速时间,单位s</param>
+            <param name="stopVel">停止速度,单位mm/min</param>
+            <param name="axisList">轴列表,必须5个,必须按照X、Y、Z、A/B、C的顺序</param>
+            <param name="machineType">五轴类型，0:非五轴，1:TATC,2:TBTC</param>
+            <param name="dir">五轴方向,必须5个,必须按照X、Y、Z、A/B、C的顺序，-1为负向，1为正向</param>
+            <param name="centerRotation">旋转中心，X、Y、Z</param>
+            <param name="axisOffset">轴心线偏移，单位mm</param>
+            <param name="maxRotateParam">旋转轴速度限制，单位mm/min</param>
+            <param name="correctionAngleAB">平台摆正角度，A/B轴</param>
+            <param name="correctionAngleC">平台摆正角度，C轴</param>
+            <param name="mCodeMap"></param>
+            <returns>true:设置成功</returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.RTCP_G_File_Start(System.UInt16,System.String)">
+            <summary>
+            开始G代码五轴插补运动
+            </summary>
+            <param name="CardNo">卡号</param>
+            <param name="Crd">坐标系号</param>
+            <param name="filepath">文件路径</param>
+            <returns>true:成功</returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.RTCP_G_Code_Start(System.UInt16,System.String)">
+            <summary>
+            开始G代码五轴插补运动
+            </summary>
+            <param name="CardNo">卡号</param>
+            <param name="Crd">坐标系号</param>
+            <param name="code">G代码</param>
+            <returns>true:成功</returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.RTCP_G_GetRunFinish(System.UInt16)">
+            <summary>
+            获取G代码是否正常运行结束
+            </summary>
+            <param name="CardNo">卡号</param>
+            <param name="Crd">坐标系号</param>
+            <returns>true:G代码正常运行结束</returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.RTCP_G_GetRunState(System.UInt16)">
+            <summary>
+            获取G代码运行状态
+            </summary>
+            <param name="CardNo">卡号</param>
+            <param name="Crd">坐标系号</param>
+            <returns>(运行是否发生错误,错误代码):true-无错误，false-有错误</returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.RTCP_G_ErrorCodeClr(System.UInt16)">
+            <summary>
+            G代码错误清除
+            </summary>
+            <param name="CardNo">卡号</param>
+            <param name="Crd">坐标系号</param>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.RTCP_SetWorkpieceOffset(System.UInt16,System.Double[])">
+            <summary>
+            设置工件原点
+            </summary>
+            <param name="CardNo">卡号</param>
+            <param name="Crd">坐标系号</param>
+            <param name="offset">工件原点偏移（X,Y,Z,A,C,θ,α）</param>
+            <returns>true:设置成功</returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.CheckAxisArrived(System.Int16,System.Int16,System.Boolean,System.Boolean)">
+            <summary>
+            检测轴是否到位
+            </summary>
+            <param name="axNo">轴ID</param>
+            <param name="allowGap">允许误差，单位脉冲</param>
+            <param name="enableCheckGap">是否启用误差检测</param>
+            <param name="enableCheckAINP">是否启用AINP检测</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.SetAxisArrivedGap(System.Int16,System.Double,System.UInt16)">
+            <summary>
+            设置轴到位误差带及维持时间
+            </summary>
+            <param name="axNo">轴ID</param>
+            <param name="arrivedGap">指令位置与编码器位置的差值,单位脉冲</param>
+            <param name="setCycle">误差带保持周期数</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetEcatNodeInfo(System.UInt16,System.UInt16,System.UInt16,System.UInt16,System.Int32@)">
+            <summary>
+            获取从站对象字典参数
+            </summary>
+            <param name="cardNo">卡号</param>
+            <param name="stationId">从站地址</param>
+            <param name="index">对象字典索引</param>
+            <param name="subIndex">对象字典子索引</param>
+            <param name="resultSize">对象字典索引长度</param>
+            <param name="result">对象字典索引参数值</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.SetEcatNodeInfo(System.UInt16,System.UInt16,System.UInt16,System.UInt16,System.Int32)">
+            <summary>
+            设置从站对象字典参数
+            </summary>
+            <param name="cardNo">卡号</param>
+            <param name="stationId">从站地址</param>
+            <param name="index">对象字典索引</param>
+            <param name="subIndex">对象字典子索引</param>
+            <param name="resultSize">对象字典索引长度</param>
+            <param name="result">对象字典索引参数值</param>
+            <returns></returns>
+        </member>
+        <member name="T:MotionCardServiceInterface.Direction">
+            <summary>
+            Jog方向定义
+            </summary>
+        </member>
+        <member name="F:MotionCardServiceInterface.Direction.Positive">
+            <summary>
+            正向
+            </summary>
+        </member>
+        <member name="F:MotionCardServiceInterface.Direction.Negative">
+            <summary>
+            负向
+            </summary>
+        </member>
+    </members>
+</doc>

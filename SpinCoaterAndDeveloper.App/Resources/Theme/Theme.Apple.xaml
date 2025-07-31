@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--  PRIMARY  自定义颜色  -->
+    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#D9D9D9" />
+    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#A8A8A8" />
+    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#797979" />
+    <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#FFFFFF" />
+
+    <SolidColorBrush x:Key="SecondaryHueLightBrush" Color="#FFC947" />
+    <SolidColorBrush x:Key="SecondaryHueLightForegroundBrush" Color="#000000" />
+    <SolidColorBrush x:Key="SecondaryHueMidBrush" Color="#FF9800" />
+    <SolidColorBrush x:Key="SecondaryHueMidForegroundBrush" Color="#000000" />
+    <SolidColorBrush x:Key="SecondaryHueDarkBrush" Color="#C66900" />
+    <SolidColorBrush x:Key="SecondaryHueDarkForegroundBrush" Color="#000000" />
+
+    <!--  ACCENT  自定义颜色  -->
+    <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#689f38" />
+    <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="#FF5C29" />
+
+    <!--  自定义  -->
+    <SolidColorBrush x:Key="AppleHeavyBackGroundBrush" Color="#D3D3D3" />
+    <SolidColorBrush x:Key="AppleLightBackGroundBrush" Color="#ECECEC" />
+
+    <SolidColorBrush x:Key="ApplelHeavyTextForegroundBrush" Color="#484848" />
+    <SolidColorBrush x:Key="AppleMidTextForegroundBrush" Color="#5E5E5E" />
+    <SolidColorBrush x:Key="AppleLightTextForegroundBrush" Color="#666666" />
+
+    <SolidColorBrush x:Key="MainWindowTitleForeground" Color="#484848" />
+
+    <SolidColorBrush x:Key="LightGreyBackgroundBrush" Color="#ECECEC" />
+    <SolidColorBrush x:Key="ListBoxItemMouseOverBackgroundBrush" Color="#7679BE" />
+
+    <Style BasedOn="{StaticResource MaterialDesignOutlinedDarkButton}" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="#ECECEC" />
+    </Style>
+
+    <SolidColorBrush x:Key="MessageRedBrush" Color="#DD2C00" />
+    <SolidColorBrush x:Key="MessageGreenBrush" Color="#53AC7A" />
+    <SolidColorBrush x:Key="MessageOrangeBrush" Color="#f4511e" />
+
+</ResourceDictionary>

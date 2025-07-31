@@ -1,0 +1,901 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FF3B7727-CF8D-4026-A0FE-CEB959E328A9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SpinCoaterAndDeveloper.App</RootNamespace>
+    <AssemblyName>SpinCoaterAndDeveloper.App</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>False</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>组合.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AbstractFiniteStateMachine, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SpinCoaterAndDeveloper.Shared\AbstractFiniteStateMachine.dll</HintPath>
+    </Reference>
+    <Reference Include="AbstractMotionControlActuation, Version=4.0.8733.17241, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SpinCoaterAndDeveloper.Shared\AbstractMotionControlActuation.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.9\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ChartsServiceInterface">
+      <HintPath>..\SpinCoaterAndDeveloper.Shared\ChartsServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="DataBaseServiceInterface, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SpinCoaterAndDeveloper.Shared\DataBaseServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="DryIoc, Version=4.7.7.0, Culture=neutral, PublicKeyToken=dfbf2bd50fcf7768, processorArchitecture=MSIL">
+      <HintPath>..\packages\DryIoc.dll.4.7.7\lib\net45\DryIoc.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Graph">
+      <HintPath>..\SpinCoaterAndDeveloper.Shared\Graph.dll</HintPath>
+    </Reference>
+    <Reference Include="HarfBuzzSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\HarfBuzzSharp.7.3.0\lib\net462\HarfBuzzSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="HslCommunication, Version=11.8.2.0, Culture=neutral, PublicKeyToken=3d72ad3b6b5ec0e3, processorArchitecture=MSIL">
+      <HintPath>..\packages\HslCommunication.11.8.2\lib\net451\HslCommunication.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.3.3.11, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.3.3\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.1.11\lib\net46\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.1.11\lib\net46\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveChartsCore, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc92a3e13d40c573, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveChartsCore.2.0.0-rc2\lib\netstandard2.0\LiveChartsCore.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveChartsCore.SkiaSharpView, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc92a3e13d40c573, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveChartsCore.SkiaSharpView.2.0.0-rc2\lib\netstandard2.0\LiveChartsCore.SkiaSharpView.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveChartsCore.SkiaSharpView.WPF, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc92a3e13d40c573, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveChartsCore.SkiaSharpView.WPF.2.0.0-rc2\lib\net462\LiveChartsCore.SkiaSharpView.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="LogServiceInterface, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SpinCoaterAndDeveloper.Shared\LogServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=2.1.1.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.2.1.1\lib\net462\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=4.7.1.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.4.7.1\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="MotionCardServiceInterface, Version=1.1.8461.20351, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SpinCoaterAndDeveloper.Shared\MotionCardServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.21\lib\net48\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.5.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.6\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.5.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.6\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.5.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.6\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.5.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.6\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="PermissionServiceInterface, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SpinCoaterAndDeveloper.Shared\PermissionServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.8.1.97\lib\net47\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.DryIoc.Wpf, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.DryIoc.8.1.97\lib\net47\Prism.DryIoc.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Wpf, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.8.1.97\lib\net47\Prism.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="PrismAutomationPlatformExt, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SpinCoaterAndDeveloper.Shared\PrismAutomationPlatformExt.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp, Version=2.88.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.2.88.6\lib\net462\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.HarfBuzz, Version=2.88.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.HarfBuzz.2.88.6\lib\net462\SkiaSharp.HarfBuzz.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Desktop.Common, Version=2.88.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Views.Desktop.Common.2.88.6\lib\net462\SkiaSharp.Views.Desktop.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.WPF, Version=2.88.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Views.WPF.2.88.6\lib\net462\SkiaSharp.Views.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="SqlSugar, Version=5.1.3.50, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SqlSugar.5.1.3.50\lib\SqlSugar.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.7.3\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.21\lib\net48\Ubiety.Dns.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ValueConverters, Version=3.0.26.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ValueConverters.3.0.26\lib\net48\ValueConverters.dll</HintPath>
+    </Reference>
+    <Reference Include="ValueConverters.Annotations, Version=3.0.26.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ValueConverters.Annotations.3.0.26\lib\net48\ValueConverters.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="ZeroControls, Version=3.0.8605.24420, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SpinCoaterAndDeveloper.Shared\ZeroControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.21\lib\net48\Zstandard.Net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\Converters\AxisTypeToUIConverter.cs" />
+    <Compile Include="Common\Converters\AxisTypeToVMConverter.cs" />
+    <Compile Include="Common\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Common\Converters\ContentLengthToVisibilityConverter.cs" />
+    <Compile Include="Common\Converters\DoubleToBrushConverter.cs" />
+    <Compile Include="Common\Converters\Int32ToAxStsConverter.cs" />
+    <Compile Include="Common\Converters\InterpolationContextMenuMultiConverter.cs" />
+    <Compile Include="Common\Converters\InterpolationPathModeToBoolConverter.cs" />
+    <Compile Include="Common\Converters\IntToStringConverter.cs" />
+    <Compile Include="Common\Converters\MPSecurityTypeToStringConverter.cs" />
+    <Compile Include="Common\Converters\ShortToHomeMethodConverter.cs" />
+    <Compile Include="Common\MapperProfile.cs" />
+    <Compile Include="Common\Models\ActuationMonitorModel.cs" />
+    <Compile Include="Common\Models\AxisInfoModel.cs" />
+    <Compile Include="Common\Models\CylinderInfoModel.cs" />
+    <Compile Include="Common\Models\CylinderMonitorModel.cs" />
+    <Compile Include="Common\Models\FunctionShieldInfoModel.cs" />
+    <Compile Include="Common\Models\FunctionShieldMonitorModel.cs" />
+    <Compile Include="Common\Models\IOInputInfoModel.cs" />
+    <Compile Include="Common\Models\IOOutputInfoModel.cs" />
+    <Compile Include="Common\Models\LanguageBar.cs" />
+    <Compile Include="Common\Models\LogShowInfoModel.cs" />
+    <Compile Include="Common\Models\AxisMonitorModel.cs" />
+    <Compile Include="Common\Models\IOInputMonitorModel.cs" />
+    <Compile Include="Common\Models\IOOutputMonitorModel.cs" />
+    <Compile Include="Common\Models\MovementPointMonitorModel.cs" />
+    <Compile Include="Common\Models\MovementPointPositionMonitorModel.cs" />
+    <Compile Include="Common\Models\MovementPointSecurityModel.cs" />
+    <Compile Include="Common\Models\MovementPointSecurityMonitorModel.cs" />
+    <Compile Include="Common\Models\ParmeterInfoModel.cs" />
+    <Compile Include="Common\Models\MovementPointInfoModel.cs" />
+    <Compile Include="Common\Models\MovementPointPositionModel.cs" />
+    <Compile Include="Common\Models\MenuBar.cs" />
+    <Compile Include="Common\Models\ParmeterMonitorModel.cs" />
+    <Compile Include="Common\Models\ProductCTShowModel.cs" />
+    <Compile Include="Common\Models\ProductivityShowModel.cs" />
+    <Compile Include="Common\Models\ProductShowInfoModel.cs" />
+    <Compile Include="Common\Models\UserInfoModel.cs" />
+    <Compile Include="Extensions\DataTableExtensions.cs" />
+    <Compile Include="Extensions\HostDialogExtensions.cs" />
+    <Compile Include="Extensions\SnackbarMessageQueueExtensions.cs" />
+    <Compile Include="Services\MachineInterlockService\MachineInterlock.cs" />
+    <Compile Include="ViewModels\ActuationMonitorViewModel.cs" />
+    <Compile Include="ViewModels\Apple\AppleNullViewModel.cs" />
+    <Compile Include="ViewModels\Apple\AppleSettingViewModel.cs" />
+    <Compile Include="ViewModels\Apple\AppleVisionViewModel.cs" />
+    <Compile Include="ViewModels\Apple\AppleDataViewModel.cs" />
+    <Compile Include="ViewModels\Apple\AppleConfigViewModel.cs" />
+    <Compile Include="ViewModels\Apple\AppleAlarmViewModel.cs" />
+    <Compile Include="ViewModels\AppleIndexViewModel.cs" />
+    <Compile Include="ViewModels\Apple\AppleNavigateViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\DialogSystemMessageViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\ChangeProductNameViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\AddNewProductViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\GlobalLogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\InterlockDialogMessageViewModel.cs" />
+    <Compile Include="ViewModels\DataCollection\LogSearchViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\AddInterpolationPathViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\AddParmeterViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\DialogHostLoginViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\DialogHostMessageViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\DialogMessageViewModel.cs" />
+    <Compile Include="ViewModels\Loading\IndexViewModel.cs" />
+    <Compile Include="ViewModels\Loading\LaunchViewModel.cs" />
+    <Compile Include="ViewModels\Loading\MainWindowNoneClientAreaViewModel.cs" />
+    <Compile Include="ViewModels\AppleConfig\MCAxisConfigViewModel.cs" />
+    <Compile Include="ViewModels\AppleDebug\MCAxisDebugViewModel.cs" />
+    <Compile Include="ViewModels\AppleConfig\MCCylinderConfigViewModel.cs" />
+    <Compile Include="ViewModels\AppleDebug\MCCylinderDebugViewModel.cs" />
+    <Compile Include="ViewModels\AppleConfig\MCFunctionShieldConfigViewModel.cs" />
+    <Compile Include="ViewModels\AppleDebug\MCFunctionShieldDebugViewModel.cs" />
+    <Compile Include="ViewModels\AppleConfig\MCInterpolationPathViewModel.cs" />
+    <Compile Include="ViewModels\AppleDebug\MCIODebugViewModel.cs" />
+    <Compile Include="ViewModels\AppleConfig\MCIOInputConfigViewModel.cs" />
+    <Compile Include="ViewModels\AppleConfig\MCIOOutputConfigViewModel.cs" />
+    <Compile Include="ViewModels\AppleDebug\MCMovementPointDebugViewModel.cs" />
+    <Compile Include="ViewModels\AppleConfig\MCMovementPointSecurityViewModel.cs" />
+    <Compile Include="ViewModels\AppleConfig\MCParmeterConfigViewModel.cs" />
+    <Compile Include="ViewModels\AppleConfig\MCMovementPointConfigViewModel.cs" />
+    <Compile Include="ViewModels\DataCollection\ProductCTSearchViewModel.cs" />
+    <Compile Include="ViewModels\DataCollection\ProductivitySearchViewModel.cs" />
+    <Compile Include="ViewModels\DataCollection\ProductInfoSearchViewModel.cs" />
+    <Compile Include="ViewModels\AppleDebug\MCParmeterDebugViewModel.cs" />
+    <Compile Include="ViewModels\Options\OptionFunctionShieldViewModel.cs" />
+    <Compile Include="ViewModels\Options\OptionHddUsageViewModel.cs" />
+    <Compile Include="ViewModels\Options\OptionCpuDimmUsageViewModel.cs" />
+    <Compile Include="ViewModels\Options\OptionProduceCTViewModel.cs" />
+    <Compile Include="ViewModels\Options\OptionLogViewModel.cs" />
+    <Compile Include="ViewModels\Options\OptionUphViewModel.cs" />
+    <Compile Include="ViewModels\AppleDebug\SystemSettingViewModel.cs" />
+    <Compile Include="ViewModels\AppleConfig\UserSettingViewModel.cs" />
+    <Compile Include="ViewModels\Visions\VisionCompensationViewModel.cs" />
+    <Compile Include="ViewModels\Visions\VisionCalibrationViewModel.cs" />
+    <Compile Include="ViewModels\Visions\VisionTestViewModel.cs" />
+    <Compile Include="Views\ActuationMonitorView.xaml.cs">
+      <DependentUpon>ActuationMonitorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Apple\AppleNullView.xaml.cs">
+      <DependentUpon>AppleNullView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Apple\AppleSettingView.xaml.cs">
+      <DependentUpon>AppleSettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Apple\AppleVisionView.xaml.cs">
+      <DependentUpon>AppleVisionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Apple\AppleDataView.xaml.cs">
+      <DependentUpon>AppleDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Apple\AppleConfigView.xaml.cs">
+      <DependentUpon>AppleConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Apple\AppleAlarmView.xaml.cs">
+      <DependentUpon>AppleAlarmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleIndexView.xaml.cs">
+      <DependentUpon>AppleIndexView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Apple\AppleNavigateView.xaml.cs">
+      <DependentUpon>AppleNavigateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\DialogSystemMessageView.xaml.cs">
+      <DependentUpon>DialogSystemMessageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ChangeProductNameView.xaml.cs">
+      <DependentUpon>ChangeProductNameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\AddNewProductView.xaml.cs">
+      <DependentUpon>AddNewProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\GlobalLogView.xaml.cs">
+      <DependentUpon>GlobalLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\InterlockDialogMessageView.xaml.cs">
+      <DependentUpon>InterlockDialogMessageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataCollection\LogSearchView.xaml.cs">
+      <DependentUpon>LogSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\AddInterpolationPathView.xaml.cs">
+      <DependentUpon>AddInterpolationPathView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\AddParmeterView.xaml.cs">
+      <DependentUpon>AddParmeterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\DialogHostLoginView.xaml.cs">
+      <DependentUpon>DialogHostLoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\Dialogs\DialogHostMessageView.xaml.cs">
+      <DependentUpon>DialogHostMessageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\DialogMessageView.xaml.cs">
+      <DependentUpon>DialogMessageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\DialogMessageWindow.xaml.cs">
+      <DependentUpon>DialogMessageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Loading\IndexView.xaml.cs">
+      <DependentUpon>IndexView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Loading\LaunchView.xaml.cs">
+      <DependentUpon>LaunchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Loading\LoadingView.xaml.cs">
+      <DependentUpon>LoadingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Loading\MainWindowNoneClientAreaView.xaml.cs">
+      <DependentUpon>MainWindowNoneClientAreaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindowView.xaml.cs">
+      <DependentUpon>MainWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleConfig\MCAxisConfigView.xaml.cs">
+      <DependentUpon>MCAxisConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleDebug\MCAxisDebugView.xaml.cs">
+      <DependentUpon>MCAxisDebugView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleConfig\MCCylinderConfigView.xaml.cs">
+      <DependentUpon>MCCylinderConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleDebug\MCCylinderDebugView.xaml.cs">
+      <DependentUpon>MCCylinderDebugView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleConfig\MCFunctionShieldConfigView.xaml.cs">
+      <DependentUpon>MCFunctionShieldConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleDebug\MCFunctionShieldDebugView.xaml.cs">
+      <DependentUpon>MCFunctionShieldDebugView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleConfig\MCInterpolationPathView.xaml.cs">
+      <DependentUpon>MCInterpolationPathView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleDebug\MCIODebugView.xaml.cs">
+      <DependentUpon>MCIODebugView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleConfig\MCIOInputConfigView.xaml.cs">
+      <DependentUpon>MCIOInputConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleConfig\MCIOOutputConfigView.xaml.cs">
+      <DependentUpon>MCIOOutputConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleDebug\MCMovementPointDebugView.xaml.cs">
+      <DependentUpon>MCMovementPointDebugView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleConfig\MCMovementPointSecurityView.xaml.cs">
+      <DependentUpon>MCMovementPointSecurityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleConfig\MCParmeterConfigView.xaml.cs">
+      <DependentUpon>MCParmeterConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleConfig\MCMovementPointConfigView.xaml.cs">
+      <DependentUpon>MCMovementPointConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataCollection\ProductCTChartSearchView.xaml.cs">
+      <DependentUpon>ProductCTChartSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataCollection\ProductCTListSearchView.xaml.cs">
+      <DependentUpon>ProductCTListSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataCollection\ProductivityChartSearchView.xaml.cs">
+      <DependentUpon>ProductivityChartSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataCollection\ProductivityListSearchView.xaml.cs">
+      <DependentUpon>ProductivityListSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataCollection\ProductInfoSearchView.xaml.cs">
+      <DependentUpon>ProductInfoSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleDebug\MCParmeterDebugView.xaml.cs">
+      <DependentUpon>MCParmeterDebugView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Options\OptionFunctionShieldView.xaml.cs">
+      <DependentUpon>OptionFunctionShieldView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Options\OptionHddUsageView.xaml.cs">
+      <DependentUpon>OptionHddUsageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Options\OptionCpuDimmUsageView.xaml.cs">
+      <DependentUpon>OptionCpuDimmUsageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Options\OptionProduceCTView.xaml.cs">
+      <DependentUpon>OptionProduceCTView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Options\OptionLogView.xaml.cs">
+      <DependentUpon>OptionLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Options\OptionUphView.xaml.cs">
+      <DependentUpon>OptionUphView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleDebug\SystemSettingView.xaml.cs">
+      <DependentUpon>SystemSettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AppleConfig\UserSettingView.xaml.cs">
+      <DependentUpon>UserSettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Visions\VisionCompensationView.xaml.cs">
+      <DependentUpon>VisionCompensationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Visions\VisionCalibrationView.xaml.cs">
+      <DependentUpon>VisionCalibrationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Visions\VisionTestView.xaml.cs">
+      <DependentUpon>VisionTestView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Resources\Assets\iconfont.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Resources\Language\vi-VN.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Language\en-US.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Language\zh-CN.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Theme\Theme.Apple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ActuationMonitorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Apple\AppleNullView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Apple\AppleSettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Apple\AppleVisionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Apple\AppleDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Apple\AppleConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Apple\AppleAlarmView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleIndexView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Apple\AppleNavigateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\DialogSystemMessageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\ChangeProductNameView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\AddNewProductView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\GlobalLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\InterlockDialogMessageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataCollection\LogSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\AddInterpolationPathView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\AddParmeterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\DialogHostLoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\DialogHostMessageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\DialogMessageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\DialogMessageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Loading\IndexView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Loading\LaunchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Loading\LoadingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Loading\MainWindowNoneClientAreaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleConfig\MCAxisConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleDebug\MCAxisDebugView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleConfig\MCCylinderConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleDebug\MCCylinderDebugView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleConfig\MCFunctionShieldConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleDebug\MCFunctionShieldDebugView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleConfig\MCInterpolationPathView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleDebug\MCIODebugView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleConfig\MCIOInputConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleConfig\MCIOOutputConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleDebug\MCMovementPointDebugView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleConfig\MCMovementPointSecurityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleConfig\MCParmeterConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleConfig\MCMovementPointConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataCollection\ProductCTChartSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataCollection\ProductCTListSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataCollection\ProductivityChartSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataCollection\ProductivityListSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataCollection\ProductInfoSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleDebug\MCParmeterDebugView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Options\OptionFunctionShieldView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Options\OptionHddUsageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Options\OptionCpuDimmUsageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Options\OptionProduceCTView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Options\OptionLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Options\OptionUphView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleDebug\SystemSettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppleConfig\UserSettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Visions\VisionCompensationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Visions\VisionCalibrationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Visions\VisionTestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="组合.ico" />
+    <Resource Include="Resources\Image\Cowain.jpg" />
+    <Resource Include="Resources\Image\debug-system.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpinCoaterAndDeveloper.Actuation\SpinCoaterAndDeveloper.Actuation.csproj">
+      <Project>{74A4D60A-3D77-4FF0-A600-C5062297056A}</Project>
+      <Name>SpinCoaterAndDeveloper.Actuation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpinCoaterAndDeveloper.FSM\SpinCoaterAndDeveloper.FSM.csproj">
+      <Project>{3383F243-94B0-4BCF-8E7D-DE3358C04379}</Project>
+      <Name>SpinCoaterAndDeveloper.FSM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpinCoaterAndDeveloper.Shared\SpinCoaterAndDeveloper.Shared.csproj">
+      <Project>{D9EAD77D-1FBE-4F47-84AB-509D10EB3620}</Project>
+      <Name>SpinCoaterAndDeveloper.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\Alarm_Alerted.png" />
+    <Resource Include="Resources\Image\Alarm_De_energized.png" />
+    <Resource Include="Resources\Image\Alarm_Disabled.png" />
+    <Resource Include="Resources\Image\Alarm_Energized.png" />
+    <Resource Include="Resources\Image\Audio_Logo.png" />
+    <Resource Include="Resources\Image\Config_De_energized.png" />
+    <Resource Include="Resources\Image\Config_Disabled.png" />
+    <Resource Include="Resources\Image\Config_Energized.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\Data_De_energized.png" />
+    <Resource Include="Resources\Image\Data_Disabled.png" />
+    <Resource Include="Resources\Image\Data_Energized.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\Energized_Paused.png" />
+    <Resource Include="Resources\Image\HIVE_Disabled.png" />
+    <Resource Include="Resources\Image\HIVE_DT.png" />
+    <Resource Include="Resources\Image\HIVE_Engineering.png" />
+    <Resource Include="Resources\Image\HIVE_Idle.png" />
+    <Resource Include="Resources\Image\HIVE_Plan_DT.png" />
+    <Resource Include="Resources\Image\HIVE_Running.png" />
+    <Resource Include="Resources\Image\Home_De_energized.png" />
+    <Resource Include="Resources\Image\Home_Disabled.png" />
+    <Resource Include="Resources\Image\Home_Energized.png" />
+    <Resource Include="Resources\Image\Level1.png" />
+    <Resource Include="Resources\Image\Level2.png" />
+    <Resource Include="Resources\Image\Level3.png" />
+    <Resource Include="Resources\Image\No_login.png" />
+    <Resource Include="Resources\Image\Paused_De_energized.png" />
+    <Resource Include="Resources\Image\Paused_Disabled.png" />
+    <Resource Include="Resources\Image\Running_De_energized.png" />
+    <Resource Include="Resources\Image\Running_Disabled.png" />
+    <Resource Include="Resources\Image\Running_Energized.png" />
+    <Resource Include="Resources\Image\Setting_De_energized.png" />
+    <Resource Include="Resources\Image\Setting_Disabled.png" />
+    <Resource Include="Resources\Image\Setting_Energized.png" />
+    <Resource Include="Resources\Image\Stopped_De_energized.png" />
+    <Resource Include="Resources\Image\Stopped_Disabled.png" />
+    <Resource Include="Resources\Image\Stopped_Energized.png" />
+    <Resource Include="Resources\Image\Vision_De_energized.png" />
+    <Resource Include="Resources\Image\Vision_Disabled.png" />
+    <Resource Include="Resources\Image\Vision_Energized.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\Cowain_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\CowainLogo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\CowainLogo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\CowainLogo5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\CowainLogo6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\cetc.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\MaterialDesignThemes.4.7.1\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.7.1\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.7.1\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.7.1\build\MaterialDesignThemes.targets'))" />
+  </Target>
+</Project>

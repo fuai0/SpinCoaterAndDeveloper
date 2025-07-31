@@ -1,0 +1,76 @@
+﻿<UserControl
+    x:Class="SpinCoaterAndDeveloper.App.Views.OptionHddUsageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cv="clr-namespace:SpinCoaterAndDeveloper.App.Common.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lvc2="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:viewmodels="clr-namespace:SpinCoaterAndDeveloper.App.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:OptionHddUsageViewModel}"
+    d:DesignHeight="700"
+    d:DesignWidth="1280"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <cv:DoubleToBrushConverter x:Key="DoubleToBrushConverter" />
+    </UserControl.Resources>
+    <ItemsControl ItemsSource="{Binding HDDCollection}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.Template>
+            <ControlTemplate>
+                <ScrollViewer
+                    CanContentScroll="False"
+                    HorizontalScrollBarVisibility="Auto"
+                    VerticalScrollBarVisibility="Hidden">
+                    <ItemsPresenter />
+                </ScrollViewer>
+            </ControlTemplate>
+        </ItemsControl.Template>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <Grid Width="207" Margin="2,0,0,2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                            Opacity="0.8"
+                            Text="HDD: " />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Foreground="{Binding HddUsage, Converter={StaticResource DoubleToBrushConverter}}"
+                            Opacity="0.8"
+                            Text="{Binding HddUsage, StringFormat={}{0}%}" />
+                    </StackPanel>
+                    <lvc2:CartesianChart
+                        Grid.Row="1"
+                        Margin="0,0,0,0"
+                        LegendPosition="Hidden"
+                        Series="{Binding HddUsageSeries}"
+                        TooltipPosition="Hidden"
+                        XAxes="{Binding HddUsageXAxes}"
+                        YAxes="{Binding HddUsageYAxes}" />
+                    <TextBlock
+                        Grid.Row="2"
+                        Margin="2,0,0,0"
+                        Opacity=".6"
+                        Text="{Binding HddType, Mode=OneWay}"
+                        TextWrapping="WrapWithOverflow" />
+                </Grid>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+</UserControl>

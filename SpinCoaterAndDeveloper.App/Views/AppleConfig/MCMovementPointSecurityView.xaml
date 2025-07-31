@@ -1,0 +1,412 @@
+﻿<UserControl
+    x:Class="SpinCoaterAndDeveloper.App.Views.MCMovementPointSecurityView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cv="clr-namespace:SpinCoaterAndDeveloper.App.Common.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:graph="https://cowain.com.cn//graph"
+    xmlns:graphType="clr-namespace:SpinCoaterAndDeveloper.Shared.Models.MovementPointSecurityGraphModels;assembly=SpinCoaterAndDeveloper.Shared"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:prismEx="clr-namespace:PrismAutomationPlatformExt;assembly=PrismAutomationPlatformExt"
+    xmlns:vc="clr-namespace:ValueConverters;assembly=ValueConverters"
+    xmlns:viewmodels="clr-namespace:SpinCoaterAndDeveloper.App.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MCMovementPointSecurityViewModel}"
+    d:DesignHeight="700"
+    d:DesignWidth="1280"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <prismEx:BindingProxy x:Key="BindingProxy" Data="{Binding}" />
+        <cv:MPSecurityTypeToStringConverter x:Key="MPSecurityTypeToStringConverter" />
+        <vc:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+    </UserControl.Resources>
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterOwner" />
+            <Setter Property="WindowStyle" Value="SingleBorderWindow" />
+            <Setter Property="Width" Value="1000" />
+            <Setter Property="Height" Value="600" />
+            <Setter Property="Title" Value="{Binding Title}" />
+            <Setter Property="Icon" Value="../../Resources/Image/debug-system.png" />
+        </Style>
+    </prism:Dialog.WindowStyle>
+    <Grid Background="{StaticResource AppleHeavyBackGroundBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <graph:NodifyEditor
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            Background="{StaticResource AppleHeavyBackGroundBrush}"
+            Connections="{Binding SecurityConnections}"
+            GridCellSize="10"
+            ItemsSource="{Binding SecurityNodes}"
+            PendingConnection="{Binding PendingConnection}"
+            SelectedItem="{Binding CurrentSelectedNode}">
+            <graph:NodifyEditor.InputBindings>
+                <KeyBinding Key="Delete" Command="{Binding DeleteSelectionCommand}" />
+            </graph:NodifyEditor.InputBindings>
+            <graph:NodifyEditor.ContextMenu>
+                <ContextMenu DataContext="{Binding Data, Source={StaticResource BindingProxy}}">
+                    <MenuItem
+                        Header="{DynamicResource MotionPointPosition}"
+                        Icon="{materialDesign:PackIcon Kind=Cogs}"
+                        ItemsSource="{Binding MovementPointCollection}">
+                        <MenuItem.ItemContainerStyle>
+                            <Style BasedOn="{StaticResource MaterialDesignMenuItem}" TargetType="MenuItem">
+                                <Setter Property="Header" Value="{Binding Name}" />
+                                <Setter Property="Command" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.AddMovementPointNodeCommand}" />
+                                <Setter Property="CommandParameter" Value="{Binding}" />
+                            </Style>
+                        </MenuItem.ItemContainerStyle>
+                    </MenuItem>
+                    <MenuItem
+                        Header="{DynamicResource CylinderError}"
+                        Icon="{materialDesign:PackIcon Kind=FormatParagraphSpacing}"
+                        ItemsSource="{Binding CylinderCollection}">
+                        <MenuItem.ItemContainerStyle>
+                            <Style BasedOn="{StaticResource MaterialDesignMenuItem}" TargetType="MenuItem">
+                                <Setter Property="Header" Value="{Binding Name}" />
+                                <Setter Property="Command" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.AddCylinderNodeCommand}" />
+                                <Setter Property="CommandParameter" Value="{Binding}" />
+                            </Style>
+                        </MenuItem.ItemContainerStyle>
+                    </MenuItem>
+                    <MenuItem
+                        Header="{DynamicResource OutputPoint}"
+                        Icon="{materialDesign:PackIcon Kind=SwapHorizontalCircleOutline}"
+                        ItemsSource="{Binding OutputCollection}">
+                        <MenuItem.ItemContainerStyle>
+                            <Style BasedOn="{StaticResource MaterialDesignMenuItem}" TargetType="MenuItem">
+                                <Setter Property="Header" Value="{Binding Name}" />
+                                <Setter Property="Command" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.AddOutputNodeCommand}" />
+                                <Setter Property="CommandParameter" Value="{Binding}" />
+                            </Style>
+                        </MenuItem.ItemContainerStyle>
+                    </MenuItem>
+                    <MenuItem
+                        Header="{DynamicResource OriginOfAxis}"
+                        Icon="{materialDesign:PackIcon Kind=AlphaOCircleOutline}"
+                        ItemsSource="{Binding AxisCollection}">
+                        <MenuItem.ItemContainerStyle>
+                            <Style BasedOn="{StaticResource MaterialDesignMenuItem}" TargetType="MenuItem">
+                                <Setter Property="Header" Value="{Binding Name}" />
+                                <Setter Property="Command" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.AddAxisOriginalNodeCommand}" />
+                                <Setter Property="CommandParameter" Value="{Binding}" />
+                            </Style>
+                        </MenuItem.ItemContainerStyle>
+                    </MenuItem>
+                    <MenuItem
+                        Header="{DynamicResource ConfigAxisSafePosition}"
+                        Icon="{materialDesign:PackIcon Kind=AlphaSCircleOutline}"
+                        ItemsSource="{Binding SafeAxisCollection}">
+                        <MenuItem.ItemContainerStyle>
+                            <Style BasedOn="{StaticResource MaterialDesignMenuItem}" TargetType="MenuItem">
+                                <Setter Property="Header" Value="{Binding Name}" />
+                                <Setter Property="Command" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.AddAxisSafeNodeCommand}" />
+                                <Setter Property="CommandParameter" Value="{Binding}" />
+                            </Style>
+                        </MenuItem.ItemContainerStyle>
+                    </MenuItem>
+                </ContextMenu>
+            </graph:NodifyEditor.ContextMenu>
+            <graph:NodifyEditor.ItemContainerStyle>
+                <Style TargetType="{x:Type graph:ItemContainer}">
+                    <Setter Property="Location" Value="{Binding Location}" />
+                </Style>
+            </graph:NodifyEditor.ItemContainerStyle>
+            <graph:NodifyEditor.ConnectionTemplate>
+                <DataTemplate DataType="{x:Type graphType:SecurityConnectionModel}">
+                    <graph:LineConnection
+                        Source="{Binding Source.Anchor}"
+                        Tag="{Binding}"
+                        Target="{Binding Target.Anchor}">
+                        <graph:LineConnection.Style>
+                            <Style BasedOn="{StaticResource {x:Type graph:LineConnection}}" TargetType="{x:Type graph:LineConnection}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseDirectlyOver" Value="True">
+                                        <Setter Property="Stroke" Value="MediumVioletRed" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </graph:LineConnection.Style>
+                        <graph:LineConnection.ContextMenu>
+                            <ContextMenu DataContext="{Binding Data, Source={StaticResource BindingProxy}}">
+                                <MenuItem
+                                    Command="{Binding DeleteTransitionCommand}"
+                                    CommandParameter="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"
+                                    Header="Delete"
+                                    Icon="{materialDesign:PackIcon Kind=Close}" />
+                            </ContextMenu>
+                        </graph:LineConnection.ContextMenu>
+                    </graph:LineConnection>
+                </DataTemplate>
+            </graph:NodifyEditor.ConnectionTemplate>
+            <graph:NodifyEditor.ItemTemplate>
+                <DataTemplate DataType="{x:Type graphType:SecurityNodeModel}">
+                    <graph:Node
+                        Content="{Binding}"
+                        Header="{Binding NodeType, Converter={StaticResource MPSecurityTypeToStringConverter}}"
+                        Input="{Binding Inputs}"
+                        Output="{Binding Outputs}">
+                        <graph:Node.InputConnectorTemplate>
+                            <DataTemplate DataType="{x:Type graphType:SecurityConnectorModel}">
+                                <graph:NodeInput
+                                    Anchor="{Binding Anchor, Mode=TwoWay}"
+                                    Header="I"
+                                    IsConnected="{Binding IsConnected}" />
+                            </DataTemplate>
+                        </graph:Node.InputConnectorTemplate>
+                        <graph:Node.OutputConnectorTemplate>
+                            <DataTemplate DataType="{x:Type graphType:SecurityConnectorModel}">
+                                <graph:NodeOutput
+                                    Anchor="{Binding Anchor, Mode=TwoWay}"
+                                    Header="O"
+                                    IsConnected="{Binding IsConnected}" />
+                            </DataTemplate>
+                        </graph:Node.OutputConnectorTemplate>
+                        <graph:Node.ContentTemplate>
+                            <DataTemplate DataType="{x:Type graphType:SecurityNodeModel}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Grid.ColumnSpan="2"
+                                        HorizontalAlignment="Center"
+                                        Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                                        Text="{Binding NodeName}" />
+                                    <TextBlock
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Margin="2"
+                                        HorizontalAlignment="Right"
+                                        Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                                        Text="输出值:">
+                                        <TextBlock.Style>
+                                            <Style BasedOn="{StaticResource MaterialDesignTextBlock}" TargetType="TextBlock">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=MovementPoint}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Cylinder}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=IOOutput}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=AxisSafePoint}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=AxisOriginal}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                    <CheckBox
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Width="20"
+                                        Margin="2"
+                                        IsChecked="{Binding BoolValue}">
+                                        <CheckBox.Style>
+                                            <Style BasedOn="{StaticResource MaterialDesignCheckBox}" TargetType="CheckBox">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=MovementPoint}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Cylinder}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=IOOutput}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=AxisSafePoint}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=AxisOriginal}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </CheckBox.Style>
+                                    </CheckBox>
+                                    <TextBlock
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Margin="2"
+                                        HorizontalAlignment="Right"
+                                        Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                                        Text="{DynamicResource DeleteTime}">
+                                        <TextBlock.Style>
+                                            <Style BasedOn="{StaticResource MaterialDesignTextBlock}" TargetType="TextBlock">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=MovementPoint}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Cylinder}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=IOOutput}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=AxisSafePoint}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=AxisOriginal}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                    <TextBox
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Width="40"
+                                        Margin="2"
+                                        Padding="0"
+                                        VerticalAlignment="Center"
+                                        HorizontalContentAlignment="Center"
+                                        Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                                        Text="{Binding IntDelayTime}">
+                                        <TextBox.Style>
+                                            <Style BasedOn="{StaticResource MaterialDesignTextBox}" TargetType="TextBox">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=MovementPoint}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Cylinder}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=IOOutput}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=AxisSafePoint}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=AxisOriginal}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <TextBlock
+                                        Grid.Row="2"
+                                        Grid.Column="2"
+                                        Margin="2"
+                                        VerticalAlignment="Center"
+                                        Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                                        Text="ms">
+                                        <TextBlock.Style>
+                                            <Style BasedOn="{StaticResource MaterialDesignTextBlock}" TargetType="TextBlock">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=MovementPoint}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Cylinder}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=IOOutput}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=AxisSafePoint}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding NodeType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=AxisOriginal}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </graph:Node.ContentTemplate>
+                        <graph:Node.Style>
+                            <Style BasedOn="{StaticResource {x:Type graph:Node}}" TargetType="{x:Type graph:Node}">
+                                <Setter Property="ContextMenu">
+                                    <Setter.Value>
+                                        <ContextMenu DataContext="{Binding Data, Source={StaticResource BindingProxy}}">
+                                            <MenuItem
+                                                Command="{Binding DeleteSelectionCommand}"
+                                                Header="Delete"
+                                                Icon="{materialDesign:PackIcon Kind=Close}" />
+                                        </ContextMenu>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding NodeType}" Value="MovementPoint">
+                                        <Setter Property="HeaderBrush" Value="{StaticResource SecondaryAccentBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding NodeType}" Value="Cylinder">
+                                        <Setter Property="HeaderBrush" Value="#5497C1" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding NodeType}" Value="IOOutput">
+                                        <Setter Property="HeaderBrush" Value="#7D72BB" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding NodeType}" Value="AxisSafePoint">
+                                        <Setter Property="HeaderBrush" Value="#F8C35C" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding NodeType}" Value="AxisOriginal">
+                                        <Setter Property="HeaderBrush" Value="#F3965B" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </graph:Node.Style>
+                    </graph:Node>
+                </DataTemplate>
+            </graph:NodifyEditor.ItemTemplate>
+            <graph:NodifyEditor.PendingConnectionTemplate>
+                <DataTemplate DataType="{x:Type graphType:SecurityPendingConnectionModel}">
+                    <graph:PendingConnection
+                        AllowOnlyConnectors="True"
+                        CompletedCommand="{Binding DataContext.FinishCommand, RelativeSource={RelativeSource AncestorType={x:Type graph:NodifyEditor}}}"
+                        IsVisible="{Binding IsVisiable}"
+                        StartedCommand="{Binding DataContext.StartCommand, RelativeSource={RelativeSource AncestorType={x:Type graph:NodifyEditor}}}" />
+                </DataTemplate>
+            </graph:NodifyEditor.PendingConnectionTemplate>
+        </graph:NodifyEditor>
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="1"
+            Width="150"
+            Background="Transparent">
+            <Button
+                Margin="5"
+                Command="{Binding ConfirmCommand}"
+                Content="{DynamicResource Sure}" />
+            <Button
+                Margin="5"
+                Command="{Binding ResetGraphCommand}"
+                Content="{DynamicResource Reset}" />
+            <Button
+                Margin="5"
+                Command="{Binding ClearGraphCommand}"
+                Content="{DynamicResource Clear}" />
+            <TextBlock
+                Margin="5"
+                Foreground="{StaticResource SecondaryAccentForegroundBrush}"
+                Text="{Binding GraphMessage}"
+                TextWrapping="WrapWithOverflow" />
+
+        </StackPanel>
+    </Grid>
+</UserControl>

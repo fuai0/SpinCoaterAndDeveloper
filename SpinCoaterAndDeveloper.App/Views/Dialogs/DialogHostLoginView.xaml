@@ -1,0 +1,73 @@
+﻿<UserControl
+    x:Class="SpinCoaterAndDeveloper.App.Views.Dialogs.DialogHostLoginView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:SpinCoaterAndDeveloper.App.ViewModels.Dialogs"
+    xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:password="clr-namespace:PrismAutomationPlatformExt;assembly=PrismAutomationPlatformExt"
+    xmlns:prism="http://prismlibrary.com/"
+    Width="380"
+    Height="220"
+    d:DataContext="{d:DesignInstance Type=local:DialogHostLoginViewModel}"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <Grid>
+        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock
+                HorizontalAlignment="Center"
+                DockPanel.Dock="Top"
+                FontSize="22"
+                Text="{DynamicResource LoginWelcome}" />
+            <ComboBox
+                MinWidth="200"
+                Margin="0,10"
+                materialdesign:HintAssist.Hint="{DynamicResource LoginNameHint}"
+                DockPanel.Dock="Top"
+                IsEditable="True"
+                ItemsSource="{Binding AccountsCollection}"
+                Text="{Binding Account}" />
+            <PasswordBox
+                MinWidth="200"
+                materialdesign:HintAssist.Hint="{DynamicResource LoginPasswordHint}"
+                password:PassWordExtensions.PassWord="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Cursor="IBeam"
+                DockPanel.Dock="Top">
+                <i:Interaction.Behaviors>
+                    <password:PasswordBehavior />
+                </i:Interaction.Behaviors>
+                <PasswordBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding LoginCommand}" />
+                </PasswordBox.InputBindings>
+            </PasswordBox>
+            <DockPanel
+                Margin="0,10"
+                HorizontalAlignment="Center"
+                DockPanel.Dock="Top"
+                LastChildFill="False">
+                <Button
+                    Width="80"
+                    Height="30"
+                    Margin="0,0,5,0"
+                    Command="{Binding LoginCommand}"
+                    Content="{DynamicResource LoginButton}"
+                    Cursor="Hand" />
+                <Button
+                    Width="80"
+                    Height="30"
+                    Margin="5,0,0,0"
+                    Command="{Binding CancelCommand}"
+                    Content="{DynamicResource LoginCancel}"
+                    Cursor="Hand"
+                    Style="{StaticResource MaterialDesignOutlinedButton}" />
+            </DockPanel>
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontSize="14"
+                Foreground="Red"
+                Text="{Binding ErrorInfo}" />
+        </DockPanel>
+    </Grid>
+</UserControl>

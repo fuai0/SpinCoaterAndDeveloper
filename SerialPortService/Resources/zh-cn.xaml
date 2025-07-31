@@ -1,0 +1,23 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <s:String x:Key="SerialPort_SaveSetting">保存</s:String>
+    <s:String x:Key="SerialPort_Send">发送</s:String>
+    <s:String x:Key="SerialPort_Clear">清除记录</s:String>
+    <s:String x:Key="SerialPort_ConnectionSuccessful">串口打开成功</s:String>
+    <s:String x:Key="SerialPort_ConnectionFail">串口打开失败</s:String>
+    <s:String x:Key="SerialPort_PortName">端口:</s:String>
+    <s:String x:Key="SerialPort_BaudRate">波特率:</s:String>
+    <s:String x:Key="SerialPort_Parity">检验位:</s:String>
+    <s:String x:Key="SerialPort_StopBits">停止位:</s:String>
+    <s:String x:Key="SerialPort_DataBits">数据位:</s:String>
+    <s:String x:Key="SerialPort_StopSend">停止扫码</s:String>
+    <s:String x:Key="SerialPort_CodeScanSuccessful">扫码成功</s:String>
+    <s:String x:Key="SerialPort_CodeScanFail">扫码失败</s:String>
+    <s:String x:Key="SerialPort_Successful">成功</s:String>
+    <s:String x:Key="SerialPort_Timeout">超时时间:</s:String>
+    <s:String x:Key="SerialPort_Fail">失败</s:String>
+    <s:String x:Key="SerialPort_Close">关闭</s:String>
+    <s:String x:Key="SerialPort_Open">打开</s:String>
+</ResourceDictionary>

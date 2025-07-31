@@ -1,0 +1,479 @@
+﻿<UserControl
+    x:Class="SpinCoaterAndDeveloper.App.Views.AppleNavigateView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:appleConv="clr-namespace:SpinCoaterAndDeveloper.Shared.Apple.AppleConverters;assembly=SpinCoaterAndDeveloper.Shared"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:valueConverters="clr-namespace:ValueConverters;assembly=ValueConverters"
+    xmlns:viewmodels="clr-namespace:SpinCoaterAndDeveloper.App.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:AppleNavigateViewModel}"
+    d:DesignHeight="700"
+    d:DesignWidth="1280"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <appleConv:MachineStsToBackgroundConverter x:Key="MachineStsToBackgroundConverter" />
+        <valueConverters:EnumToObjectConverter x:Key="ApplePermissionEnumToObjectConverter">
+            <valueConverters:EnumToObjectConverter.Items>
+                <ResourceDictionary>
+                    <BitmapImage x:Key="NoPermission" UriSource="..\..\Resources\Image\No_login.png" />
+                    <BitmapImage x:Key="Operator" UriSource="..\..\Resources\Image\Level1.png" />
+                    <BitmapImage x:Key="Admin" UriSource="..\..\Resources\Image\Level2.png" />
+                    <BitmapImage x:Key="Developer" UriSource="..\..\Resources\Image\Level3.png" />
+                </ResourceDictionary>
+            </valueConverters:EnumToObjectConverter.Items>
+        </valueConverters:EnumToObjectConverter>
+        <valueConverters:ValueToBoolConverter x:Key="MachineAlarmingStsValueToBoolConverter" TrueValue="{DynamicResource 设备报警状态}" />
+        <valueConverters:ValueToBoolConverter x:Key="MachineRunningStsValueToBoolConverter" TrueValue="{DynamicResource 设备运行中状态}" />
+        <valueConverters:ValueToBoolConverter x:Key="MachinePausingStsValueToBoolConverter" TrueValue="{DynamicResource 设备暂停中状态}" />
+        <valueConverters:ValueToBoolConverter x:Key="MachineEmergencyStoppingStsVauleToBoolConverter" TrueValue="{DynamicResource 设备急停中状态}" />
+        <valueConverters:EnumToBoolConverter x:Key="AppleViewEnumToBoolConverter" />
+        <valueConverters:EnumToBoolConverter x:Key="PermissionEnumToBoolConverter" />
+    </UserControl.Resources>
+    <Border
+        Background="{Binding MachineSts, Converter={StaticResource MachineStsToBackgroundConverter}}"
+        BorderBrush="#BFBFBF"
+        BorderThickness="0,0,0,1">
+        <DockPanel Margin="0,12,0,12" LastChildFill="False">
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                <!--  Home  -->
+                <Button
+                    Width="70"
+                    Height="70"
+                    Margin="14,0,0,0"
+                    Padding="0"
+                    materialDesign:ButtonAssist.CornerRadius="16"
+                    Command="{Binding AppleNavigateCommand}"
+                    CommandParameter="Home"
+                    Cursor="Hand"
+                    Style="{StaticResource MaterialDesignRaisedButton}">
+                    <Image
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        SnapsToDevicePixels="True"
+                        Stretch="Fill"
+                        UseLayoutRounding="True">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding AppleCurrentView, Converter={StaticResource AppleViewEnumToBoolConverter}, ConverterParameter=Home}" Value="True">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Home_Energized.png" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding AppleCurrentView, Converter={StaticResource AppleViewEnumToBoolConverter}, ConverterParameter=Home}" Value="False">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Home_De_energized.png" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <!--  Alarm  -->
+                <Button
+                    Width="70"
+                    Height="70"
+                    Margin="14,0,0,0"
+                    Padding="0"
+                    materialDesign:ButtonAssist.CornerRadius="16"
+                    Command="{Binding AppleNavigateCommand}"
+                    CommandParameter="Alarm"
+                    Style="{StaticResource MaterialDesignRaisedButton}">
+                    <Image
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        SnapsToDevicePixels="True"
+                        Stretch="Fill"
+                        UseLayoutRounding="True">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding MachineSts, Converter={StaticResource MachineAlarmingStsValueToBoolConverter}}" Value="True">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Alarm_Alerted.png" />
+                                    </DataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding MachineSts, Converter={StaticResource MachineAlarmingStsValueToBoolConverter}}" Value="False" />
+                                            <Condition Binding="{Binding AppleCurrentView, Converter={StaticResource AppleViewEnumToBoolConverter}, ConverterParameter=Alarm}" Value="True" />
+                                        </MultiDataTrigger.Conditions>
+                                        <MultiDataTrigger.Setters>
+                                            <Setter Property="Source" Value="..\..\Resources\Image\Alarm_Energized.png" />
+                                        </MultiDataTrigger.Setters>
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding MachineSts, Converter={StaticResource MachineAlarmingStsValueToBoolConverter}}" Value="False" />
+                                            <Condition Binding="{Binding AppleCurrentView, Converter={StaticResource AppleViewEnumToBoolConverter}, ConverterParameter=Alarm}" Value="False" />
+                                        </MultiDataTrigger.Conditions>
+                                        <MultiDataTrigger.Setters>
+                                            <Setter Property="Source" Value="..\..\Resources\Image\Alarm_De_energized.png" />
+                                        </MultiDataTrigger.Setters>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <!--  Config  -->
+                <Button
+                    Width="70"
+                    Height="70"
+                    Margin="14,0,0,0"
+                    Padding="0"
+                    materialDesign:ButtonAssist.CornerRadius="16"
+                    Command="{Binding AppleNavigateCommand}"
+                    CommandParameter="Config">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=NoPermission}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Operator}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Admin}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Developer}" Value="True">
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        SnapsToDevicePixels="True"
+                        Stretch="Fill"
+                        UseLayoutRounding="True">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=NoPermission}" Value="True">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Config_Disabled.png" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Operator}" Value="True">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Config_Disabled.png" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Admin}" Value="True">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Config_Disabled.png" />
+                                    </DataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Developer}" Value="True" />
+                                            <Condition Binding="{Binding AppleCurrentView, Converter={StaticResource AppleViewEnumToBoolConverter}, ConverterParameter=Config}" Value="True" />
+                                        </MultiDataTrigger.Conditions>
+                                        <MultiDataTrigger.Setters>
+                                            <Setter Property="Source" Value="..\..\Resources\Image\Config_Energized.png" />
+                                        </MultiDataTrigger.Setters>
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Developer}" Value="True" />
+                                            <Condition Binding="{Binding AppleCurrentView, Converter={StaticResource AppleViewEnumToBoolConverter}, ConverterParameter=Config}" Value="False" />
+                                        </MultiDataTrigger.Conditions>
+                                        <MultiDataTrigger.Setters>
+                                            <Setter Property="Source" Value="..\..\Resources\Image\Config_De_energized.png" />
+                                        </MultiDataTrigger.Setters>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <!--  Data  -->
+                <Button
+                    Width="70"
+                    Height="70"
+                    Margin="14,0,0,0"
+                    Padding="0"
+                    materialDesign:ButtonAssist.CornerRadius="16"
+                    Command="{Binding AppleNavigateCommand}"
+                    CommandParameter="Data"
+                    Style="{StaticResource MaterialDesignRaisedButton}">
+                    <Image
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        SnapsToDevicePixels="True"
+                        Stretch="Fill"
+                        UseLayoutRounding="True">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding AppleCurrentView, Converter={StaticResource AppleViewEnumToBoolConverter}, ConverterParameter=Data}" Value="True">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Data_Energized.png" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding AppleCurrentView, Converter={StaticResource AppleViewEnumToBoolConverter}, ConverterParameter=Data}" Value="False">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Data_De_energized.png" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <!--  Vision  -->
+                <Button
+                    Width="70"
+                    Height="70"
+                    Margin="14,0,0,0"
+                    Padding="0"
+                    materialDesign:ButtonAssist.CornerRadius="16"
+                    Command="{Binding AppleNavigateCommand}"
+                    CommandParameter="Vision"
+                    Style="{StaticResource MaterialDesignRaisedButton}">
+                    <Image
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        SnapsToDevicePixels="True"
+                        Stretch="Fill"
+                        UseLayoutRounding="True">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding AppleCurrentView, Converter={StaticResource AppleViewEnumToBoolConverter}, ConverterParameter=Vision}" Value="True">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Vision_Energized.png" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding AppleCurrentView, Converter={StaticResource AppleViewEnumToBoolConverter}, ConverterParameter=Vision}" Value="False">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Vision_De_energized.png" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <!--  Setting  -->
+                <Button
+                    Width="70"
+                    Height="70"
+                    Margin="14,0,0,0"
+                    Padding="0"
+                    materialDesign:ButtonAssist.CornerRadius="16"
+                    Command="{Binding AppleNavigateCommand}"
+                    CommandParameter="Setting">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=NoPermission}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Operator}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Admin}" Value="True">
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Developer}" Value="True">
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        SnapsToDevicePixels="True"
+                        Stretch="Fill"
+                        UseLayoutRounding="True">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=NoPermission}" Value="True">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Setting_Disabled.png" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Operator}" Value="True">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Setting_Disabled.png" />
+                                    </DataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Admin}" Value="True" />
+                                            <Condition Binding="{Binding AppleCurrentView, Converter={StaticResource AppleViewEnumToBoolConverter}, ConverterParameter=Setting}" Value="True" />
+                                        </MultiDataTrigger.Conditions>
+                                        <MultiDataTrigger.Setters>
+                                            <Setter Property="Source" Value="..\..\Resources\Image\Setting_Energized.png" />
+                                        </MultiDataTrigger.Setters>
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Admin}" Value="True" />
+                                            <Condition Binding="{Binding AppleCurrentView, Converter={StaticResource AppleViewEnumToBoolConverter}, ConverterParameter=Setting}" Value="False" />
+                                        </MultiDataTrigger.Conditions>
+                                        <MultiDataTrigger.Setters>
+                                            <Setter Property="Source" Value="..\..\Resources\Image\Setting_De_energized.png" />
+                                        </MultiDataTrigger.Setters>
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Developer}" Value="True" />
+                                            <Condition Binding="{Binding AppleCurrentView, Converter={StaticResource AppleViewEnumToBoolConverter}, ConverterParameter=Setting}" Value="True" />
+                                        </MultiDataTrigger.Conditions>
+                                        <MultiDataTrigger.Setters>
+                                            <Setter Property="Source" Value="..\..\Resources\Image\Setting_Energized.png" />
+                                        </MultiDataTrigger.Setters>
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding PermissionSts, Converter={StaticResource PermissionEnumToBoolConverter}, ConverterParameter=Developer}" Value="True" />
+                                            <Condition Binding="{Binding AppleCurrentView, Converter={StaticResource AppleViewEnumToBoolConverter}, ConverterParameter=Setting}" Value="False" />
+                                        </MultiDataTrigger.Conditions>
+                                        <MultiDataTrigger.Setters>
+                                            <Setter Property="Source" Value="..\..\Resources\Image\Setting_De_energized.png" />
+                                        </MultiDataTrigger.Setters>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+            </StackPanel>
+            <Border
+                Height="70"
+                Margin="14,0,0,0"
+                BorderBrush="#BFBFBF"
+                BorderThickness="0,0,1,0"
+                DockPanel.Dock="Left" />
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                <Border
+                    Height="70"
+                    Margin="14,0,0,0"
+                    BorderBrush="#BFBFBF"
+                    BorderThickness="0,0,1,0"
+                    DockPanel.Dock="Right" />
+                <!--  Start  -->
+                <Button
+                    Width="70"
+                    Height="70"
+                    Margin="14,0,0,0"
+                    Padding="0"
+                    materialDesign:ButtonAssist.CornerRadius="16"
+                    Command="{Binding MachineOperationCommand}"
+                    CommandParameter="StartMachine"
+                    Style="{StaticResource MaterialDesignRaisedButton}">
+                    <Image
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        SnapsToDevicePixels="True"
+                        Stretch="Fill"
+                        UseLayoutRounding="True">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding MachineSts, Converter={StaticResource MachineRunningStsValueToBoolConverter}}" Value="True">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Running_Energized.png" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding MachineSts, Converter={StaticResource MachineRunningStsValueToBoolConverter}}" Value="False">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Running_De_energized.png" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <!--  Pause  -->
+                <Button
+                    Width="70"
+                    Height="70"
+                    Margin="4,0,0,0"
+                    Padding="0"
+                    materialDesign:ButtonAssist.CornerRadius="16"
+                    Command="{Binding MachineOperationCommand}"
+                    CommandParameter="StopMachine"
+                    Style="{StaticResource MaterialDesignRaisedButton}">
+                    <Image
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        SnapsToDevicePixels="True"
+                        Stretch="Fill"
+                        UseLayoutRounding="True">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding MachineSts, Converter={StaticResource MachinePausingStsValueToBoolConverter}}" Value="True">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Energized_Paused.png" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding MachineSts, Converter={StaticResource MachinePausingStsValueToBoolConverter}}" Value="False">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Paused_De_energized.png" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <!--  Stop  -->
+                <Button
+                    Width="70"
+                    Height="70"
+                    Margin="4,0,0,0"
+                    Padding="0"
+                    materialDesign:ButtonAssist.CornerRadius="16"
+                    Command="{Binding MachineOperationCommand}"
+                    CommandParameter="EMStopMachine"
+                    Style="{StaticResource MaterialDesignRaisedButton}">
+                    <Image
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        SnapsToDevicePixels="True"
+                        Stretch="Fill"
+                        UseLayoutRounding="True">
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding MachineSts, Converter={StaticResource MachineEmergencyStoppingStsVauleToBoolConverter}}" Value="True">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Stopped_Energized.png" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding MachineSts, Converter={StaticResource MachineEmergencyStoppingStsVauleToBoolConverter}}" Value="False">
+                                        <Setter Property="Source" Value="..\..\Resources\Image\Stopped_De_energized.png" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Button>
+                <Border
+                    Height="70"
+                    Margin="14,0,0,0"
+                    BorderBrush="#BFBFBF"
+                    BorderThickness="0,0,1,0"
+                    DockPanel.Dock="Right" />
+                <StackPanel Margin="14,0,0,0" VerticalAlignment="Center">
+                    <!--  Login/Out  -->
+                    <Button
+                        Width="142"
+                        Margin="0,0,0,3"
+                        Padding="0"
+                        materialDesign:ButtonAssist.CornerRadius="6"
+                        Command="{Binding AppleUserLoginOutCommand}"
+                        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Image
+                            RenderOptions.BitmapScalingMode="HighQuality"
+                            SnapsToDevicePixels="True"
+                            Source="{Binding PermissionSts, Converter={StaticResource ApplePermissionEnumToObjectConverter}}"
+                            Stretch="Fill"
+                            UseLayoutRounding="True" />
+                    </Button>
+                    <!--  MachineState  -->
+                    <Button
+                        Width="142"
+                        Margin="0,3,0,0"
+                        Padding="0"
+                        materialDesign:ButtonAssist.CornerRadius="6"
+                        Background="{Binding MachineSts, Converter={StaticResource MachineStsToBackgroundConverter}}"
+                        Content="{Binding MachineSts}"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="Black"
+                        IsEnabled="False"
+                        Style="{StaticResource MaterialDesignRaisedButton}" />
+                </StackPanel>
+                <Image
+                    Width="70"
+                    Height="70"
+                    Margin="14,0,14,0"
+                    RenderOptions.BitmapScalingMode="HighQuality"
+                    SnapsToDevicePixels="True"
+                    Source="/Resources/Image/cetc.jpg"
+                    Stretch="Uniform"
+                    UseLayoutRounding="True">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseUp">
+                            <i:InvokeCommandAction Command="{Binding ActuationMonitorCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Image>
+            </StackPanel>
+        </DockPanel>
+    </Border>
+</UserControl>

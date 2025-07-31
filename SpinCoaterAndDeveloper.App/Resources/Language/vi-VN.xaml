@@ -1,0 +1,639 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <!--  indexView  -->
+    <s:String x:Key="StartSingle-stepDebugging">Start single-step debugging</s:String>
+    <s:String x:Key="StopSingle-stepDebugging">Stop single-step debugging</s:String>
+    <s:String x:Key="Single-stepRunning">Single-step Running</s:String>
+    <s:String x:Key="StartBurnInMode">Start BurnInMode</s:String>
+    <s:String x:Key="StopBurnInMode">Stop BurnInMode</s:String>
+    <s:String x:Key="ForDevelopersToUsePleaseUseCautionOnlyRunningProcessesAreSupported">For developers to use, please use caution. Only running processes are supported.</s:String>
+    <s:String x:Key="ForDevelopersToUsePleaseUseCaution">For developers to use, please use caution.</s:String>
+
+
+    <s:String x:Key="MainWindowTitle">MainWindow</s:String>
+    <s:String x:Key="LanguageSelect">Language Select</s:String>
+    <s:String x:Key="Login">Login</s:String>
+    <s:String x:Key="LoginOut">Login Out</s:String>
+    <s:String x:Key="DefaultUserName">Not Login</s:String>
+    <s:String x:Key="Home">Home</s:String>
+    <s:String x:Key="UserManager">User Manager</s:String>
+    <s:String x:Key="IOInputCfg">IO Input Config</s:String>
+    <s:String x:Key="IOOutputCfg">IO Output Config</s:String>
+    <s:String x:Key="ParmeterCfg">Motion Parmeter Config</s:String>
+    <s:String x:Key="AxisCfg">Axis Config</s:String>
+    <s:String x:Key="MCPointCfg">Motion Point Config</s:String>
+    <s:String x:Key="SystemCfg">System Parmeter</s:String>
+    <s:String x:Key="DataSummaryView">Data Summary</s:String>
+    <s:String x:Key="InterpolationPathView">Interpolation Config</s:String>
+    <s:String x:Key="FunctionShieldCfg">Function Shield</s:String>
+    <s:String x:Key="FunctionShieldDebug">Function Shield</s:String>
+    <s:String x:Key="VisionCalibration">Vision Calibration</s:String>
+    <s:String x:Key="VisionCompensation">Vision Compensation</s:String>
+    <s:String x:Key="VisionTest">Vision Test</s:String>
+
+    <!--  FunctionShieldCfg  -->
+    <s:String x:Key="FunctionShield_IsActive">Shield</s:String>
+    <s:String x:Key="ShowAll">Show All</s:String>
+    <s:String x:Key="FunctionShield_EnableOnUI">Show On UI</s:String>
+
+    <!--  FunctionShieldDebug  -->
+    <s:String x:Key="FunctionShieldNameFiltering">Name Filter</s:String>
+
+    <!--  MCMonitorAndDebugView  -->
+    <s:String x:Key="Number">Number</s:String>
+    <s:String x:Key="Number:">Number:</s:String>
+    <s:String x:Key="Name">Name</s:String>
+    <s:String x:Key="CNName">China Name</s:String>
+    <s:String x:Key="ENName">English Name</s:String>
+    <s:String x:Key="VNName">VN Name</s:String>
+    <s:String x:Key="EnterCNName">Pleaset Enter CN Name</s:String>
+    <s:String x:Key="EnterENName">Pleaset Enter EN Name</s:String>
+    <s:String x:Key="EnterVNName">Pleaset Enter VN Name</s:String>
+    <s:String x:Key="Group">Group</s:String>
+    <s:String x:Key="FilterGroup">Filter Group:</s:String>
+    <s:String x:Key="SaveCheck">Save check</s:String>
+
+    <s:String x:Key="ActuationMonitor">Actuation Monitor</s:String>
+    <s:String x:Key="ActuationSts">Actuation State</s:String>
+    <s:String x:Key="AxisSts">Axis State</s:String>
+    <s:String x:Key="InputSts">Input State</s:String>
+    <s:String x:Key="OutputSts">Output State</s:String>
+    <s:String x:Key="AxisName">Axis Name</s:String>
+    <s:String x:Key="AxisPosition">Axis Position</s:String>
+    <s:String x:Key="PositiveLimit">Positive Limit</s:String>
+    <s:String x:Key="NegativeLimit">Negative Limit</s:String>
+    <s:String x:Key="Origin">Origin</s:String>
+    <s:String x:Key="TargetLocation">Target Location</s:String>
+    <s:String x:Key="TargetVel">Target Vel</s:String>
+    <s:String x:Key="ServoOn">Servo On</s:String>
+    <s:String x:Key="AxisAlarm">Axis Alarm</s:String>
+    <s:String x:Key="AxisBusySts">Axis Busy Sts</s:String>
+    <s:String x:Key="SelectMCPointHint">Please Select Motion Point</s:String>
+    <s:String x:Key="MCMoveButtonInfo">Move To Select Point</s:String>
+    <s:String x:Key="CloseMCDebugWindowButton">Close Debug Window</s:String>
+    <s:String x:Key="GlobalVelPercentageInfo">Global Velocity Percentage:</s:String>
+    <s:String x:Key="SaveGlobalVelPercentageButton">Save Setting</s:String>
+    <s:String x:Key="JogVelInfo">Jog Vel:</s:String>
+    <s:String x:Key="HomingInfo">Start Homing</s:String>
+    <s:String x:Key="StopHomingInfo">Stop Homing</s:String>
+    <s:String x:Key="AxisEnable">Axis Enable</s:String>
+    <s:String x:Key="AxisDisable">Axis Disable</s:String>
+    <s:String x:Key="StepMoveInfo">Step Move:</s:String>
+    <s:String x:Key="StepMoveStartButton">Step Start</s:String>
+    <s:String x:Key="StepMoveStopButton">Step Stop</s:String>
+    <s:String x:Key="ReciprocateStartPoint">Reciprocate Start:</s:String>
+    <s:String x:Key="ReciprocateEndPoint">Reciprocate End:</s:String>
+    <s:String x:Key="ReciprocatePauseTime">ReciprocatePauseTime</s:String>
+    <s:String x:Key="ReciprocateStart">Reciprocate Start</s:String>
+    <s:String x:Key="ReciprocateStop">Reciprocate Stop</s:String>
+    <s:String x:Key="UesJogVel">Ues jog vel</s:String>
+
+    <s:String x:Key="InitSuccess">Open program success!</s:String>
+
+    <s:String x:Key="LoginWelcome">Welcome</s:String>
+    <s:String x:Key="LoginNameHint">Please Enter UserName</s:String>
+    <s:String x:Key="LoginPasswordHint">Please Enter Password</s:String>
+    <s:String x:Key="LoginButton">Login</s:String>
+    <s:String x:Key="LoginCancel">Cancel</s:String>
+
+    <s:String x:Key="MCMonitorAndDebug">Motion Debug</s:String>
+    <s:String x:Key="SoftwareVersion">Software Version:</s:String>
+    <s:String x:Key="ResetMachine">Reset Machine</s:String>
+    <s:String x:Key="StartupMachine">Startup Machine</s:String>
+    <s:String x:Key="StopMachine">Stop Machine</s:String>
+    <s:String x:Key="EMStopMachine">Emergency Stop</s:String>
+
+    <s:String x:Key="SaveAllIOConfigButton">Save IO Config Setting</s:String>
+    <s:String x:Key="AddIO">Insert IO</s:String>
+    <s:String x:Key="OutputDefaultValue">Default</s:String>
+    <s:String x:Key="EnterInputName">Enter Input Name</s:String>
+    <s:String x:Key="InputIOHardwareLocation">IO Location</s:String>
+    <s:String x:Key="InputIfValid">If Shield</s:String>
+    <s:String x:Key="InputShieldDefaultValue">Shield Default Value</s:String>
+    <s:String x:Key="ShieldDefaultValueInfo">If this parameter is selected, the I/O status is true</s:String>
+    <s:String x:Key="InputIfReverse">If Reverse</s:String>
+    <s:String x:Key="InputBackup">Backup</s:String>
+    <s:String x:Key="InsertInputButton">Insert Input</s:String>
+    <s:String x:Key="DeleteLastInputButton">Delete Last Input</s:String>
+    <s:String x:Key="EnterOutputName">Enter Output Name</s:String>
+    <s:String x:Key="OutPutIfValid">If Valid</s:String>
+    <s:String x:Key="OutputIfReverse">If Reverse</s:String>
+    <s:String x:Key="OutputDefaultValueInfo">Default Value</s:String>
+    <s:String x:Key="OutputBackup">Backup</s:String>
+    <s:String x:Key="InsertOutputButton">Insert Output</s:String>
+    <s:String x:Key="DeleteLastOutputButton">Delete Last Output</s:String>
+
+    <s:String x:Key="OutputIOHardwareLocation">IO Location</s:String>
+    <s:String x:Key="OutputGroup">Filter Group</s:String>
+
+    <s:String x:Key="PhysicalLocation">Physical Location</s:String>
+    <s:String x:Key="ReverseEnable">Reverse Enable</s:String>
+    <s:String x:Key="ShieldEnable">Shield</s:String>
+    <s:String x:Key="ShieldEnableDefaultValue">Shield Default Value</s:String>
+    <s:String x:Key="Backup">Backup</s:String>
+
+    <!--  MCAxisConfigView  -->
+    <s:String x:Key="AddAxisCfg">Add Axis</s:String>
+    <s:String x:Key="ConfigAxis">Config Axis</s:String>
+    <s:String x:Key="DeleteAxisCfg">Delete Axis</s:String>
+    <s:String x:Key="ConfigAxisInputName">Please Input Axis Name(Program Call Name):</s:String>
+    <s:String x:Key="ConfigAxisInputCNName">Please Input Chinese Name(for UI show):</s:String>
+    <s:String x:Key="ConfigAxisInputENName">Please Input English Name(for UI show):</s:String>
+    <s:String x:Key="ConfigAxisInputVNName">Please Input Vietnam Name(for UI show):</s:String>
+    <s:String x:Key="ConfigAxisInputXXName">Please Input Reserve Name(for UI show):</s:String>
+    <s:String x:Key="MustAndUniqueHint">Must And Unique</s:String>
+    <s:String x:Key="ConfigAxisIdOnCard">Please Enter Control ID On Motion Card:</s:String>
+    <s:String x:Key="ConfigAxisHomeMethod">Please Input Home Method:</s:String>
+    <s:String x:Key="ConfigAxisHomeHighVel">Please Input Home High Vel:</s:String>
+    <s:String x:Key="ConfigAxisHomeLowVel">Please Input Home Low Vel:</s:String>
+    <s:String x:Key="ConfigAxisHomeAcc">Please Input Home Acc:</s:String>
+    <s:String x:Key="ConfigAxisHomeTimeout">Please Input Home Timeout Time:</s:String>
+    <s:String x:Key="ConfigAxisProportion">Please Input Axis Proportion:</s:String>
+    <s:String x:Key="ConfigAxisAxisType">Please Select Axis Tpye:</s:String>
+    <s:String x:Key="ConfigAxisSafe">If Safe Axis:</s:String>
+    <s:String x:Key="ConfigAxisSafePosition">Axis Safe Position:</s:String>
+    <s:String x:Key="ConfigAxisHomeOffset">Please Input Home Offset:</s:String>
+    <s:String x:Key="#0Null">#1 Null</s:String>
+    <s:String x:Key="#1NegativeLimitSwitch+ZSignalFromTheEncoder">#1 Negative limit switch + Z signal from the encoder</s:String>
+    <s:String x:Key="#2PositiveLimitSwitch+ZSignalFromTheEncoder">#2 Positive limit switch + Z signal from the encoder</s:String>
+    <s:String x:Key="#3PositiveOriginSwitch+ZSignalFromTheEncoder">#3 Positive origin switch + Z signal from the encoder</s:String>
+    <s:String x:Key="#4PositiveOriginSwitch+ZSignalFromTheEncoder">#4 Positive origin switch + Z signal from the encoder</s:String>
+    <s:String x:Key="#5NegativeOriginSwitch+ZSignalFromTheEncoder">#5 Negative origin switch + Z signal from the encoder</s:String>
+    <s:String x:Key="#6NegativeOriginSwitch+ZSignalFromTheEncoder">#6 Negative origin switch + Z signal from the encoder</s:String>
+    <s:String x:Key="#7PositiveLimitSwitch+OriginSwitch+ZSignalFromTheEncoder">#7 Positive limit switch + Origin switch + Z signal from the encoder</s:String>
+    <s:String x:Key="#8PositiveLimitSwitch+OriginSwitch+ZSignalFromTheEncoder">#8 Positive limit switch + Origin switch + Z signal from the encoder</s:String>
+    <s:String x:Key="#9PositiveLimitSwitch+OriginSwitch+ZSignalFromTheEncoder">#9 Positive limit switch + Origin switch + Z signal from the encoder</s:String>
+    <s:String x:Key="#10PositiveLimitSwitch+OriginSwitch+ZSignalFromTheEncoder">#10 Positive limit switch + Origin switch + Z signal from the encoder</s:String>
+    <s:String x:Key="#11NegativeLimitSwitch+OriginSwitch+ZSignalFromTheEncoder">#11Negative limit switch + Origin switch + Z signal from the encoder</s:String>
+    <s:String x:Key="#12NegativeLimitSwitch+OriginSwitch+ZSignalFromTheEncoder">#12Negative limit switch + Origin switch + Z signal from the encoder</s:String>
+    <s:String x:Key="#13NegativeLimitSwitch+OriginSwitch+ZSignalFromTheEncoder">#13Negative limit switch + Origin switch + Z signal from the encoder</s:String>
+    <s:String x:Key="#14NegativeLimitSwitch+OriginSwitch+ZSignalFromTheEncoder">#14Negative limit switch + Origin switch + Z signal from the encoder</s:String>
+    <s:String x:Key="#17NegativeLimitSwitch">#17 Negative limit switch</s:String>
+    <s:String x:Key="#18PositiveLimitSwitch">#18 Positive limit switch</s:String>
+    <s:String x:Key="#19PositiveOriginSwitch">#19 Positive origin switch</s:String>
+    <s:String x:Key="#20PositiveOriginSwitch">#20 Positive origin switch</s:String>
+    <s:String x:Key="#21NegativeOriginSwitch">#21 Negative origin switch</s:String>
+    <s:String x:Key="#22NegativeOriginSwitch">#22 Negative origin switch</s:String>
+    <s:String x:Key="#23PositiveLimitSwitch+OriginSwitch">#23 Positive limit switch + Origin switch</s:String>
+    <s:String x:Key="#24PositiveLimitSwitch+OriginSwitch">#24 Positive limit switch + Origin switch</s:String>
+    <s:String x:Key="#25PositiveLimitSwitch+OriginSwitch">#25 Positive limit switch + Origin switch</s:String>
+    <s:String x:Key="#26PositiveLimitSwitch+OriginSwitch">#26 Positive limit switch + Origin switch</s:String>
+    <s:String x:Key="#27NegativeLimitSwitch+OriginSwitch">#27 Negative limit switch + Origin switch</s:String>
+    <s:String x:Key="#28NegativeLimitSwitch+OriginSwitch">#28 Negative limit switch + Origin switch</s:String>
+    <s:String x:Key="#29NegativeLimitSwitch+OriginSwitch">#29 Negative limit switch + Origin switch</s:String>
+    <s:String x:Key="#30NegativeLimitSwitch+OriginSwitch">#30 Negative limit switch + Origin switch</s:String>
+    <s:String x:Key="#33ZSignalFromTheEncoder">#33 Z signal from the encoder</s:String>
+    <s:String x:Key="#34ZSignalFromTheEncoder">#34 Z signal from the encoder</s:String>
+    <s:String x:Key="#35ZSignalFromTheEncoder(ServoDoesNotRequireOPStatus)">#35 Z signal from the encoder(servo does not require OP status)</s:String>
+    <s:String x:Key="Reserve">Reserve</s:String>
+    <s:String x:Key="Unknown">Unknown</s:String>
+    <s:String x:Key="Add">Add</s:String>
+    <s:String x:Key="AxisParameterSetting">Axis parameter setting</s:String>
+    <s:String x:Key="HomeMethod">HomeMethod:</s:String>
+    <s:String x:Key="HomeHighVel">HomeHighVel:</s:String>
+    <s:String x:Key="HomeLowVel">HomeLowVel:</s:String>
+    <s:String x:Key="HomeAcc">HomeAcc:</s:String>
+    <s:String x:Key="HomeTimeout">HomeTimeout:</s:String>
+    <s:String x:Key="AxisProportion">AxisProportion:</s:String>
+    <s:String x:Key="SystemValueDoNotModifyItAtWill">System value,Do not modify it at will</s:String>
+    <s:String x:Key="SaveSettings">Save Settings</s:String>
+    <s:String x:Key="PositionUnit">Unit:mm</s:String>
+    <s:String x:Key="VelUnit">Unit:mm/s</s:String>
+    <s:String x:Key="AccUnit">unit:mm/s/s</s:String>
+    <s:String x:Key="TimeUnit">unit:ms</s:String>
+    <s:String x:Key="ConfigAxisSoftLimitEnable">If Enable Soft Limit:</s:String>
+    <s:String x:Key="ConfigAxisSoftPositiveLimitPos">Soft Positive Litmit Position:</s:String>
+    <s:String x:Key="ConfigAxisSoftNegativeLimitPos">Soft Negative Litmit Position:</s:String>
+    <s:String x:Key="ConfigAxisGroup">Please Select Axis Group:</s:String>
+
+    <s:String x:Key="ConfigAxisHeaderIdOnCard">Card ID</s:String>
+    <s:String x:Key="ConfigAxisHeaderInputXXName">Reserved Name</s:String>
+    <s:String x:Key="ConfigAxisHeaderHomeMethod">Home Method</s:String>
+    <s:String x:Key="ConfigAxisHeaderHomeHighVel">Home High Vel</s:String>
+    <s:String x:Key="ConfigAxisHeaderHomeLowVel">Home Low Vel</s:String>
+    <s:String x:Key="ConfigAxisHeaderHomeAcc">Home Acc</s:String>
+    <s:String x:Key="ConfigAxisHeaderHomeTimeout">Home Timeout</s:String>
+    <s:String x:Key="ConfigAxisHeaderProportion">Proportion</s:String>
+    <s:String x:Key="ConfigAxisHeaderHomeOffset">HomeOffset</s:String>
+    <s:String x:Key="ConfigAxisHeaderAxisType">Axis Type</s:String>
+    <s:String x:Key="ConfigAxisHeaderSoftLimitEnable">Soft Limit Enable</s:String>
+    <s:String x:Key="ConfigAxisHeaderSoftPositiveLimitPos">Soft Positive Limit Pos</s:String>
+    <s:String x:Key="ConfigAxisHeaderSoftNegativeLimitPos">Soft Negative Limit Pos</s:String>
+    <s:String x:Key="ConfigHeaderAxisSafe">SafetyAxis</s:String>
+    <s:String x:Key="ConfigAxisHeaderSafePosition">Safe Position</s:String>
+    <s:String x:Key="ConfigAxisHeaderTargetLocationGap">Target Location Gap</s:String>
+
+    <s:String x:Key="CylinderCfg">Cylinder Config</s:String>
+    <s:String x:Key="AxisDebug">Axis Debug</s:String>
+    <s:String x:Key="IODebug">IO Debug</s:String>
+    <s:String x:Key="CylinderDebug">Cylinder Debug</s:String>
+    <s:String x:Key="ParmeterDebug">Parmeter Debug</s:String>
+    <s:String x:Key="MovementPointDebug">Movement Debug</s:String>
+    <s:String x:Key="Optional">Optional</s:String>
+    <s:String x:Key="ShowAllAxes">Show all axes</s:String>
+
+
+    <!--  MCAxisDebugView  -->
+    <s:String x:Key="EtherCATBusState">EtherCAT Bus State:</s:String>
+    <s:String x:Key="ErrorCode">Error code</s:String>
+    <s:String x:Key="ClearError">Clear error</s:String>
+
+    <!--  MCCylinderConfigView  -->
+    <s:String x:Key="PleaseEnterTheCylinderName">Please enter the cylinder name (program call name):</s:String>
+    <s:String x:Key="ConfigCylinderCNName">Please Input Chinese Name(for UI show):</s:String>
+    <s:String x:Key="ConfigCylinderENName">Please Input English Name(for UI show):</s:String>
+    <s:String x:Key="ConfigCylinderVNName">Please Input Vietnam Name(for UI show):</s:String>
+    <s:String x:Key="OriginTimeout">Origin timeout:</s:String>
+    <s:String x:Key="Moving-pointTimeout">Moving timeout:</s:String>
+    <s:String x:Key="SolenoidValveType">Solenoid valve type:</s:String>
+    <s:String x:Key="SensorNumberType">Sensor number Type:</s:String>
+    <s:String x:Key="Groups">Groups:</s:String>
+    <s:String x:Key="AddCylinder">Add cylinder</s:String>
+    <s:String x:Key="RemoveCylinder">Remove cylinder</s:String>
+    <s:String x:Key="ShowAllCylinders">Show all cylinders</s:String>
+    <s:String x:Key="ConfigCylinderHeaderOriginTimeout">Origin timeout</s:String>
+    <s:String x:Key="ConfigCylinderHeaderMoving-pointTimeout">Moving-point timeout</s:String>
+    <s:String x:Key="ConfigCylinderHeaderSolenoidValveType">Solenoid valve type</s:String>
+    <s:String x:Key="Single-heaIO">Single-head IO</s:String>
+    <s:String x:Key="Double-headOrigin">Double-head origin</s:String>
+    <s:String x:Key="Double-headMoving">Double-head moving</s:String>
+    <s:String x:Key="ConfigCylinderHeaderSensorNumberType">Sensor number Type</s:String>
+    <s:String x:Key="ConfigCylinderHeaderDelayTime">Delay time</s:String>
+    <s:String x:Key="ConfigCylinderHeaderSensorOrigin">Origin of sensor</s:String>
+    <s:String x:Key="ConfigCylinderHeaderSensorMoving">Moving of sensor</s:String>
+    <s:String x:Key="ShieldedOriginSensor">Shielded origin sensor</s:String>
+    <s:String x:Key="ShieldedOriginSensorDelay">Shielded origin sensor delay</s:String>
+    <s:String x:Key="ShieldedMovingSensor">Shielded moving sensor</s:String>
+    <s:String x:Key="ShieldedMovingSensorDelay">Shielded moving sensor delay</s:String>
+
+    <!--  MCCylinderDebugView  -->
+    <s:String x:Key="RapidCylinderFiltration">Rapid cylinder filtration</s:String>
+    <s:String x:Key="SensorStatus">Sensor status</s:String>
+    <s:String x:Key="ShieldedSensor">Shielded sensor</s:String>
+    <s:String x:Key="Double-headCylinder">Double-head cylinder</s:String>
+    <s:String x:Key="Single-headCylinder">Single-head cylinder</s:String>
+
+    <!--  MCIODebugView  -->
+    <s:String x:Key="InputPointSelectGroup">Input select group:</s:String>
+    <s:String x:Key="OutputPointSelectGroup">Output select group:</s:String>
+    <s:String x:Key="InputPointFilter">Input filter</s:String>
+    <s:String x:Key="OutputPointFilter">Output filter</s:String>
+    <s:String x:Key="ShowAllInputs">Show all inputs</s:String>
+    <s:String x:Key="ShowAllOutputs">Show all outputs</s:String>
+    <s:String x:Key="Status">Status</s:String>
+    <s:String x:Key="Operate">Operate</s:String>
+
+
+    <!--  SystemSettingView  -->
+    <s:String x:Key="SysParCfg">System Parameter</s:String>
+    <s:String x:Key="AddNewProduct">Add New Product</s:String>
+    <s:String x:Key="ChangeProductName">Change Current Product Name</s:String>
+    <s:String x:Key="ProductCfg">Product Config</s:String>
+    <s:String x:Key="MuteTheAlarmSound">Mute The Alarm Sound</s:String>
+    <s:String x:Key="DeleteCurrentProduct">Delete Current Product</s:String>
+
+    <!--  MCSpacePointConfigView  -->
+    <s:String x:Key="SpacePointSetting">Space point setting</s:String>
+    <s:String x:Key="AddNewSpacePoint">Add new space point</s:String>
+    <s:String x:Key="ShowAllMCPoints">Show all points</s:String>
+    <s:String x:Key="AxisRelative">Axis relative:</s:String>
+    <s:String x:Key="SafeAxisRelative">Safe axis relative:</s:String>
+    <s:String x:Key="SaveAxisRelative">Save axis relative</s:String>
+    <s:String x:Key="Delete">Delete</s:String>
+    <s:String x:Key="SaveSpacePointValue">Save space point value</s:String>
+    <s:String x:Key="Teach">Teach</s:String>
+    <s:String x:Key="AbsolutePosition">AbsPos:</s:String>
+    <s:String x:Key="RelativePosition">RelPos:</s:String>
+    <s:String x:Key="Speed">Speed:</s:String>
+    <s:String x:Key="Acceleration">Acc:</s:String>
+    <s:String x:Key="Deceleration">Dec:</s:String>
+    <s:String x:Key="AccelerationAndDeceleration">Acc/Dec</s:String>
+    <s:String x:Key="Offset">Offset:</s:String>
+
+    <!--  MCParmeterConfigView  -->
+    <s:String x:Key="MCParmeterSetting">MC Parmeter Setting</s:String>
+    <s:String x:Key="AddMCParmeter">Add MC Parmeter</s:String>
+    <s:String x:Key="DeleteMCParmeter">Delete MC Parmeter</s:String>
+    <s:String x:Key="UseTheRightButtonToAddOrDeleteEntries">Use the right button to add/delete entries</s:String>
+    <s:String x:Key="Value">Value</s:String>
+    <s:String x:Key="Remark">Remark</s:String>
+    <s:String x:Key="Required">Required</s:String>
+    <s:String x:Key="AddParameter">Add parameter</s:String>
+    <s:String x:Key="DeleteParameter">Delete parameter</s:String>
+    <s:String x:Key="KeepSelected">Keep selected</s:String>
+    <s:String x:Key="SaveAll">Save all</s:String>
+
+    <!--  MCParmeterBebugView  -->
+    <s:String x:Key="SelectGroup">Group:</s:String>
+    <s:String x:Key="ShowAllParameters">Show all parameters</s:String>
+    <s:String x:Key="SaveData">Save data</s:String>
+    <s:String x:Key="ParameterNameFiltering">Parameter name filtering</s:String>
+    <s:String x:Key="DataType">Data type</s:String>
+    <s:String x:Key="Unit">Unit</s:String>
+
+    <!--  MCInterpolationPathView  -->
+    <s:String x:Key="Enable">Enable:</s:String>
+    <s:String x:Key="MappingAxis">Mapping Axis:</s:String>
+    <s:String x:Key="BeginningPoint">Start Point:</s:String>
+    <s:String x:Key="InterpolationCoordinate">Interpolation Coordinate:</s:String>
+    <s:String x:Key="Save">Save</s:String>
+    <s:String x:Key="TeachBeginningPoint">Teach Beginning Point</s:String>
+    <s:String x:Key="AddInterpolationPath">Add Interpolation Path</s:String>
+    <s:String x:Key="InsertInterpolationPath">Insert Interpolation Path</s:String>
+    <s:String x:Key="DeleteInterpolationPath">Delete Interpolation Path</s:String>
+    <s:String x:Key="Sequence">Sequence</s:String>
+    <s:String x:Key="Mode">Mode</s:String>
+    <s:String x:Key="EditTheInterpolationPath">Edit the interpolation path</s:String>
+    <s:String x:Key="InterpolationPath">interpolation path</s:String>
+
+    <!--  UserSettingView  -->
+    <s:String x:Key="CreateNewUser">Create User</s:String>
+    <s:String x:Key="UserName">UserName</s:String>
+    <s:String x:Key="Password">Password</s:String>
+    <s:String x:Key="PasswordSecond">Password Second</s:String>
+    <s:String x:Key="Authority">Authority</s:String>
+    <s:String x:Key="Operator">Operator</s:String>
+    <s:String x:Key="Administrator">Administrator</s:String>
+    <s:String x:Key="Search">Search</s:String>
+    <s:String x:Key="ChangePassword">Change Password</s:String>
+    <s:String x:Key="OldPassword">Old password</s:String>
+    <s:String x:Key="NewPassword">New password</s:String>
+    <s:String x:Key="NewPasswordSecond">New password second</s:String>
+
+    <!--  DataSummaryView  -->
+    <s:String x:Key="LogSearch">LogSearch</s:String>
+    <s:String x:Key="ProductInfoSearch">ProductInfoSearch</s:String>
+    <s:String x:Key="ProductivityListSearch">Productivity-ListSearch</s:String>
+    <s:String x:Key="ProductivityChartSearch">Productivity-ChartSearch</s:String>
+    <s:String x:Key="CTListSearch">CT-ListSearch</s:String>
+    <s:String x:Key="CTChartSearch">CT-ChartSearch</s:String>
+    <s:String x:Key="OperationRate">OperationRate</s:String>
+
+    <!--  LogSearchView  -->
+    <s:String x:Key="SelectStartDate">Select start date</s:String>
+    <s:String x:Key="SelectStartTime">Select start time</s:String>
+    <s:String x:Key="SelectEndDate">Select end date</s:String>
+    <s:String x:Key="SelectEndTime">Select end time</s:String>
+    <s:String x:Key="SelectSearchNum">Select search num</s:String>
+    <s:String x:Key="Export">Export</s:String>
+    <s:String x:Key="SelectLogLevel">Select log level</s:String>
+    <s:String x:Key="Level">Level</s:String>
+    <s:String x:Key="Time">Time</s:String>
+    <s:String x:Key="Content">Content</s:String>
+
+    <!--  ProductInfoSearchView  -->
+    <s:String x:Key="ProductCode">Product code</s:String>
+    <s:String x:Key="Result">Result</s:String>
+    <s:String x:Key="ProductStartTime">Product start time</s:String>
+    <s:String x:Key="ProductEndTime">Product end time</s:String>
+
+    <!--  ProductivityListSearchView  -->
+    <s:String x:Key="Productivity">Productivity</s:String>
+    <s:String x:Key="FailNums">NG nums</s:String>
+    <s:String x:Key="Percentage">Percentage</s:String>
+
+    <!--  ProductivityChartSearchView  -->
+    <s:String x:Key="totality">totality</s:String>
+
+    <!--  ProductCTListSearchView  -->
+    <s:String x:Key="MeanCT">Mean CT</s:String>
+
+    <!--  ProductOEESearchView  -->
+    <s:String x:Key="SelectSearchDate">Select search date</s:String>
+    <s:String x:Key="OEECompletionRate">OEE completion rate</s:String>
+    <s:String x:Key="PerformanceOperationRate">Performance operation rate</s:String>
+    <s:String x:Key="TimeOperationRate">Time operation rate</s:String>
+    <s:String x:Key="RunnintTime">Runnint Time</s:String>
+    <s:String x:Key="AlarmTime">Alarm Time</s:String>
+    <s:String x:Key="IdlingTime">Idling Time</s:String>
+
+    <!--  AddInterpolationPathView  -->
+    <s:String x:Key="OK">OK</s:String>
+    <s:String x:Key="Cancel">Cancel</s:String>
+    <s:String x:Key="PleaseEnterAnInterpolatedPathName">Please enter an interpolated path name</s:String>
+
+    <!--  AddNewProductView  -->
+    <s:String x:Key="PleaseEnterAnProductName">Please enter an product name</s:String>
+
+    <!--  AddParmeterView  -->
+    <s:String x:Key="PleaseEnterAnParmeterName">Please enter an parmeter name</s:String>
+    <s:String x:Key="PleaseEnterAnParmeterValue">Please enter an parmeter value</s:String>
+
+    <!--  AddNewProductView  -->
+    <s:String x:Key="PleaseEnterAnSpacePointName">Please enter an space point name</s:String>
+
+    <!--  Dialog  在扩展方法中查找资源  -->
+    <s:String x:Key="确认">OK</s:String>
+    <s:String x:Key="取消">Cancel</s:String>
+    <s:String x:Key="确认删除?">Please confirm to delete?</s:String>
+    <s:String x:Key="确认删除">Please confirm to delete</s:String>
+    <s:String x:Key="提示">Tips</s:String>
+    <s:String x:Key="警告">Warning</s:String>
+    <s:String x:Key="错误">Error</s:String>
+    <s:String x:Key="确认保存? 保存后请重启软件!">Confirm to save? Please restart the software after saving!</s:String>
+    <s:String x:Key="本程序一次只能运行一个实例!">This program can only run one instance at a time!</s:String>
+    <s:String x:Key="确认退出系统?">Confirm exit the program?</s:String>
+
+    <!--  eventAggregator 在扩展方法中查找资源  -->
+    <!--  eventAggregator.SendLaunchInfo  -->
+    <s:String x:Key="初始化弹窗服务">Initialize Dialog Service</s:String>
+    <s:String x:Key="初始化日志服务">Initialize Log Service</s:String>
+    <s:String x:Key="注册日志服务">Register Log Service</s:String>
+    <s:String x:Key="初始化数据库服务">Initialize DataBase Service</s:String>
+    <s:String x:Key="初始化权限服务">Initialize Permission Service</s:String>
+    <s:String x:Key="初始化映射服务">Initialize Mapper Service</s:String>
+    <s:String x:Key="初始化插补数据">Initialize Interpolation Paths</s:String>
+    <s:String x:Key="初始化运动控制卡">Initialize Motion Card</s:String>
+    <s:String x:Key="初始运动参数集合">Initializes motion parameters</s:String>
+    <s:String x:Key="初始运动点位集合">Initialize motion point</s:String>
+    <s:String x:Key="初始化气缸集合">Initialize cylinder</s:String>
+    <s:String x:Key="数据库表备份">Database backup</s:String>
+
+    <!--  snackbarMessageQueue.EnqueueEx  在扩展方法SendMessage中查找资源  -->
+    <s:String x:Key="查询成功">Search successfully</s:String>
+    <s:String x:Key="导出成功.">Export successfully.</s:String>
+    <s:String x:Key="请登陆有权限账户.">Please log in to an authorized account.</s:String>
+    <s:String x:Key="查询出错">Search error</s:String>
+    <s:String x:Key="初始化运动控制卡成功">Succeeded to initialize the motion control card</s:String>
+    <s:String x:Key="初始化运动控制卡失败">Failed to initialize the motion control card</s:String>
+    <s:String x:Key="请输入名称.">Please enter name.</s:String>
+    <s:String x:Key="已存在同名输入点名称.">The same input point name already exists.</s:String>
+    <s:String x:Key="已存在同名输出点名称.">The same output point name already exists.</s:String>
+    <s:String x:Key="无当前生成产品,无法添加!">No currently generated product, cannot be added!</s:String>
+    <s:String x:Key="已存在相同名称参数,创建失败.">Description Failed to create a parameter with the same name.</s:String>
+    <s:String x:Key="请选中删除条目.">Please select Delete entry.</s:String>
+    <s:String x:Key="已存在相同名称点位,创建失败">Description Failed to create a point with the same name</s:String>
+    <s:String x:Key="创建成功!">Created successfully!</s:String>
+    <s:String x:Key="保存相关轴成功!">Saving the associated axis successfully!</s:String>
+    <s:String x:Key="示教数据写入失败,轴当量为0!">Teaching data write failed, axis proportion is 0!</s:String>
+    <s:String x:Key="示教数据写入,请保存!">Teach data write, please save!</s:String>
+    <s:String x:Key="示教数据写入异常!">Teaching data write exception!</s:String>
+    <s:String x:Key="权限不足，请登录管理员权限">Insufficient authority,Please log in to an authorized account.</s:String>
+    <s:String x:Key="请输入用户名">Please enter username</s:String>
+    <s:String x:Key="请输入密码">Please enter password</s:String>
+    <s:String x:Key="两次输入的密码不一致">The two passwords are different</s:String>
+    <s:String x:Key="请选择用户权限">Please select user Authority</s:String>
+    <s:String x:Key="用户已存在">User exists</s:String>
+    <s:String x:Key="请选择要删除的用户">Select the user you want to delete</s:String>
+    <s:String x:Key="删除失败">Fail to delete</s:String>
+    <s:String x:Key="请输入正确信息">Please enter the correct information</s:String>
+    <s:String x:Key="需要管理员权限">Administrator permissions required</s:String>
+    <s:String x:Key="用户不存在或密码不正确">The user does not exist or the password is incorrect</s:String>
+    <s:String x:Key="密码修改失败">Password change failed</s:String>
+    <s:String x:Key="删除点位">Delete Space Point</s:String>
+    <s:String x:Key="保存点位">Delete Space Point</s:String>
+    <s:String x:Key="成功">succeeded</s:String>
+    <s:String x:Key="失败">failed</s:String>
+    <s:String x:Key="成功,切换页面后生效">successfully,It takes effect after the page is switched</s:String>
+    <s:String x:Key="动点传感器延时时间为0,不能屏蔽,请设定正确的动点传感器屏蔽后延时时间.">The delay time of the moving point sensor is 0 and cannot be shielded. Please set the correct delay time after the shielding of the moving point sensor.</s:String>
+    <s:String x:Key="筛选输入点位成功">Filtering the input bit succeeded. Procedure</s:String>
+    <s:String x:Key="筛选输出点位成功">Filtering the output point succeeded</s:String>
+    <s:String x:Key="无可删除点位">无可删除点位</s:String>
+    <s:String x:Key="显示所有输出点位成功">All output points are displayed successfully</s:String>
+    <s:String x:Key="移动到点位失败">Failed to move to point</s:String>
+    <s:String x:Key="移动到点位完成">Move to point complete</s:String>
+    <s:String x:Key="请选择需要设定的点位">Please select the point you want to set</s:String>
+    <s:String x:Key="点位筛选成功">Point filtering succeeded</s:String>
+    <s:String x:Key="点位调试页面,保存后生效.">The point debugging page takes effect after being saved</s:String>
+    <s:String x:Key="请输入数值">Please enter the value</s:String>
+    <s:String x:Key="请选中需要删除的参数">Select the parameter that you want to delete</s:String>
+    <s:String x:Key="参数调试页面保存,保存后生效.">The parameter debugging page is saved and takes effect after being saved</s:String>
+    <s:String x:Key="显示所有参数成功">All parameters are displayed successfully</s:String>
+    <s:String x:Key="数据非法,无法保存">The data is invalid and cannot be saved</s:String>
+    <s:String x:Key="不能删除最后一个产品">The last product cannot be deleted</s:String>
+    <s:String x:Key="取消删除产品">Undelete product</s:String>
+    <s:String x:Key="显示所有轴成功">All axes are displayed successfully</s:String>
+    <s:String x:Key="添加轴成功">Axis added successfully</s:String>
+    <s:String x:Key="筛选轴成功">Sifting axis successful</s:String>
+    <s:String x:Key="设备运转中请勿修改参数">Do not modify parameters while the device is running</s:String>
+    <s:String x:Key="名称不合法,名称不能以数字开头">The name is invalid and cannot start with a digit</s:String>
+    <s:String x:Key="气缸名称重复">Duplicate cylinder name</s:String>
+    <s:String x:Key="气缸编号重复">Duplicate cylinder number</s:String>
+    <s:String x:Key="添加气缸成功">Cylinder added successfully</s:String>
+    <s:String x:Key="请输入气缸名称">Please enter the cylinder name</s:String>
+    <s:String x:Key="筛选气缸成功">Cylinder screening success</s:String>
+    <s:String x:Key="删除气缸成功">Cylinder removed successfully</s:String>
+    <s:String x:Key="显示所有气缸成功">All cylinders are displayed successfully</s:String>
+
+    <s:String x:Key="显示所有成功">Show all successes</s:String>
+    <s:String x:Key="筛选成功">Successful screening</s:String>
+
+    <s:String x:Key="设备运转中,请勿修改参数">Do not modify parameters when the device is running</s:String>
+    <s:String x:Key="请登录有权限账户">Please log in to an authorized account</s:String>
+    <s:String x:Key="轴卡映射ID重复">The ID of the card mapping is repeated</s:String>
+    <s:String x:Key="轴名称重复">Shaft name duplication</s:String>
+    <s:String x:Key="轴编号重复">Duplicate axis numbering</s:String>
+    <s:String x:Key="权限不足">Insufficient authority</s:String>
+
+    <s:String x:Key="添加成功">Add successfully</s:String>
+    <s:String x:Key="登出成功!">Logout success!</s:String>
+    <s:String x:Key="登录Level 2成功!">Log in to Level 2 successfully!</s:String>
+    <s:String x:Key="登录Level 1成功!">Log in to Level 1 successfully!</s:String>
+    <s:String x:Key="登录Level 3成功!">Log in to Level 3 successfully!</s:String>
+    <s:String x:Key="请选择查询日期">Please select the search date</s:String>
+    <s:String x:Key="文件被占用,请关闭文件">The file is occupied. Please close the file</s:String>
+    <s:String x:Key="产品名称不能为空">The product name cannot be empty</s:String>
+    <s:String x:Key="当前状态不在BurnInTesting状态,无法离开BrunIn.可使用急停停止BurnInTesting.">The current state is not in the BurnInTesting state and cannot leave BrunIn. BurnInTesting can be stopped with an emergency stop.</s:String>
+    <s:String x:Key="单步模式仅支持生产模式单步">Single-step mode only running mode single-step is supported</s:String>
+    <s:String x:Key="请输入轴名称">Please enter a axis name</s:String>
+    <s:String x:Key="请选择回原方式">Please select the original Method</s:String>
+    <s:String x:Key="请输入回原高速度">Please enter the original high vel</s:String>
+    <s:String x:Key="请输入回原低速度">Please enter the original low vel</s:String>
+    <s:String x:Key="请输入回原加速度">Please enter the original Acceleration</s:String>
+    <s:String x:Key="请输入回原超时时间">Please enter the original timeout</s:String>
+    <s:String x:Key="请输入轴当量">Please enter the axis proportion</s:String>
+    <s:String x:Key="名字重复,添加失败">Failed to add the name because the name is repeated</s:String>
+    <s:String x:Key="添加取消">unadd</s:String>
+    <s:String x:Key="删除成功">Deleted successfully</s:String>
+    <s:String x:Key="保存成功!">Save successfully!</s:String>
+    <s:String x:Key="保存失败!">Save failed!</s:String>
+    <s:String x:Key="保存失败!出现异常,请查看日志.">Save failed! If an exception occurs, check the log.</s:String>
+    <s:String x:Key="参数异常,添加失败!">The parameter is abnormal and failed to be added!</s:String>
+    <s:String x:Key="请选择插入行">Please select insert row</s:String>
+    <s:String x:Key="请选择删除行">Please select delete row</s:String>
+    <s:String x:Key="示教成功,请保存">Teach success, please save</s:String>
+    <s:String x:Key="示教异常">Teaching abnormality</s:String>
+    <s:String x:Key="示教携带参数异常">The teaching carry parameter is abnormal</s:String>
+    <s:String x:Key="示教失败">Teaching failure</s:String>
+    <s:String x:Key="终点示教携带参数异常">The teaching of end point carry parameter is abnormal</s:String>
+    <s:String x:Key="往复运动起点与终点不能相同">The starting point and end point of reciprocating motion cannot be the same</s:String>
+    <s:String x:Key="已存在相同名称产品,创建失败">Description Failed to create a product with the same name</s:String>
+
+    <!--  MCMovementPointSecurity  -->
+    <s:String x:Key="MovementPointSecurity">Manual Movement Point Security Config</s:String>
+
+    <!--  MCMovementPointSecurityView  -->
+    <s:String x:Key="MotionPointPosition">Motion point position</s:String>
+    <s:String x:Key="OutputPoint">Output point</s:String>
+    <s:String x:Key="OriginOfAxis">Origin of axis</s:String>
+    <s:String x:Key="DeleteTime">Delete time:</s:String>
+    <s:String x:Key="Sure">Sure</s:String>
+    <s:String x:Key="Reset">Reset</s:String>
+    <s:String x:Key="Clear">Clear</s:String>
+
+
+    <!--  AppleAlarmView  -->
+    <s:String x:Key="AxisError">Axis</s:String>
+    <s:String x:Key="CylinderError">Cylinder</s:String>
+    <s:String x:Key="SensorError">Sensor</s:String>
+    <s:String x:Key="VisionError">Vision</s:String>
+    <s:String x:Key="SoftwareError">Software</s:String>
+    <s:String x:Key="OthersError">Others</s:String>
+    <s:String x:Key="AlarmOverview">Alarm overview</s:String>
+    <s:String x:Key="TimeAlarmOverview">Time alarm overview</s:String>
+    <s:String x:Key="SelectAlarmType">Select alarm type</s:String>
+    <s:String x:Key="ResultsReal-timeFiltering">Results real-time filtering</s:String>
+
+    <!--  GlobalLogView  -->
+    <s:String x:Key="GlobalLog">Log</s:String>
+
+    <!--  MCMovementPointDebugView  -->
+    <s:String x:Key="GlobalVelocity">GlobalVel:</s:String>
+    <s:String x:Key="SaveGlobalVelocity">Save GlobalVel</s:String>
+    <s:String x:Key="TeachTheCurrentPointPosition">Teach point place</s:String>
+    <s:String x:Key="QuickFilteringOfPointNames">Quick filtering of point names</s:String>
+    <s:String x:Key="MoveToPointPosition">Move point place</s:String>
+    <s:String x:Key="StopMoveToPointPosition">Stop move point</s:String>
+    <s:String x:Key="MoveType">MoveType</s:String>
+    <s:String x:Key="AbsoluteDisplacement">Abs Move</s:String>
+    <s:String x:Key="RelativeDisplacement">Rel Move</s:String>
+    <s:String x:Key="InPlaceIOName">In place ION name</s:String>
+    <s:String x:Key="ShowsAllAxisOperations">Shows all axis perations</s:String>
+    <s:String x:Key="ClearErrors">Clear errors</s:String>
+    <s:String x:Key="Dot/inchSpeed">Dot/inch speed</s:String>
+    <s:String x:Key="UpperEnabl">Enable</s:String>
+    <s:String x:Key="DownEnabl">Disable</s:String>
+
+    <!--  MCMovementPointConfigView  -->
+    <s:String x:Key="DeleteMotionPoint">Delete motion point</s:String>
+    <s:String x:Key="ManualPointMotionTimedOut">Manual timeout</s:String>
+    <s:String x:Key="MotionPointsParticipateAxis">Motion points participate axis</s:String>
+    <s:String x:Key="ManualClickSecurityConfiguration">Manual click security configuration</s:String>
+
+    <!--  FSMStateCode  -->
+    <s:String x:Key="设备上电状态">PowerUpping</s:String>
+    <s:String x:Key="设备全局复位中状态">GlobleResetting</s:String>
+    <s:String x:Key="设备待机状态">Idling</s:String>
+    <s:String x:Key="设备运行中状态">Running</s:String>
+    <s:String x:Key="设备暂停中状态">Pausing</s:String>
+    <s:String x:Key="设备急停中状态">EmergencyStopping</s:String>
+    <s:String x:Key="设备报警状态">Alarming</s:String>
+    <s:String x:Key="空跑测试状态">BurnInTesting</s:String>
+    <s:String x:Key="空跑报警状态">BurnInAlarming</s:String>
+    <s:String x:Key="空跑暂停状态">BurnInPausing</s:String>
+
+    <s:String x:Key="ClearLog">Clear Log</s:String>
+    <s:String x:Key="OpenLog">Open Log</s:String>
+
+    <!--  Interlock  -->
+    <s:String x:Key="未有联锁记录,请联系开发者检查程序">Threr is no interlock record, please contact developer.</s:String>
+    <s:String x:Key="设备未完全停止,联锁记录等待中,请等待设备停止.点击确定关闭窗口.">Interlock is recording, please wait. Press yes to close window.</s:String>
+    <s:String x:Key="联锁检查失败!点击确定关闭窗口.">Interlock check failed, Press yes to close window.</s:String>
+    <s:String x:Key="联锁记录超时,请确认设备是否停止及联锁记录时间是否合理.点击确定关闭窗口.">Interlock recorded failed, please confirm machine status and the time of record. Press yes to close window.</s:String>
+    <s:String x:Key="联锁记录异常,请确认设备是否停止.点击确定关闭窗口.">Interlock record exception, please confirm machine status. Press yes to close window.</s:String>
+    <s:String x:Key="强制启动">Force Start</s:String>
+    <s:String x:Key="确定">Yes</s:String>
+    <s:String x:Key="设备运行中,请勿切换页面">Do not switch view while machine running</s:String>
+</ResourceDictionary>

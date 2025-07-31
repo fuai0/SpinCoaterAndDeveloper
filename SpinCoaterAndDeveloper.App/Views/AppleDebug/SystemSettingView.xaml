@@ -1,0 +1,128 @@
+﻿<UserControl
+    x:Class="SpinCoaterAndDeveloper.App.Views.SystemSettingView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vc="clr-namespace:ValueConverters;assembly=ValueConverters"
+    xmlns:viewmodels="clr-namespace:SpinCoaterAndDeveloper.App.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:SystemSettingViewModel}"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <vc:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+    </UserControl.Resources>
+    <Grid Background="{StaticResource AppleHeavyBackGroundBrush}">
+        <StackPanel Margin="5">
+            <UniformGrid Columns="2">
+                <!--<GroupBox Margin="0,0,2,0" Header="{DynamicResource LanguageSelect}">
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                            Text="中文" />
+                        <ToggleButton
+                            x:Name="tbLanguage"
+                            Margin="20,0,20,0"
+                            VerticalAlignment="Center"
+                            Command="{Binding LanguageSelectCommand}"
+                            CommandParameter="{Binding ElementName=tbLanguage, Path=IsChecked}"
+                            IsChecked="{Binding CurrentSelect}"
+                            Style="{StaticResource MaterialDesignSwitchToggleButton}" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                            Text="English" />
+                    </StackPanel>
+                </GroupBox>-->
+                <GroupBox Margin="0,0,1,0" Header="{DynamicResource MuteTheAlarmSound}">
+                    <CheckBox
+                        x:Name="SilenceAlarmCheckBox"
+                        VerticalAlignment="Center"
+                        Command="{Binding ChangeSilenceAlarmCommand}"
+                        Content="Shield"
+                        Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                        IsChecked="{Binding SilenceAlarm}" />
+                </GroupBox>
+                <GroupBox Margin="1,0,0,0" Header="{DynamicResource SelectLogLevel}">
+                    <UniformGrid Columns="5">
+                        <RadioButton
+                            Command="{Binding LogLevelChangeCommand}"
+                            Content="DEBUG"
+                            IsChecked="{Binding LogLevel, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=DEBUG}" />
+                        <RadioButton
+                            Command="{Binding LogLevelChangeCommand}"
+                            Content="INFO"
+                            IsChecked="{Binding LogLevel, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=INFO}" />
+                        <RadioButton
+                            Command="{Binding LogLevelChangeCommand}"
+                            Content="WARN"
+                            IsChecked="{Binding LogLevel, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=WARN}" />
+                        <RadioButton
+                            Command="{Binding LogLevelChangeCommand}"
+                            Content="ERROR"
+                            IsChecked="{Binding LogLevel, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=ERROR}" />
+                        <RadioButton
+                            Command="{Binding LogLevelChangeCommand}"
+                            Content="FATAL"
+                            IsChecked="{Binding LogLevel, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=FATAL}" />
+                    </UniformGrid>
+                </GroupBox>
+            </UniformGrid>
+
+            <GroupBox
+                Grid.Row="1"
+                Margin="0,5,0,0"
+                Header="{DynamicResource ProductCfg}">
+                <Grid Margin="0,0,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ItemsControl ItemsSource="{Binding ProductCollections}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <RadioButton
+                                    Margin="0,0,20,0"
+                                    Command="{Binding DataContext.ProductChangeCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                                    Content="{Binding Name}"
+                                    GroupName="Products"
+                                    IsChecked="{Binding Select}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <StackPanel
+                        Grid.Row="1"
+                        Margin="0,5,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <Button
+                            Command="{Binding AddNewProductCommand}"
+                            Content="{DynamicResource AddNewProduct}"
+                            Cursor="Hand" />
+                        <Button
+                            Margin="10,0,0,0"
+                            Command="{Binding ChangeProductNameCommand}"
+                            Content="{DynamicResource ChangeProductName}" />
+                        <Button
+                            Margin="10,0,0,0"
+                            Command="{Binding DeleteProductCommand}"
+                            Content="{DynamicResource DeleteCurrentProduct}"
+                            Foreground="{StaticResource SecondaryAccentForegroundBrush}" />
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+
+</UserControl>

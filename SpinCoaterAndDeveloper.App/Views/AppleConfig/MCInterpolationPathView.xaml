@@ -1,0 +1,1043 @@
+﻿<UserControl
+    x:Class="SpinCoaterAndDeveloper.App.Views.MCInterpolationPathView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:bp="clr-namespace:PrismAutomationPlatformExt;assembly=PrismAutomationPlatformExt"
+    xmlns:cv="clr-namespace:SpinCoaterAndDeveloper.App.Common.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SpinCoaterAndDeveloper.Shared.Models.InterpolationModels;assembly=SpinCoaterAndDeveloper.Shared"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:vc="clr-namespace:ValueConverters;assembly=ValueConverters"
+    xmlns:viewmodels="clr-namespace:SpinCoaterAndDeveloper.App.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MCInterpolationPathViewModel}"
+    d:DesignHeight="700"
+    d:DesignWidth="1280"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <cv:IntToStringConverter x:Key="IntToStringConverter" />
+        <cv:InterpolationPathModeToBoolConverter x:Key="InterpolationPathModeToBoolConverter" />
+        <cv:InterpolationContextMenuMultiConverter x:Key="InterpolationContextMenuMultiConverter" />
+        <bp:BindingProxy x:Key="BindingProxy" Data="{Binding}" />
+        <ObjectDataProvider
+            x:Key="InterpolationModeEnum"
+            MethodName="GetNames"
+            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:InterpolationPathMode" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <vc:ValueConverterGroup x:Key="CountToVisiblityConverter">
+            <vc:IntegerToBoolConverter BaseOnFalseValue="True" FalseValue="0" />
+            <vc:BoolToVisibilityConverter FalseValue="Collapsed" TrueValue="Visible" />
+        </vc:ValueConverterGroup>
+    </UserControl.Resources>
+    <Grid Background="{StaticResource AppleHeavyBackGroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="1" Margin="0,5,5,0">
+            <TabControl
+                ItemsSource="{Binding InterpolationPathCoordinateCollection}"
+                TabStripPlacement="Left"
+                Visibility="{Binding InterpolationPathCoordinateCollection.Count, Converter={StaticResource CountToVisiblityConverter}, ConverterParameter=0}">
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="{StaticResource PrimaryHueDarkBrush}" BorderThickness="0,0,0,1">
+                            <StackPanel
+                                Height="40"
+                                VerticalAlignment="Center"
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Foreground="{StaticResource PrimaryHueDarkBrush}"
+                                    Text="{Binding PathName}" />
+                                <Button
+                                    Width="24"
+                                    Height="25"
+                                    Margin="15,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Command="{Binding DataContext.DeleteInterpolationPathCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource MaterialDesignIconForegroundButton}">
+                                    <materialDesign:PackIcon
+                                        Background="Transparent"
+                                        Foreground="OrangeRed"
+                                        Kind="Close" />
+                                </Button>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+                <TabControl.ContentTemplate>
+                    <DataTemplate>
+                        <Grid Background="{StaticResource AppleHeavyBackGroundBrush}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <!--  坐标系配置  -->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="4*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="6*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <!--  X  -->
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    FontWeight="Bold"
+                                    Text="X" />
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Enable}" />
+                                <CheckBox
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsChecked="{Binding EnableAxisX}"
+                                    IsEnabled="False" />
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Grid.Column="3"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource MappingAxis}" />
+                                <ComboBox
+                                    Grid.Row="0"
+                                    Grid.Column="4"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    DisplayMemberPath="Name"
+                                    IsEditable="True"
+                                    ItemsSource="{Binding DataContext.AxisCollection, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                    SelectedItem="{Binding AxisX}"
+                                    Text="{Binding AxisX.Name}" />
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Grid.Column="5"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource BeginningPoint}" />
+                                <TextBox
+                                    Grid.Row="0"
+                                    Grid.Column="6"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding BeginningX}" />
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Grid.Column="7"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Speed}" />
+                                <TextBox
+                                    Grid.Row="0"
+                                    Grid.Column="8"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding BeginningXVel}" />
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Grid.Column="9"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Acceleration}" />
+                                <TextBox
+                                    Grid.Row="0"
+                                    Grid.Column="10"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding BeginningXAcc}" />
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Grid.Column="11"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Deceleration}" />
+                                <TextBox
+                                    Grid.Row="0"
+                                    Grid.Column="12"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding BeginningXDec}" />
+                                <!--  Y  -->
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    FontWeight="Bold"
+                                    Text="Y" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Enable}" />
+                                <CheckBox
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsChecked="{Binding EnableAxisY}"
+                                    IsEnabled="False" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="3"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource MappingAxis}" />
+                                <ComboBox
+                                    Grid.Row="1"
+                                    Grid.Column="4"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    DisplayMemberPath="Name"
+                                    IsEditable="True"
+                                    ItemsSource="{Binding DataContext.AxisCollection, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                    SelectedItem="{Binding AxisY}"
+                                    Text="{Binding AxisY.Name}" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="5"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource BeginningPoint}" />
+                                <TextBox
+                                    Grid.Row="1"
+                                    Grid.Column="6"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding BeginningY}" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="7"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Speed}" />
+                                <TextBox
+                                    Grid.Row="1"
+                                    Grid.Column="8"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding BeginningYVel}" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="9"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Acceleration}" />
+                                <TextBox
+                                    Grid.Row="1"
+                                    Grid.Column="10"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding BeginningYAcc}" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="11"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Deceleration}" />
+                                <TextBox
+                                    Grid.Row="1"
+                                    Grid.Column="12"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding BeginningYDec}" />
+                                <!--  Z  -->
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    FontWeight="Bold"
+                                    Text="Z" />
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Enable}" />
+                                <CheckBox
+                                    x:Name="InterpolationZEnable"
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsChecked="{Binding EnableAxisZ}" />
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Grid.Column="3"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource MappingAxis}" />
+                                <ComboBox
+                                    Grid.Row="2"
+                                    Grid.Column="4"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    DisplayMemberPath="Name"
+                                    IsEditable="True"
+                                    IsEnabled="{Binding EnableAxisZ}"
+                                    ItemsSource="{Binding DataContext.AxisCollection, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                    SelectedItem="{Binding AxisZ}"
+                                    Text="{Binding AxisZ.Name}" />
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Grid.Column="5"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource BeginningPoint}" />
+                                <TextBox
+                                    Grid.Row="2"
+                                    Grid.Column="6"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsEnabled="{Binding EnableAxisZ}"
+                                    Text="{Binding BeginningZ}" />
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Grid.Column="7"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Speed}" />
+                                <TextBox
+                                    Grid.Row="2"
+                                    Grid.Column="8"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsEnabled="{Binding EnableAxisZ}"
+                                    Text="{Binding BeginningZVel}" />
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Grid.Column="9"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Acceleration}" />
+                                <TextBox
+                                    Grid.Row="2"
+                                    Grid.Column="10"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsEnabled="{Binding EnableAxisZ}"
+                                    Text="{Binding BeginningZAcc}" />
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Grid.Column="11"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Deceleration}" />
+                                <TextBox
+                                    Grid.Row="2"
+                                    Grid.Column="12"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsEnabled="{Binding EnableAxisZ}"
+                                    Text="{Binding BeginningZDec}" />
+                                <!--  R  -->
+                                <TextBlock
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    FontWeight="Bold"
+                                    Text="R" />
+                                <TextBlock
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Enable}" />
+                                <CheckBox
+                                    x:Name="InterpolationREnable"
+                                    Grid.Row="3"
+                                    Grid.Column="2"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsChecked="{Binding EnableAxisR}" />
+                                <TextBlock
+                                    Grid.Row="3"
+                                    Grid.Column="3"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource MappingAxis}" />
+                                <ComboBox
+                                    Grid.Row="3"
+                                    Grid.Column="4"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    DisplayMemberPath="Name"
+                                    IsEditable="True"
+                                    IsEnabled="{Binding EnableAxisR}"
+                                    ItemsSource="{Binding DataContext.AxisCollection, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                    SelectedItem="{Binding AxisR}"
+                                    Text="{Binding AxisR.Name}" />
+                                <TextBlock
+                                    Grid.Row="3"
+                                    Grid.Column="5"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource BeginningPoint}" />
+                                <TextBox
+                                    Grid.Row="3"
+                                    Grid.Column="6"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsEnabled="{Binding EnableAxisR}"
+                                    Text="{Binding BeginningR}" />
+                                <TextBlock
+                                    Grid.Row="3"
+                                    Grid.Column="7"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Speed}" />
+                                <TextBox
+                                    Grid.Row="3"
+                                    Grid.Column="8"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsEnabled="{Binding EnableAxisR}"
+                                    Text="{Binding BeginningRVel}" />
+                                <TextBlock
+                                    Grid.Row="3"
+                                    Grid.Column="9"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Acceleration}" />
+                                <TextBox
+                                    Grid.Row="3"
+                                    Grid.Column="10"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsEnabled="{Binding EnableAxisR}"
+                                    Text="{Binding BeginningRAcc}" />
+                                <TextBlock
+                                    Grid.Row="3"
+                                    Grid.Column="11"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Deceleration}" />
+                                <TextBox
+                                    Grid.Row="3"
+                                    Grid.Column="12"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsEnabled="{Binding EnableAxisR}"
+                                    Text="{Binding BeginningRDec}" />
+                                <!--  A  -->
+                                <TextBlock
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    FontWeight="Bold"
+                                    Text="A" />
+                                <TextBlock
+                                    Grid.Row="4"
+                                    Grid.Column="1"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Enable}" />
+                                <CheckBox
+                                    x:Name="InterpolationAEnable"
+                                    Grid.Row="4"
+                                    Grid.Column="2"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsChecked="{Binding EnableAxisA}"
+                                    IsEnabled="True" />
+                                <TextBlock
+                                    Grid.Row="4"
+                                    Grid.Column="3"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource MappingAxis}" />
+                                <ComboBox
+                                    Grid.Row="4"
+                                    Grid.Column="4"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    DisplayMemberPath="Name"
+                                    IsEditable="True"
+                                    IsEnabled="{Binding EnableAxisA}"
+                                    ItemsSource="{Binding DataContext.AxisCollection, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                    SelectedItem="{Binding AxisA}"
+                                    Text="{Binding AxisA.Name}" />
+                                <TextBlock
+                                    Grid.Row="4"
+                                    Grid.Column="5"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource BeginningPoint}" />
+                                <TextBox
+                                    Grid.Row="4"
+                                    Grid.Column="6"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsEnabled="{Binding EnableAxisA}"
+                                    Text="{Binding BeginningA}" />
+                                <TextBlock
+                                    Grid.Row="4"
+                                    Grid.Column="7"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Speed}" />
+                                <TextBox
+                                    Grid.Row="4"
+                                    Grid.Column="8"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsEnabled="{Binding EnableAxisA}"
+                                    Text="{Binding BeginningAVel}" />
+                                <TextBlock
+                                    Grid.Row="4"
+                                    Grid.Column="9"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Acceleration}" />
+                                <TextBox
+                                    Grid.Row="4"
+                                    Grid.Column="10"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsEnabled="{Binding EnableAxisA}"
+                                    Text="{Binding BeginningAAcc}" />
+                                <TextBlock
+                                    Grid.Row="4"
+                                    Grid.Column="11"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="{DynamicResource Deceleration}" />
+                                <TextBox
+                                    Grid.Row="4"
+                                    Grid.Column="12"
+                                    MinWidth="90"
+                                    Margin="5,0,0,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    IsEnabled="{Binding EnableAxisA}"
+                                    Text="{Binding BeginningADec}" />
+
+                                <StackPanel
+                                    Grid.RowSpan="5"
+                                    Grid.Column="13"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                    <TextBlock Text="{DynamicResource InterpolationCoordinate}" />
+                                    <ComboBox
+                                        IsEditable="True"
+                                        ItemsSource="{Binding DataContext.CoordinateNums, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                        SelectedItem="{Binding InterpolationCoordinateID}"
+                                        Text="{Binding InterpolationCoordinateID, Converter={StaticResource IntToStringConverter}}" />
+                                    <Button
+                                        Margin="0,4,0,0"
+                                        Command="{Binding DataContext.SaveInterpolationPathCoordinateCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}"
+                                        Content="{DynamicResource Save}" />
+                                    <Button
+                                        Margin="0,4,0,0"
+                                        Command="{Binding DataContext.SetBeginningPointCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}"
+                                        Content="{DynamicResource TeachBeginningPoint}" />
+                                </StackPanel>
+                            </Grid>
+
+                            <ScrollViewer
+                                Grid.Row="1"
+                                HorizontalScrollBarVisibility="Visible"
+                                VerticalScrollBarVisibility="Visible">
+                                <ListView ItemsSource="{Binding InterpolationPaths}">
+                                    <ListView.ContextMenu>
+                                        <ContextMenu DataContext="{Binding Data, Source={StaticResource BindingProxy}}">
+                                            <MenuItem
+                                                Command="{Binding AddInterpolationPathCommand}"
+                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext}"
+                                                Header="{DynamicResource AddInterpolationPath}"
+                                                Icon="{materialDesign:PackIcon Kind=PlusBoxMultipleOutline}" />
+                                            <MenuItem
+                                                Command="{Binding InsertInterpolationPathCommand}"
+                                                Header="{DynamicResource InsertInterpolationPath}"
+                                                Icon="{materialDesign:PackIcon Kind=StarBoxMultipleOutline}">
+                                                <MenuItem.CommandParameter>
+                                                    <MultiBinding Converter="{StaticResource InterpolationContextMenuMultiConverter}">
+                                                        <Binding Path="PlacementTarget.DataContext" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}" />
+                                                        <Binding Path="PlacementTarget.SelectedItem" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}" />
+                                                    </MultiBinding>
+                                                </MenuItem.CommandParameter>
+                                            </MenuItem>
+                                            <MenuItem
+                                                Command="{Binding DeleteInterpolationPathDataCommand}"
+                                                Header="{DynamicResource DeleteInterpolationPath}"
+                                                Icon="{materialDesign:PackIcon Kind=MinusBoxMultipleOutline}">
+                                                <MenuItem.CommandParameter>
+                                                    <MultiBinding Converter="{StaticResource InterpolationContextMenuMultiConverter}">
+                                                        <Binding Path="PlacementTarget.DataContext" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}" />
+                                                        <Binding Path="PlacementTarget.SelectedItem" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}" />
+                                                    </MultiBinding>
+                                                </MenuItem.CommandParameter>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </ListView.ContextMenu>
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="{DynamicResource Sequence}">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock
+                                                            MinWidth="60"
+                                                            Padding="0"
+                                                            Text="{Binding Sequence}"
+                                                            TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="{DynamicResource Mode}">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <ComboBox
+                                                            Padding="0"
+                                                            IsEditable="True"
+                                                            ItemsSource="{Binding Source={StaticResource InterpolationModeEnum}}"
+                                                            SelectedItem="{Binding PathMode}"
+                                                            Text="{Binding PathMode}" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="MX">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox
+                                                            MinWidth="60"
+                                                            Padding="0"
+                                                            IsEnabled="{Binding PathMode, Converter={StaticResource InterpolationPathModeToBoolConverter}}"
+                                                            Text="{Binding MX}"
+                                                            TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="MY">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox
+                                                            MinWidth="60"
+                                                            Padding="0"
+                                                            IsEnabled="{Binding PathMode, Converter={StaticResource InterpolationPathModeToBoolConverter}}"
+                                                            Text="{Binding MY}"
+                                                            TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="MZ">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox
+                                                            MinWidth="60"
+                                                            Padding="0"
+                                                            Text="{Binding MZ}"
+                                                            TextAlignment="Center">
+                                                            <TextBox.Style>
+                                                                <Style BasedOn="{StaticResource MaterialDesignTextBox}" TargetType="TextBox">
+                                                                    <Style.Triggers>
+                                                                        <MultiDataTrigger>
+                                                                            <MultiDataTrigger.Conditions>
+                                                                                <Condition Binding="{Binding PathMode, Converter={StaticResource InterpolationPathModeToBoolConverter}}" Value="True" />
+                                                                                <Condition Binding="{Binding ElementName=InterpolationZEnable, Path=IsChecked}" Value="True" />
+                                                                            </MultiDataTrigger.Conditions>
+                                                                            <MultiDataTrigger.Setters>
+                                                                                <Setter Property="IsEnabled" Value="True" />
+                                                                            </MultiDataTrigger.Setters>
+                                                                        </MultiDataTrigger>
+                                                                        <MultiDataTrigger>
+                                                                            <MultiDataTrigger.Conditions>
+                                                                                <Condition Binding="{Binding PathMode, Converter={StaticResource InterpolationPathModeToBoolConverter}}" Value="False" />
+                                                                                <Condition Binding="{Binding ElementName=InterpolationZEnable, Path=IsChecked}" Value="True" />
+                                                                            </MultiDataTrigger.Conditions>
+                                                                            <MultiDataTrigger.Setters>
+                                                                                <Setter Property="IsEnabled" Value="False" />
+                                                                            </MultiDataTrigger.Setters>
+                                                                        </MultiDataTrigger>
+                                                                        <MultiDataTrigger>
+                                                                            <MultiDataTrigger.Conditions>
+                                                                                <Condition Binding="{Binding PathMode, Converter={StaticResource InterpolationPathModeToBoolConverter}}" Value="True" />
+                                                                                <Condition Binding="{Binding ElementName=InterpolationZEnable, Path=IsChecked}" Value="False" />
+                                                                            </MultiDataTrigger.Conditions>
+                                                                            <MultiDataTrigger.Setters>
+                                                                                <Setter Property="IsEnabled" Value="False" />
+                                                                            </MultiDataTrigger.Setters>
+                                                                        </MultiDataTrigger>
+                                                                        <MultiDataTrigger>
+                                                                            <MultiDataTrigger.Conditions>
+                                                                                <Condition Binding="{Binding PathMode, Converter={StaticResource InterpolationPathModeToBoolConverter}}" Value="False" />
+                                                                                <Condition Binding="{Binding ElementName=InterpolationZEnable, Path=IsChecked}" Value="False" />
+                                                                            </MultiDataTrigger.Conditions>
+                                                                            <MultiDataTrigger.Setters>
+                                                                                <Setter Property="IsEnabled" Value="False" />
+                                                                            </MultiDataTrigger.Setters>
+                                                                        </MultiDataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBox.Style>
+                                                        </TextBox>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="{DynamicResource Teach}">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button
+                                                            Width="20"
+                                                            Height="20"
+                                                            Margin="20,0,0,0"
+                                                            Padding="0"
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            Command="{Binding DataContext.InterpolationArcMidPointTeachCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                                                            Content="{materialDesign:PackIcon ChevronDownBoxOutline}"
+                                                            IsEnabled="{Binding PathMode, Converter={StaticResource InterpolationPathModeToBoolConverter}}"
+                                                            Style="{StaticResource MaterialDesignFlatDarkButton}">
+                                                            <Button.CommandParameter>
+                                                                <MultiBinding Converter="{StaticResource InterpolationContextMenuMultiConverter}">
+                                                                    <Binding Path="DataContext" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}" />
+                                                                    <Binding />
+                                                                </MultiBinding>
+                                                            </Button.CommandParameter>
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="TX">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox
+                                                            MinWidth="60"
+                                                            Padding="0"
+                                                            Text="{Binding TX}"
+                                                            TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="TY">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox
+                                                            MinWidth="60"
+                                                            Padding="0"
+                                                            Text="{Binding TY}"
+                                                            TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="TZ">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox
+                                                            MinWidth="60"
+                                                            Padding="0"
+                                                            IsEnabled="{Binding ElementName=InterpolationZEnable, Path=IsChecked}"
+                                                            Text="{Binding TZ}"
+                                                            TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="TR">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox
+                                                            MinWidth="60"
+                                                            Padding="0"
+                                                            IsEnabled="{Binding ElementName=InterpolationREnable, Path=IsChecked}"
+                                                            Text="{Binding TR}"
+                                                            TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="TA">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox
+                                                            MinWidth="60"
+                                                            Padding="0"
+                                                            IsEnabled="{Binding ElementName=InterpolationAEnable, Path=IsChecked}"
+                                                            Text="{Binding TA}"
+                                                            TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="{DynamicResource Teach}">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button
+                                                            Width="20"
+                                                            Height="20"
+                                                            Margin="20,0,0,0"
+                                                            Padding="0"
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            Command="{Binding DataContext.InterpolationEndPointTeachCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                                                            Content="{materialDesign:PackIcon ChevronDownBoxOutline}"
+                                                            Style="{StaticResource MaterialDesignFlatDarkButton}">
+                                                            <Button.CommandParameter>
+                                                                <MultiBinding Converter="{StaticResource InterpolationContextMenuMultiConverter}">
+                                                                    <Binding Path="DataContext" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}" />
+                                                                    <Binding />
+                                                                </MultiBinding>
+                                                            </Button.CommandParameter>
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="{DynamicResource Speed}">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox
+                                                            MinWidth="70"
+                                                            Padding="0"
+                                                            Text="{Binding Speed}"
+                                                            TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn x:Name="AccColumn" Header="{DynamicResource AccelerationAndDeceleration}">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox
+                                                            MinWidth="80"
+                                                            Padding="0"
+                                                            Text="{Binding AccSpeed}"
+                                                            TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Width="100" Header="IO">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox
+                                                            Margin="16,0,0,0"
+                                                            Padding="0"
+                                                            IsChecked="{Binding IOEnable}" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="StartDelayIOEnable">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox
+                                                            Margin="70,0,0,0"
+                                                            Padding="0"
+                                                            IsChecked="{Binding StartDelayIOEnable}"
+                                                            IsEnabled="{Binding IOEnable}" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn x:Name="StartDelayTimeColumn" Header="StartDelayTime">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox
+                                                            MinWidth="{Binding Path=ActualWidth, ElementName=StartDelayTimeColumn}"
+                                                            Padding="0"
+                                                            IsEnabled="{Binding StartDelayIOEnable}"
+                                                            Text="{Binding StartDelayTime}"
+                                                            TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="EndDelayIOEnable">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox
+                                                            Margin="70,0,0,0"
+                                                            Padding="0"
+                                                            IsChecked="{Binding EndDelayIOEnable}"
+                                                            IsEnabled="{Binding IOEnable}" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn x:Name="EndDelayTimeColumn" Header="EndDelayTime">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox
+                                                            MinWidth="{Binding Path=ActualWidth, ElementName=EndDelayTimeColumn}"
+                                                            Padding="0"
+                                                            HorizontalContentAlignment="Stretch"
+                                                            IsEnabled="{Binding EndDelayIOEnable}"
+                                                            Text="{Binding EndDelayTime}"
+                                                            TextAlignment="Center" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </ScrollViewer>
+
+                        </Grid>
+                    </DataTemplate>
+                </TabControl.ContentTemplate>
+            </TabControl>
+        </Border>
+        <!--  顶部新增插补  -->
+        <UniformGrid
+            Margin="0,5,5,5"
+            Columns="10"
+            FirstColumn="9">
+            <Button
+                Command="{Binding AddNewInterpolationCommand}"
+                Content="{DynamicResource AddInterpolationPath}"
+                Cursor="Hand" />
+        </UniformGrid>
+    </Grid>
+</UserControl>

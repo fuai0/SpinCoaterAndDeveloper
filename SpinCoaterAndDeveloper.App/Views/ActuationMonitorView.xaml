@@ -1,0 +1,223 @@
+﻿<UserControl
+    x:Class="SpinCoaterAndDeveloper.App.Views.ActuationMonitorView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:graph="https://cowain.com.cn//graph"
+    xmlns:graphType="clr-namespace:SpinCoaterAndDeveloper.Shared.Models.ActuationGraphModels;assembly=SpinCoaterAndDeveloper.Shared"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:viewmodels="clr-namespace:SpinCoaterAndDeveloper.App.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:ActuationMonitorViewModel}"
+    d:DesignHeight="700"
+    d:DesignWidth="1280"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterOwner" />
+            <Setter Property="WindowStyle" Value="SingleBorderWindow" />
+            <Setter Property="Width" Value="1280" />
+            <Setter Property="Height" Value="768" />
+            <Setter Property="Title" Value="{Binding Title}" />
+            <Setter Property="Icon" Value="../Resources/Image/debug-system.png" />
+        </Style>
+    </prism:Dialog.WindowStyle>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <GridSplitter
+            Grid.Column="1"
+            Width="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Stretch" />
+        <ScrollViewer
+            Grid.Column="0"
+            Margin="2,0,2,2"
+            Background="{StaticResource AppleHeavyBackGroundBrush}">
+            <ItemsControl ItemsSource="{Binding ActuationCollection}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="2,0,0,0"
+                                FontWeight="Bold"
+                                Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                                Text="{Binding Name}" />
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="2,0,0,0"
+                                FontWeight="Bold"
+                                Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                                Text="{Binding Status}" />
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Margin="2,0,0,0"
+                                FontWeight="Bold"
+                                Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                                Text="{Binding Times}" />
+                            <UniformGrid
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Columns="4"
+                                TextElement.Foreground="{StaticResource AppleLightTextForegroundBrush}">
+                                <TextBlock Margin="2,0,0,0" Text="{Binding AsyncRedirectName, StringFormat=AsyncR: {0}}" />
+                                <TextBlock Margin="2,0,0,0" Text="{Binding StartTime, StringFormat=Start: {0:HH:mm:ss}}" />
+                                <TextBlock Margin="2,0,0,0" Text="{Binding AsyncStatus, StringFormat=AsyncS: {0}}" />
+                                <TextBlock Margin="2,0,0,0" Text="{Binding AsyncKeyWord, StringFormat=AsyncK: {0}}" />
+                            </UniformGrid>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <graph:NodifyEditor
+            Grid.Column="2"
+            Margin="2,0,2,2"
+            Background="{StaticResource AppleHeavyBackGroundBrush}"
+            Connections="{Binding Connections}"
+            GridCellSize="10"
+            ItemsSource="{Binding Nodes}">
+            <graph:NodifyEditor.ItemContainerStyle>
+                <Style TargetType="{x:Type graph:ItemContainer}">
+                    <Setter Property="Location" Value="{Binding Location}" />
+                </Style>
+            </graph:NodifyEditor.ItemContainerStyle>
+            <graph:NodifyEditor.ConnectionTemplate>
+                <DataTemplate DataType="{x:Type graphType:ConnectionModel}">
+                    <graph:LineConnection Source="{Binding Source.Anchor}" Target="{Binding Target.Anchor}">
+                        <graph:LineConnection.Style>
+                            <Style BasedOn="{StaticResource {x:Type graph:LineConnection}}" TargetType="{x:Type graph:LineConnection}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Redirect}" Value="True">
+                                        <Setter Property="StrokeDashArray" Value="4 1" />
+                                        <Setter Property="ArrowSize" Value="8 8" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </graph:LineConnection.Style>
+                    </graph:LineConnection>
+                </DataTemplate>
+            </graph:NodifyEditor.ConnectionTemplate>
+            <graph:NodifyEditor.ItemTemplate>
+                <DataTemplate DataType="{x:Type graphType:NodeModel}">
+                    <graph:Node
+                        Width="240"
+                        Height="100"
+                        MaxWidth="400"
+                        MaxHeight="200"
+                        Content="{Binding}"
+                        Header="{Binding ActuationName}"
+                        Input="{Binding Inputs}"
+                        Output="{Binding Outputs}">
+                        <graph:Node.InputConnectorTemplate>
+                            <DataTemplate DataType="{x:Type graphType:ConnectorModel}">
+                                <graph:NodeInput
+                                    Anchor="{Binding Anchor, Mode=TwoWay}"
+                                    Header="I"
+                                    IsConnected="{Binding IsConnected}" />
+                            </DataTemplate>
+                        </graph:Node.InputConnectorTemplate>
+                        <graph:Node.OutputConnectorTemplate>
+                            <DataTemplate DataType="{x:Type graphType:ConnectorModel}">
+                                <graph:NodeOutput
+                                    Anchor="{Binding Anchor, Mode=TwoWay}"
+                                    Header="O"
+                                    IsConnected="{Binding IsConnected}" />
+                            </DataTemplate>
+                        </graph:Node.OutputConnectorTemplate>
+                        <graph:Node.ContentTemplate>
+                            <DataTemplate DataType="{x:Type graphType:NodeModel}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="80" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Margin="2,0,0,0"
+                                        FontWeight="Bold"
+                                        Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                                        Text="{Binding Status}" />
+                                    <TextBlock
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="2,0,0,0"
+                                        FontWeight="Bold"
+                                        Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                                        Text="{Binding Times}" />
+                                    <TextBlock
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Margin="2,0,0,0"
+                                        Foreground="{StaticResource AppleLightTextForegroundBrush}"
+                                        Text="{Binding StartTime, StringFormat={}{0:HH:mm:ss}}" />
+                                    <TextBlock
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Margin="2,0,0,0"
+                                        Foreground="{StaticResource AppleLightTextForegroundBrush}"
+                                        Text="{Binding AsyncStatus}" />
+                                    <TextBlock
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Margin="2,0,0,0"
+                                        Foreground="{StaticResource AppleLightTextForegroundBrush}"
+                                        Text="{Binding Col, StringFormat=Col:{0}}" />
+                                    <TextBlock
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Margin="2,0,0,0"
+                                        Foreground="{StaticResource AppleLightTextForegroundBrush}"
+                                        Text="{Binding Row, StringFormat=Row:{0}}" />
+                                </Grid>
+                            </DataTemplate>
+                        </graph:Node.ContentTemplate>
+                        <graph:Node.Style>
+                            <Style BasedOn="{StaticResource {x:Type graph:Node}}" TargetType="{x:Type graph:Node}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Status}" Value="Running">
+                                        <Setter Property="HeaderBrush" Value="{StaticResource SecondaryAccentBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Status}" Value="Finish">
+                                        <Setter Property="HeaderBrush" Value="#6F7980" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </graph:Node.Style>
+                    </graph:Node>
+                </DataTemplate>
+            </graph:NodifyEditor.ItemTemplate>
+        </graph:NodifyEditor>
+
+    </Grid>
+</UserControl>

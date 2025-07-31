@@ -1,0 +1,99 @@
+﻿<UserControl
+    x:Class="SpinCoaterAndDeveloper.App.Views.OptionCpuDimmUsageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cv="clr-namespace:SpinCoaterAndDeveloper.App.Common.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lvc2="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:viewmodels="clr-namespace:SpinCoaterAndDeveloper.App.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:OptionCpuDimmUsageViewModel}"
+    d:DesignHeight="700"
+    d:DesignWidth="1280"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <cv:DoubleToBrushConverter x:Key="DoubleToBrushConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid Margin="2,0,0,2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                    Opacity="0.8"
+                    Text="CPU: " />
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Foreground="{Binding CpuUsage, Converter={StaticResource DoubleToBrushConverter}}"
+                    Opacity="0.8"
+                    Text="{Binding CpuUsage, StringFormat={}{0}%}" />
+            </StackPanel>
+
+            <lvc2:CartesianChart
+                Grid.Row="1"
+                Margin="0,0,0,0"
+                LegendPosition="Hidden"
+                Series="{Binding CpuUsageSeries}"
+                TooltipPosition="Hidden"
+                XAxes="{Binding CpuUsageXAxes}"
+                YAxes="{Binding CpuUsageYAxes}" />
+            <TextBlock
+                Grid.Row="2"
+                Margin="2,0,0,0"
+                Opacity=".6"
+                Text="{Binding CPUType, Mode=OneWay}"
+                TextWrapping="WrapWithOverflow" />
+        </Grid>
+        <Grid Grid.Column="1" Margin="2,0,0,2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                    Opacity="0.8"
+                    Text="DIMM: " />
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Foreground="{Binding DimmUsage, Converter={StaticResource DoubleToBrushConverter}}"
+                    Opacity="0.8"
+                    Text="{Binding DimmUsage, StringFormat={}{0}%}" />
+            </StackPanel>
+
+            <lvc2:CartesianChart
+                Grid.Row="1"
+                Margin="0,0,0,0"
+                LegendPosition="Hidden"
+                Series="{Binding DimmUsageSeries}"
+                TooltipPosition="Hidden"
+                XAxes="{Binding DimmUsageXAxes}"
+                YAxes="{Binding DimmUsageYAxes}" />
+            <TextBlock
+                Grid.Row="2"
+                Margin="2,0,0,0"
+                Opacity=".6"
+                Text="{Binding DimmType, Mode=OneWay}"
+                TextWrapping="WrapWithOverflow" />
+        </Grid>
+    </Grid>
+</UserControl>

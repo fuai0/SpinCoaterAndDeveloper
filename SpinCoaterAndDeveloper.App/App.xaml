@@ -1,0 +1,32 @@
+﻿<prism:PrismApplication
+    x:Class="SpinCoaterAndDeveloper.App.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:SpinCoaterAndDeveloper.App"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:prism="http://prismlibrary.com/">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Graph;component/Themes/Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <!--<ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />-->
+                <!--<ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Indigo.xaml" />-->
+
+                <ResourceDictionary Source="Resources/Theme/Theme.Apple.xaml" />
+
+                <ResourceDictionary Source="pack://application:,,,/PrismAutomationPlatformExt;component/Resources/Styles/Styles.ListBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PrismAutomationPlatformExt;component/Resources/Styles/Styles.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/PrismAutomationPlatformExt;component/Resources/Styles/Styles.Window.xaml" />
+
+                <ResourceDictionary Source="pack://application:,,,/ZeroControls;component/Themes/Theme.xaml" />
+
+                <!--  默认后添加的字典生效 多语言  -->
+                <ResourceDictionary Source="Resources\Language\en-US.xaml" />
+                <ResourceDictionary Source="Resources\Language\vi-VN.xaml" />
+                <ResourceDictionary Source="Resources\Language\zh-CN.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>

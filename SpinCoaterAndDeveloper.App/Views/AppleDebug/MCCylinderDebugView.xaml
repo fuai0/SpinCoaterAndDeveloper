@@ -1,0 +1,411 @@
+﻿<UserControl
+    x:Class="SpinCoaterAndDeveloper.App.Views.MCCylinderDebugView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vc="clr-namespace:ValueConverters;assembly=ValueConverters"
+    xmlns:viewmodels="clr-namespace:SpinCoaterAndDeveloper.App.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MCCylinderDebugViewModel}"
+    d:DesignHeight="700"
+    d:DesignWidth="1280"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <vc:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+        <vc:BoolToBrushConverter
+            x:Key="BoolToBrushConverter"
+            FalseValue="{StaticResource MessageRedBrush}"
+            TrueValue="{StaticResource MessageGreenBrush}" />
+        <vc:BoolToBrushConverter
+            x:Key="CylinderShiedBoolToBrushConverter"
+            FalseValue="{StaticResource MessageGreenBrush}"
+            TrueValue="{StaticResource MessageRedBrush}" />
+    </UserControl.Resources>
+    <Grid>
+        <Border Margin="0" Background="{StaticResource AppleHeavyBackGroundBrush}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <UniformGrid
+                    Margin="0,5,5,0"
+                    Columns="10"
+                    FirstColumn="6">
+                    <TextBlock
+                        Margin="2,0,0,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        FontSize="15"
+                        Text="{DynamicResource FilterGroup}" />
+                    <ComboBox
+                        x:Name="GroupSelected"
+                        Margin="2,0,0,0"
+                        VerticalAlignment="Bottom"
+                        HorizontalContentAlignment="Center"
+                        ItemsSource="{Binding CylinderGroupCollection}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding CylinderGroupChangedCommand}" CommandParameter="{Binding SelectedItem, ElementName=GroupSelected}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+                    <TextBox
+                        Margin="2,0,0,0"
+                        Padding="0"
+                        VerticalAlignment="Bottom"
+                        materialDesign:HintAssist.IsFloating="True"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        Text="{Binding CylinderFilter, UpdateSourceTrigger=PropertyChanged}">
+                        <materialDesign:HintAssist.Hint>
+                            <StackPanel Margin="-2,0,0,0" Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Magnify" />
+                                <TextBlock Text="{DynamicResource RapidCylinderFiltration}" />
+                            </StackPanel>
+                        </materialDesign:HintAssist.Hint>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding CylinderFilterCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                    <Button
+                        Margin="2,0,0,0"
+                        VerticalAlignment="Bottom"
+                        Command="{Binding ShowAllCylinderCommand}"
+                        Content="{DynamicResource ShowAllCylinders}"
+                        Cursor="Hand" />
+                </UniformGrid>
+                <ItemsControl
+                    Grid.Row="1"
+                    Margin="5,0,0,0"
+                    ItemsSource="{Binding CylinderMonitorCollection}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel IsItemsHost="True" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.Template>
+                        <ControlTemplate>
+                            <ScrollViewer CanContentScroll="False" VerticalScrollBarVisibility="Visible">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </ControlTemplate>
+                    </ItemsControl.Template>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="{StaticResource AppleMidTextForegroundBrush}" BorderThickness="0,0,0,1">
+                                <Grid Margin="10,0,10,25">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="72" />
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="18" />
+                                        <RowDefinition Height="58" />
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="58" />
+                                        <RowDefinition Height="18" />
+                                    </Grid.RowDefinitions>
+                                    <StackPanel
+                                        Grid.Row="1"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="1"
+                                        Panel.ZIndex="1"
+                                        Orientation="Vertical">
+                                        <Button
+                                            Width="32"
+                                            Height="32"
+                                            Margin="0,45,0,0"
+                                            Command="{Binding DataContext.ReciprocateStartCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, Mode=FindAncestor, AncestorLevel=1}}"
+                                            CommandParameter="{Binding}"
+                                            Content="{materialDesign:PackIcon Kind=Play}"
+                                            Foreground="DarkGray"
+                                            Style="{StaticResource MaterialDesignIconButton}"
+                                            ToolTip="气缸往复运动启动" />
+                                        <Button
+                                            Width="32"
+                                            Height="32"
+                                            Command="{Binding DataContext.ReciprocateStopCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, Mode=FindAncestor, AncestorLevel=1}}"
+                                            CommandParameter="{Binding}"
+                                            Content="{materialDesign:PackIcon Kind=Stop}"
+                                            Foreground="DarkGray"
+                                            Style="{StaticResource MaterialDesignIconButton}"
+                                            ToolTip="气缸往复运动停止" />
+                                    </StackPanel>
+
+                                    <Border
+                                        Grid.Row="1"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="3"
+                                        Margin="23,0,0,0"
+                                        BorderBrush="{StaticResource AppleMidTextForegroundBrush}"
+                                        BorderThickness="0,0,1,0" />
+                                    <TextBlock
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="3"
+                                        Margin="0,0,0,0"
+                                        Padding="0"
+                                        HorizontalAlignment="Center"
+                                        FontSize="17"
+                                        FontWeight="Bold"
+                                        Text="{Binding Number}"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock
+                                        Grid.Row="1"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="3"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontFamily="../../Resources/Assets/#iconfont"
+                                        FontSize="100"
+                                        Foreground="Gray"
+                                        Text="&#xe616;" />
+                                    <StackPanel Grid.Row="1" Grid.Column="0">
+                                        <materialDesign:PackIcon
+                                            Width="24"
+                                            Height="24"
+                                            Margin="0,3,3,0"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Top"
+                                            Foreground="{Binding SensorMovingInputInfo.Status, Converter={StaticResource BoolToBrushConverter}}"
+                                            Kind="ArrowUpBoldCircleOutline"
+                                            ToolTip="{DynamicResource SensorStatus}">
+                                            <materialDesign:PackIcon.Style>
+                                                <Style TargetType="materialDesign:PackIcon">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=None}" Value="True">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=SingleOrigin}" Value="True">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=SingleMoving}" Value="True">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Dual}" Value="True">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </materialDesign:PackIcon.Style>
+                                        </materialDesign:PackIcon>
+                                        <Button
+                                            Width="30"
+                                            Height="30"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Top"
+                                            Command="{Binding DataContext.ShiedMovingSensorCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, Mode=FindAncestor, AncestorLevel=1}}"
+                                            CommandParameter="{Binding}"
+                                            ToolTip="{DynamicResource ShieldedSensor}">
+                                            <materialDesign:PackIcon
+                                                Width="24"
+                                                Height="24"
+                                                Foreground="{Binding ShiedSensorMovingInput, Converter={StaticResource CylinderShiedBoolToBrushConverter}}">
+                                                <materialDesign:PackIcon.Style>
+                                                    <Style TargetType="materialDesign:PackIcon">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ShiedSensorMovingInput}" Value="False">
+                                                                <Setter Property="{x:Static materialDesign:PackIcon.KindProperty}" Value="CheckCircleOutline" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ShiedSensorMovingInput}" Value="True">
+                                                                <Setter Property="{x:Static materialDesign:PackIcon.KindProperty}" Value="CloseCircleOutline" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </materialDesign:PackIcon.Style>
+                                            </materialDesign:PackIcon>
+                                            <Button.Style>
+                                                <Style BasedOn="{StaticResource MaterialDesignIconButton}" TargetType="Button">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=None}" Value="True">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=SingleOrigin}" Value="True">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=SingleMoving}" Value="True">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Dual}" Value="True">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="3" Grid.Column="0">
+                                        <Button
+                                            Width="30"
+                                            Height="30"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom"
+                                            Command="{Binding DataContext.ShiedOrignalSensorCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, Mode=FindAncestor, AncestorLevel=1}}"
+                                            CommandParameter="{Binding}"
+                                            ToolTip="{DynamicResource ShieldedSensor}">
+                                            <materialDesign:PackIcon
+                                                Width="24"
+                                                Height="24"
+                                                Foreground="{Binding ShiedSensorOriginInput, Converter={StaticResource CylinderShiedBoolToBrushConverter}}">
+                                                <materialDesign:PackIcon.Style>
+                                                    <Style TargetType="materialDesign:PackIcon">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ShiedSensorOriginInput}" Value="False">
+                                                                <Setter Property="{x:Static materialDesign:PackIcon.KindProperty}" Value="CheckCircleOutline" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ShiedSensorOriginInput}" Value="True">
+                                                                <Setter Property="{x:Static materialDesign:PackIcon.KindProperty}" Value="CloseCircleOutline" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </materialDesign:PackIcon.Style>
+                                            </materialDesign:PackIcon>
+                                            <Button.Style>
+                                                <Style BasedOn="{StaticResource MaterialDesignIconButton}" TargetType="Button">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=None}" Value="True">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=SingleOrigin}" Value="True">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=SingleMoving}" Value="True">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Dual}" Value="True">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                        <materialDesign:PackIcon
+                                            Width="24"
+                                            Height="24"
+                                            Margin="0,0,3,3"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom"
+                                            Foreground="{Binding SensorOriginInputInfo.Status, Converter={StaticResource BoolToBrushConverter}}"
+                                            Kind="ArrowDownBoldCircleOutline"
+                                            ToolTip="{DynamicResource SensorStatus}">
+                                            <materialDesign:PackIcon.Style>
+                                                <Style TargetType="materialDesign:PackIcon">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=None}" Value="True">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=SingleOrigin}" Value="True">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=SingleMoving}" Value="True">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding SensorType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Dual}" Value="True">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </materialDesign:PackIcon.Style>
+                                        </materialDesign:PackIcon>
+                                    </StackPanel>
+                                    <Button
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        Width="30"
+                                        Height="30"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        Command="{Binding DataContext.DualValveMovingOutputCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, Mode=FindAncestor, AncestorLevel=1}}"
+                                        CommandParameter="{Binding}"
+                                        ToolTip="{DynamicResource Double-headCylinder}">
+                                        <materialDesign:PackIcon Foreground="{Binding DualValveMovingOutputInfo.Status, Converter={StaticResource BoolToBrushConverter}}" Kind="CircleDouble" />
+                                        <Button.Style>
+                                            <Style BasedOn="{StaticResource MaterialDesignIconButton}" TargetType="Button">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ValveType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=SingleHeader}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding ValveType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=DualHeader}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button
+                                        Grid.Row="2"
+                                        Grid.Column="2"
+                                        Width="30"
+                                        Height="30"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Command="{Binding DataContext.SingleValveOutputCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, Mode=FindAncestor, AncestorLevel=1}}"
+                                        CommandParameter="{Binding}"
+                                        ToolTip="{DynamicResource Single-headCylinder}">
+                                        <materialDesign:PackIcon Foreground="{Binding SingleValveOutputInfo.Status, Converter={StaticResource BoolToBrushConverter}}" Kind="CircleDouble" />
+                                        <Button.Style>
+                                            <Style BasedOn="{StaticResource MaterialDesignIconButton}" TargetType="Button">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ValveType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=SingleHeader}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding ValveType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=DualHeader}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button
+                                        Grid.Row="3"
+                                        Grid.Column="2"
+                                        Width="30"
+                                        Height="30"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Bottom"
+                                        Command="{Binding DataContext.DualValveOriginOutputCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, Mode=FindAncestor, AncestorLevel=1}}"
+                                        CommandParameter="{Binding}"
+                                        ToolTip="{DynamicResource Double-headCylinder}">
+                                        <materialDesign:PackIcon Foreground="{Binding DualValveOriginOutputInfo.Status, Converter={StaticResource BoolToBrushConverter}}" Kind="CircleDouble" />
+                                        <Button.Style>
+                                            <Style BasedOn="{StaticResource MaterialDesignIconButton}" TargetType="Button">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ValveType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=SingleHeader}" Value="True">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding ValveType, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=DualHeader}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <TextBlock
+                                        Grid.Row="4"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="3"
+                                        Padding="0"
+                                        HorizontalAlignment="Center"
+                                        FontSize="14"
+                                        FontWeight="Bold"
+                                        Text="{Binding ShowOnUIName}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
+
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,156 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System" #>
+<#@ assembly name="System.Data.dll" #>
+<#@ assembly name="$(SolutionDir)\SpinCoaterAndDeveloper.App\$(OutDir)\MySql.Data.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="MySql.Data.MySqlClient" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ output extension=".cs" #>
+
+<# 
+// 仅支持MySql数据库
+var connectionTxtPath = @$"{Host.ResolveAssemblyReference("$(SolutionDir)")}SpinCoaterAndDeveloper.Shared\DataBaseServiceConfig.config";
+DataSet parmeterInfoNames = new DataSet();
+DataSet axisInfoNames = new DataSet();
+DataSet cylinderInfoNames = new DataSet();
+DataSet ioInputInfoNames = new DataSet();
+DataSet ioOutputInfoNames = new DataSet();
+DataSet interpolationPathInfoNames = new DataSet();
+DataSet movementPointInfoNames = new DataSet();
+DataSet functionShiledInfoNames = new DataSet();
+DataSet productInfoNames = new DataSet();
+DataSet userInfoNames = new DataSet();
+
+if (File.Exists(connectionTxtPath))
+{
+	var dbConfigTxts = File.ReadAllLines(connectionTxtPath);
+	var dbTypeTxt = "";
+	foreach (string line in dbConfigTxts)
+	{
+		if (line.Contains("iocName=\"MainDb\"") && line.Contains("dbType=\"MySql\""))
+		{
+			dbTypeTxt = line;
+		}
+	}
+	if (!string.IsNullOrWhiteSpace(dbTypeTxt))
+	{
+		string dbConnectionStringPattern = "(?<= connectionString=\").*?(?=\" )";
+		Match dbConnectionString = Regex.Match(dbTypeTxt, dbConnectionStringPattern);
+		if (dbConnectionString.Success)
+		{
+			var mySqlConnection = new MySqlConnection(dbConnectionString.Value);
+			mySqlConnection.Open();
+			
+			new MySqlDataAdapter("SELECT DISTINCT `Name` FROM parmeter_info ", mySqlConnection).Fill(parmeterInfoNames);
+			new MySqlDataAdapter("SELECT DISTINCT `Name` FROM function_shield_info ", mySqlConnection).Fill(functionShiledInfoNames);
+			new MySqlDataAdapter("SELECT DISTINCT `Name` FROM axis_info ", mySqlConnection).Fill(axisInfoNames);
+			new MySqlDataAdapter("SELECT DISTINCT `Name` FROM cylinder_info ", mySqlConnection).Fill(cylinderInfoNames);
+			new MySqlDataAdapter("SELECT DISTINCT `Name` FROM io_input_info ", mySqlConnection).Fill(ioInputInfoNames);
+			new MySqlDataAdapter("SELECT DISTINCT `Name` FROM io_output_info ", mySqlConnection).Fill(ioOutputInfoNames);
+			new MySqlDataAdapter("SELECT DISTINCT `PathName` FROM interpolation_path_coordinate ", mySqlConnection).Fill(interpolationPathInfoNames);
+			new MySqlDataAdapter("SELECT DISTINCT `Name` FROM movement_point_info ", mySqlConnection).Fill(movementPointInfoNames);
+			new MySqlDataAdapter("SELECT DISTINCT `Name` FROM product_info ", mySqlConnection).Fill(productInfoNames);
+			new MySqlDataAdapter("SELECT DISTINCT `UserName` FROM user_info ", mySqlConnection).Fill(userInfoNames);
+			
+			mySqlConnection.Close();
+		}
+	}
+}
+#>
+namespace SpinCoaterAndDeveloper.Actuation
+{
+<# if (parmeterInfoNames.Tables.Count > 0 && parmeterInfoNames.Tables[0].Rows.Count > 0){ #>
+	public enum _EnumParmeterName
+	{
+	<# foreach(DataRow row in parmeterInfoNames.Tables[0].Rows){ #>
+	<#= row[0] #>,
+	<# } #>
+}
+<# } #>
+
+<# if (functionShiledInfoNames.Tables.Count > 0 && functionShiledInfoNames.Tables[0].Rows.Count > 0){ #>
+	public enum _EnumFunctionShieldName
+	{
+	<# foreach(DataRow row in functionShiledInfoNames.Tables[0].Rows){ #>
+	<#= row[0] #>,
+	<# } #>
+}
+<# } #>
+
+<# if (axisInfoNames.Tables.Count > 0 && axisInfoNames.Tables[0].Rows.Count > 0){ #>
+	public enum _EnumAxisName
+	{
+	<# foreach(DataRow row in axisInfoNames.Tables[0].Rows){ #>
+	<#= row[0] #>,
+	<# } #>
+}
+<# } #>
+
+<# if (cylinderInfoNames.Tables.Count > 0 && cylinderInfoNames.Tables[0].Rows.Count > 0){ #>
+	public enum _EnumCylinderName
+	{
+	<# foreach(DataRow row in cylinderInfoNames.Tables[0].Rows){ #>
+	<#= row[0] #>,
+	<# } #>
+}
+<# } #>
+
+<# if (ioInputInfoNames.Tables.Count > 0 && ioInputInfoNames.Tables[0].Rows.Count > 0){ #>
+	public enum _EnumIOInputName
+	{
+	<# foreach(DataRow row in ioInputInfoNames.Tables[0].Rows){ #>
+	<#= row[0] #>,
+	<# } #>
+}
+<# } #>
+
+<# if (ioOutputInfoNames.Tables.Count > 0 && ioOutputInfoNames.Tables[0].Rows.Count > 0){ #>
+	public enum _EnumIOOutputName
+	{
+	<# foreach(DataRow row in ioOutputInfoNames.Tables[0].Rows){ #>
+	<#= row[0] #>,
+	<# } #>
+}
+<# } #>
+
+<# if (interpolationPathInfoNames.Tables.Count > 0 && interpolationPathInfoNames.Tables[0].Rows.Count > 0){ #>
+	public enum _EnumInterpolationPathName
+	{
+	<# foreach(DataRow row in interpolationPathInfoNames.Tables[0].Rows){ #>
+	<#= row[0] #>,
+	<# } #>
+}
+<# } #>
+
+<# if (movementPointInfoNames.Tables.Count > 0 && movementPointInfoNames.Tables[0].Rows.Count > 0){ #>
+	public enum _EnumMovementPointName
+	{
+	<# foreach(DataRow row in movementPointInfoNames.Tables[0].Rows){ #>
+	<#= row[0] #>,
+	<# } #>
+}
+<# } #>
+
+<# if (productInfoNames.Tables.Count > 0 && productInfoNames.Tables[0].Rows.Count > 0){ #>
+	public enum _EnumProductName
+	{
+	<# foreach(DataRow row in productInfoNames.Tables[0].Rows){ #>
+	<#= row[0] #>,
+	<# } #>
+}
+<# } #>
+
+<# if (userInfoNames.Tables.Count > 0 && userInfoNames.Tables[0].Rows.Count > 0){ #>
+	public enum _EnumUserName
+	{
+	<# foreach(DataRow row in userInfoNames.Tables[0].Rows){ #>
+	<#= row[0] #>,
+	<# } #>
+}
+<# } #>
+}

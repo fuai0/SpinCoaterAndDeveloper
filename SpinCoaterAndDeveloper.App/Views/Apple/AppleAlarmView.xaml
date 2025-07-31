@@ -1,0 +1,185 @@
+﻿<UserControl
+    x:Class="SpinCoaterAndDeveloper.App.Views.AppleAlarmView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:lvc2="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:viewmodels="clr-namespace:SpinCoaterAndDeveloper.App.ViewModels"
+    xmlns:zeroControl="clr-namespace:ZeroControls;assembly=ZeroControls"
+    d:DataContext="{d:DesignInstance Type=viewmodels:AppleAlarmViewModel}"
+    d:DesignHeight="700"
+    d:DesignWidth="1280"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <Grid Margin="12,5,12,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Border
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="0,0,2,2"
+            Background="{StaticResource AppleHeavyBackGroundBrush}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Margin="5,5,0,0"
+                    Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                    Text="{DynamicResource AlarmOverview}" />
+                <lvc2:PieChart
+                    Grid.Row="1"
+                    LegendPosition="Right"
+                    Series="{Binding ErrorStatisticPieChartSeries}" />
+            </Grid>
+        </Border>
+        <Border
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="2,0,0,2"
+            Background="{StaticResource AppleHeavyBackGroundBrush}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Margin="5,5,0,0"
+                    Foreground="{StaticResource ApplelHeavyTextForegroundBrush}"
+                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                    Text="{DynamicResource TimeAlarmOverview}" />
+                <lvc2:CartesianChart
+                    Grid.Row="1"
+                    LegendPosition="Bottom"
+                    Series="{Binding ErrorStatisticPeriodChartSeries}"
+                    XAxes="{Binding ErrorPeriodXAxes}"
+                    YAxes="{Binding ErrorPeriodYAxes}" />
+            </Grid>
+        </Border>
+        <Border
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="0,2,0,0"
+            Background="{StaticResource AppleHeavyBackGroundBrush}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <UniformGrid Margin="0,5,0,0" Columns="10">
+                    <DatePicker
+                        Margin="5,0,0,0"
+                        Padding="0"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="{DynamicResource SelectStartDate}"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                        Text="{Binding ErrorStartDate, Mode=TwoWay}" />
+                    <materialDesign:TimePicker
+                        Margin="10,0,0,0"
+                        Padding="0"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="{DynamicResource SelectStartTime}"
+                        Is24Hours="True"
+                        Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+                        Text="{Binding ErrorStartTime, Mode=TwoWay}" />
+                    <DatePicker
+                        Margin="10,0,0,0"
+                        Padding="0"
+                        VerticalAlignment="Center"
+                        materialDesign:HintAssist.Hint="{DynamicResource SelectEndDate}"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                        Text="{Binding ErrorEndDate, Mode=TwoWay}" />
+                    <materialDesign:TimePicker
+                        Margin="10,0,0,0"
+                        Padding="0"
+                        materialDesign:HintAssist.Hint="{DynamicResource SelectEndTime}"
+                        Is24Hours="True"
+                        Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+                        Text="{Binding ErrorEndTime, Mode=TwoWay}" />
+                    <ComboBox
+                        x:Name="ErrorType"
+                        Margin="10,0,0,0"
+                        Padding="0"
+                        materialDesign:HintAssist.Hint="{DynamicResource SelectAlarmType}"
+                        materialDesign:HintAssist.IsFloating="True"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        DisplayMemberPath="ErrorKeywordShowOnUI"
+                        ItemsSource="{Binding ErrorKeywords}" />
+                    <TextBox
+                        Margin="10,0,0,1"
+                        Padding="0"
+                        VerticalAlignment="Bottom"
+                        materialDesign:HintAssist.IsFloating="True"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        Text="{Binding ErrorFilter, UpdateSourceTrigger=PropertyChanged}">
+                        <materialDesign:HintAssist.Hint>
+                            <StackPanel Margin="-2,0,0,0" Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Magnify" />
+                                <TextBlock Text="{DynamicResource ResultsReal-timeFiltering}" />
+                            </StackPanel>
+                        </materialDesign:HintAssist.Hint>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding ErrorResultFilterCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                    <Button
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        Command="{Binding SearchErrorCommand}"
+                        CommandParameter="{Binding ElementName=ErrorType, Path=SelectedItem}"
+                        Content="{DynamicResource Search}" />
+                </UniformGrid>
+                <DataGrid
+                    Grid.Row="1"
+                    Margin="5,0,5,0"
+                    materialDesign:DataGridAssist.CellPadding="20 2 2 2"
+                    materialDesign:DataGridAssist.ColumnHeaderPadding="20 2 2 2"
+                    materialDesign:DataGridAssist.SelectedCellBorderBrush="Transparent"
+                    AlternationCount="2"
+                    AutoGenerateColumns="False"
+                    Background="{StaticResource AppleHeavyBackGroundBrush}"
+                    CanUserAddRows="False"
+                    CanUserSortColumns="False"
+                    HeadersVisibility="All"
+                    IsReadOnly="True"
+                    ItemsSource="{Binding ErrorCollection}"
+                    RowHeaderWidth="1"
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                    ScrollViewer.VerticalScrollBarVisibility="Visible"
+                    SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Width="70"
+                            Binding="{Binding Id}"
+                            Header="ID" />
+                        <DataGridTextColumn
+                            Width="70"
+                            Binding="{Binding Level}"
+                            Header="{DynamicResource Level}" />
+                        <DataGridTextColumn
+                            Width="200"
+                            Binding="{Binding Time, StringFormat='yyyy-MM-dd HH:mm:ss'}"
+                            Header="{DynamicResource Time}" />
+                        <DataGridTextColumn Binding="{Binding Message}" Header="{DynamicResource Content}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+
+    </Grid>
+</UserControl>

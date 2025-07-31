@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MotionCardServiceInterface</name>
+    </assembly>
+    <members>
+        <member name="T:MotionCardServiceInterface.IMotionCardService">
+            <summary>
+            运动控制卡服务接口
+            </summary>
+        </member>
+        <member name="P:MotionCardServiceInterface.IMotionCardService.InitSuccess">
+            <summary>
+            运动控制卡初始化成功标志
+            </summary>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.Init">
+            <summary>
+            初始化运动控制卡
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.StartHoming(System.Int16,System.Int16,System.Int32,System.UInt32,System.UInt32,System.UInt32,System.UInt32,System.Int16)">
+            <summary>
+            启动回原点
+            </summary>
+            <param name="homingAxNo"></param>
+            <param name="homeMethod"></param>
+            <param name="offset"></param>
+            <param name="highVel"></param>
+            <param name="lowVel"></param>
+            <param name="acc"></param>
+            <param name="overtime"></param>
+            <param name="posSrc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetHomingSts(System.Int16)">
+            <summary>
+            获取回原状态
+            </summary>
+            <param name="homingAxNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.StopHoming(System.Int16)">
+            <summary>
+            停止回原
+            </summary>
+            <param name="homingAxNo"></param>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.FinishHoming(System.Int16)">
+            <summary>
+            结束回原
+            </summary>
+            <param name="homingAxNo"></param>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.Close">
+            <summary>
+            关闭板卡不复位
+            </summary>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.CloseWithReset">
+            <summary>
+            关闭并复位板卡
+            </summary>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.JogMoveStart(System.Int16,System.Double,MotionCardServiceInterface.Direction,System.Double,System.Double,System.Double)">
+            <summary>
+            Jog运动启动
+            </summary>
+            <param name="axNo"></param>
+            <param name="tgVel"></param>
+            <param name="dir"></param>
+            <param name="acc"></param>
+            <param name="dec"></param>
+            <param name="dsParaLTDMC">雷赛板卡S段速度参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.JogMoveStop(System.Int16)">
+            <summary>
+            Jog运动停止
+            </summary>
+            <param name="axNo"></param>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.AxisServo(System.Int16,System.Boolean)">
+            <summary>
+            轴上/下使能
+            </summary>
+            <param name="axNo"></param>
+            <param name="enable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxPrfMode(System.Int16,System.Int16)">
+            <summary>
+            获取轴规划模式
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxSts(System.Int16,System.Int16)">
+            <summary>
+            获取轴状态
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxPrfPos(System.Int16,System.Int16)">
+            <summary>
+            获取规划位置
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxPrfVel(System.Int16,System.Int16)">
+            <summary>
+            获取规划速度
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxPrfAcc(System.Int16,System.Int16)">
+            <summary>
+            获取规划加速度
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxEncPos(System.Int16,System.Int16)">
+            <summary>
+            获取当前位置
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxEncVel(System.Int16,System.Int16)">
+            <summary>
+            获取当前速度
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxEncAcc(System.Int16,System.Int16)">
+            <summary>
+            获取当前加速度
+            </summary>
+            <param name="axNo">起始轴号</param>
+            <param name="count">需要获取的轴数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetEcatDiBit(System.Int16)">
+            <summary>
+            按Bit获取Di
+            </summary>
+            <param name="diNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetEcatDoBit(System.Int16)">
+            <summary>
+            按Bit获取Do
+            </summary>
+            <param name="doNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetEcatGrpDi(System.Int16)">
+            <summary>
+            按组获取Di
+            </summary>
+            <param name="groupNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetEcatGrpDo(System.Int16)">
+            <summary>
+            按组获取Do
+            </summary>
+            <param name="groupNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.SetEcatDoBit(System.Int16,System.Boolean)">
+            <summary>
+            按Bit设定Do
+            </summary>
+            <param name="doNo"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.SetEcatGrpDo(System.Int16,System.Int16)">
+            <summary>
+            按组设定Do
+            </summary>
+            <param name="groupNo"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.StartMoveAbs(System.Int16,System.Int16,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            轴绝对运动
+            </summary>
+            <param name="axNo"></param>
+            <param name="velType">0:T形速度</param>
+            <param name="ratio">0</param>
+            <param name="vel"></param>
+            <param name="acc"></param>
+            <param name="dec"></param>
+            <param name="tgtPos"></param>
+            <param name="dsParaLTDMC">雷赛板卡S段速度参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.StartMoveRel(System.Int16,System.Int16,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            轴相对运动
+            </summary>
+            <param name="axNo"></param>
+            <param name="velType">0:T形速度</param>
+            <param name="ratio">0</param>
+            <param name="vel"></param>
+            <param name="acc"></param>
+            <param name="dec"></param>
+            <param name="tgtPos"></param>
+            <param name="dsParaLTDMC">雷赛板卡S段速度参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.StopMove(System.Int16,System.Int16)">
+            <summary>
+            停止轴运动
+            </summary>
+            <param name="axNo"></param>
+            <param name="stopType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.PauseMove(System.Int16)">
+            <summary>
+            暂停轴运动
+            </summary>
+            <param name="axNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.ResumeMove(System.Int16)">
+            <summary>
+            恢复轴运动
+            </summary>
+            <param name="axNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.ClearAxSts(System.Int16)">
+            <summary>
+            清除轴错误
+            </summary>
+            <param name="axNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.EmgStop">
+            <summary>
+            板卡急停
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.EmgStopCancel">
+            <summary>
+            板卡急停取消
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionCardServiceInterface.IMotionCardService.GetAxErrorCode(System.Int16)">
+            <summary>
+            获取轴报错码
+            </summary>
+            <param name="axNo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MotionCardServiceInterface.Direction">
+            <summary>
+            Jog方向定义
+            </summary>
+        </member>
+        <member name="F:MotionCardServiceInterface.Direction.Positive">
+            <summary>
+            正向
+            </summary>
+        </member>
+        <member name="F:MotionCardServiceInterface.Direction.Negative">
+            <summary>
+            负向
+            </summary>
+        </member>
+    </members>
+</doc>

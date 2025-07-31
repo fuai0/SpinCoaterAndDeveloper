@@ -1,0 +1,174 @@
+﻿
+/**************************************   2025/7/31 7:59:39日志服务启动成功!   **************************************/
+
+
+/**************************************   2025/7/31 8:00:09日志服务启动成功!   **************************************/
+
+
+/**************************************   2025/7/31 8:00:48日志服务启动成功!   **************************************/
+
+
+/**************************************   2025/7/31 8:01:29日志服务启动成功!   **************************************/
+
+
+/**************************************   2025/7/31 8:02:16日志服务启动成功!   **************************************/
+
+
+/**************************************   2025/7/31 8:02:54日志服务启动成功!   **************************************/
+
+
+/**************************************   2025/7/31 8:07:09日志服务启动成功!   **************************************/
+
+
+/**************************************   2025/7/31 8:07:28日志服务启动成功!   **************************************/
+
+
+/**************************************   2025/7/31 8:08:33日志服务启动成功!   **************************************/
+
+
+/**************************************   2025/7/31 8:09:51日志服务启动成功!   **************************************/
+
+
+/**************************************   2025/7/31 8:10:51日志服务启动成功!   **************************************/
+
+
+/**************************************   2025/7/31 8:11:05日志服务启动成功!   **************************************/
+
+
+/**************************************   2025/7/31 8:11:27日志服务启动成功!   **************************************/
+
+
+/**************************************   2025/7/31 8:12:59日志服务启动成功!   **************************************/
+
+[Info] 2025-07-31 08:13:02.712 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:13:02.712 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:13:02.713 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:13:02.713 thread:[003] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:13:02.713 thread:[003] DB : TemperatureControllerService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-31 08:13:05.706 thread:[004] DB : 备份数据库异常:目录名称无效。 : 错误信息：目录名称无效。
+错误源：System
+错误堆栈：   在 System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   在 DataBaseService.DataBaseService.RunCmd(String mysqldumPath, String strCmd)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.ComponentModel.Win32Exception
+错误方法：Boolean StartWithCreateProcess(System.Diagnostics.ProcessStartInfo)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-31 08:13:05.706 thread:[004] DB : 备份数据库异常:目录名称无效。
+[Error] 2025-07-31 08:13:05.706 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-31 08:13:05.812 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-31 08:13:05.813 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-31 08:13:06.604 thread:[001] DB : 用户进入首页
+[Info] 2025-07-31 08:13:25.501 thread:[001] DB : 用户离开首页
+[Info] 2025-07-31 08:13:25.513 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-31 08:13:25.549 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 08:13:25.751 thread:[017] DB : GetEcatErrorCode failed. Error code:80198018
+
+/**************************************   2025/7/31 8:13:34日志服务启动成功!   **************************************/
+
+[Info] 2025-07-31 08:13:37.779 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:13:37.780 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:13:37.780 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:13:37.781 thread:[003] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:13:37.781 thread:[003] DB : TemperatureControllerService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-31 08:13:39.938 thread:[004] DB : 备份数据库异常:目录名称无效。 : 错误信息：目录名称无效。
+错误源：System
+错误堆栈：   在 System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   在 DataBaseService.DataBaseService.RunCmd(String mysqldumPath, String strCmd)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.ComponentModel.Win32Exception
+错误方法：Boolean StartWithCreateProcess(System.Diagnostics.ProcessStartInfo)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-31 08:13:39.938 thread:[004] DB : 备份数据库异常:目录名称无效。
+[Error] 2025-07-31 08:13:39.938 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-31 08:13:40.020 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-31 08:13:40.021 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-31 08:13:40.750 thread:[001] DB : 用户进入首页
+[Info] 2025-07-31 08:13:41.833 thread:[001] DB : 用户离开首页
+[Info] 2025-07-31 08:13:41.843 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-31 08:13:41.870 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 08:13:42.072 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:14:02.320 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:14:02.520 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:14:22.759 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:14:22.959 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:14:43.204 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:14:43.404 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:15:03.646 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:15:03.847 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:15:24.092 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:15:24.292 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:15:44.526 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:15:44.727 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:16:04.961 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:16:05.161 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:16:25.396 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:16:25.596 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:16:45.830 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:16:46.032 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:17:06.268 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:17:06.469 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:17:26.704 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:17:26.904 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:17:47.140 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:17:47.341 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:18:07.577 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:18:07.777 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:18:28.015 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:18:28.215 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:18:48.453 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:18:48.654 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:19:08.888 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:19:09.089 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:19:29.324 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:19:29.524 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:19:49.759 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:19:49.960 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:20:10.196 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:20:10.397 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-31 08:20:30.634 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-31 08:20:30.834 thread:[003] DB : GetEcatErrorCode failed. Error code:80198018
+
+/**************************************   2025/7/31 8:20:53日志服务启动成功!   **************************************/
+
+[Info] 2025-07-31 08:20:55.445 thread:[005] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:20:55.445 thread:[005] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:20:55.446 thread:[005] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:20:55.446 thread:[005] DB : SerialPortService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-31 08:20:55.447 thread:[005] DB : TemperatureControllerService.Service.LogExtension模块注册日志服务
+[Fatal] 2025-07-31 08:20:57.552 thread:[003] DB : 备份数据库异常:目录名称无效。 : 错误信息：目录名称无效。
+错误源：System
+错误堆栈：   在 System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   在 DataBaseService.DataBaseService.RunCmd(String mysqldumPath, String strCmd)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.ComponentModel.Win32Exception
+错误方法：Boolean StartWithCreateProcess(System.Diagnostics.ProcessStartInfo)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-31 08:20:57.552 thread:[003] DB : 备份数据库异常:目录名称无效。
+[Error] 2025-07-31 08:20:57.552 thread:[005] DB : 备份数据库失败
+[Info] 2025-07-31 08:20:57.635 thread:[005] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-31 08:20:57.635 thread:[005] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-31 08:20:58.374 thread:[001] DB : 用户进入首页
+[Info] 2025-07-31 08:20:59.615 thread:[001] DB : 用户离开首页
+[Info] 2025-07-31 08:20:59.625 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-31 08:20:59.658 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-31 08:20:59.860 thread:[027] DB : GetEcatErrorCode failed. Error code:80198018
+[Info] 2025-07-31 08:21:00.341 thread:[001] DB : 用户进入功能屏蔽调试页面
+[Error] 2025-07-31 08:21:00.462 thread:[027] DB : GetEcatErrorCode failed. Error code:80198018

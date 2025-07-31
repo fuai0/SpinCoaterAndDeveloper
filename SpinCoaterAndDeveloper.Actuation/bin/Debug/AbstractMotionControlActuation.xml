@@ -1,0 +1,966 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AbstractMotionControlActuation</name>
+    </assembly>
+    <members>
+        <member name="T:MotionControlActuation.ActuationAbs">
+            <summary>
+            指令依赖DoTigger中不支持指令A或指令B的条件! (ActionA 或 ActionB)
+            指令依赖DoTigger中只支持指令A与指令B的情形! (ActionA 与 ActionB)
+            </summary>
+        </member>
+        <member name="F:MotionControlActuation.ActuationAbs.onRunningFunctionEnable">
+            <summary>
+            指令是否启用OnRunningFunction,使运行速度加快
+            </summary>
+        </member>
+        <member name="F:MotionControlActuation.ActuationAbs.pauseAndResumeFunctionEnable">
+            <summary>
+            指令是否启用ActuaionPauseAndResumeFunction,使运行速度加快
+            </summary>
+        </member>
+        <member name="F:MotionControlActuation.ActuationAbs.actuationStartTime">
+            <summary>
+            指令每次开始运行的时间
+            </summary>
+        </member>
+        <member name="F:MotionControlActuation.ActuationAbs.graphRow">
+            <summary>
+            图的行坐标,用于图的显示
+            </summary>
+        </member>
+        <member name="F:MotionControlActuation.ActuationAbs.graphColumn">
+            <summary>
+            图的列坐标,用于图的显示
+            </summary>
+        </member>
+        <member name="F:MotionControlActuation.ActuationAbs.redirectActuationDependencyListForGraph">
+            <summary>
+            用于记录指令中需要跳转过去的指令.供图显示使用.
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.ActuationAbs.ActuationGroup">
+            <summary>
+            指令集合组
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.ActuationAbs.VIOGroup">
+            <summary>
+            虚拟IO集合组
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.ActuationAbs.ActuationName">
+            <summary>
+            指令名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.ActuationAbs.ActionRepeat">
+            <summary>
+            指令重复运行标志
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.ActuationAbs.IfFinalSuccessEnd">
+            <summary>
+            复位时,是否时最后一条指令(LoopBreakSuccess使用)
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.ActuationAbs.ActuationTaskStatus">
+            <summary>
+            当前线程状态,指线程是否正在执行,阻塞,停止,用于连锁判断是否程序意义上停止完成
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.ActuationAbs.ActuationTask">
+            <summary>
+            记录当前动作创建的动作任务状态
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.ActuationAbs.ActuationContinueTask">
+            <summary>
+            记录当前动作创建的Contuinue任务
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.CustomDefineActuationProcessCancelResponse">
+            <summary>
+            自定义动作中流程是否取消<br/>
+            自定义流程示例<br/>
+            <example>
+                <code>
+                    while(!<see cref="M:MotionControlActuation.ActuationAbs.CustomDefineActuationProcessCancelResponse"/>)
+                    {
+                        Thread.Sleep(10);
+                        if(<see cref="M:MotionControlActuation.ActuationAbs.CustomDefineActuationProcessPauseResponse(System.Action,System.Action)"/>)
+                            continue;
+                        <br/>
+                        // ...自定义代码<br/><br/>
+                        // ...不建议在自定义while中使用阻塞(如阻塞弹窗)
+                    }
+                </code>
+            </example>
+            </summary>
+            <returns>True:取消, False:未取消</returns>
+            如果需要在while中使用阻塞
+            if(需要阻塞时按如下方式调用)<br/>
+                {
+                    <see cref="M:MotionControlActuation.ActuationAbs.CustomDefineActuationProcessBlockingPrepare"/><br/>
+                    //...阻塞代码如阻塞弹窗<br/>
+                    <see cref="M:MotionControlActuation.ActuationAbs.CustomDefineActuationProcessBlockingContinueJudge"/><br/>
+                    if(<see cref="M:MotionControlActuation.ActuationAbs.CustomDefineActuationProcessCancelResponse"/>)
+                        return new ActuationResult&lt;DoExecuteResult&gt;() { Result = DoExecuteResult.Success };
+                }  
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.CustomDefineActuationProcessPauseResponse(System.Action,System.Action)">
+            <summary>
+            自定义动作中流程是否暂停<br/>
+            使用方法请参考<see cref="M:MotionControlActuation.ActuationAbs.CustomDefineActuationProcessCancelResponse"/>注释
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.CustomDefineActuationProcessBlockingPrepare">
+            <summary>
+            自定义动作中,阻塞前调用
+            否则联锁机制将出错(此逻辑线程一直为Executing状态,联锁无法完成)
+            使用方法请参考<see cref="M:MotionControlActuation.ActuationAbs.CustomDefineActuationProcessCancelResponse"/>注释
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.CustomDefineActuationProcessBlockingContinueJudge">
+            <summary>
+            自定义动作中,阻塞处理完成后需要判断是否继续阻塞(管理线程可能暂停)<br/>
+            与<see cref="M:MotionControlActuation.ActuationAbs.CustomDefineActuationProcessBlockingPrepare"/>成对调用<br/>
+            使用方法请参考<see cref="M:MotionControlActuation.ActuationAbs.CustomDefineActuationProcessCancelResponse"/>注释
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.ActuationDependencyRegister">
+            <summary>
+            启动流程之前,需要将所有指令依赖相互注册
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.ReadyToRunningStatusCheck">
+            <summary>
+            所有判断逻辑都在TriggerLogicEvent中，TriggerLogicEvent中逻辑不支持指令间的或逻辑
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.LeaveReadyAndEnterRunningNotify">
+            <summary>
+            指令状态进入Running时，通知此指令参考的指令：此指令已经进入Running,复位ReferenceList中的所有标记
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.TriggerByRedirect">
+            <summary>
+            使用跳转触发流程时,使用此函数填写在DoTrigger当中,便于用户理解跳转触发
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.DoTrigger">
+            <summary>
+            触发体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.ActuationStartStsSecurityChange">
+            <summary>
+            指令启动时用于状态设置,保证在单线程中执行确保线程安全
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.ActuationRedirectStsSecurityChange">
+            <summary>
+            DoExe执行后要求跳转,保证在单线程中执行状态切换确保线程安全
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.ActuationFinishStsSecurityChange">
+            <summary>
+            指令结束时用于状态设置,保证在单线程中执行确保线程安全
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.DoExecute">
+            <summary>
+            执行体
+            自定义DoExecute时,内部有阻塞弹窗需要在弹窗前设定ActuationTaskStatus=SubTaskStatus.Blocking,且在结束弹窗后设置ActuationTaskStatus = SubTaskStatus.Executing,否则全局连锁会无法正常工作
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.DoExecuteManual(System.Object)">
+            <summary>
+            手动执行DoExecute函数实现,不影响主流程,供手动调用使用
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.DependencyRedirectActuationRegister(System.String)">
+            <summary>
+            注册跳转指令到列表中,供监视流程图使用
+            是否注册跳转命令不影响流程执行
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:MotionControlActuation.ActuationAbs.GetAbsRedirectList">
+            <summary>
+            获取指令中的跳转列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MotionControlActuation.ActuationSuccessWithProcessBreakAttribute">
+            <summary>
+            复位结束最后完成指令需要添加此特性
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.ActuationManagerAbs.CycleSleepTime">
+            <summary>
+            管理线程休眠时间.Win10系统最小调度时间为1ms.最小1ms,最大10ms.
+            </summary>
+        </member>
+        <member name="F:MotionControlActuation.ActuationManagerAbs.actuationManagerTaskPausStatus">
+            <summary>
+            管理线程是否被阻塞,暂停
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.ActuationManagerAbs.ForceCloseActuationTimeout">
+            <summary>
+            强制关闭动作超时检测.True:关闭.False:不关闭
+            </summary>
+        </member>
+        <member name="E:MotionControlActuation.ActuationManagerAbs.WorkerFinishEvent">
+            <summary>
+            BackgroundWorker结束事件(复位要求(指令集合要求复位),正常结束(指令集合正常执行退出),出错结束(指令集合出错退出),异常结束(Backgroundworker线程异常结束,理论不应该发生))
+            </summary>
+        </member>
+        <member name="E:MotionControlActuation.ActuationManagerAbs.ActuationErrorAlarmEvent">
+            <summary>
+            命令出错报警事件(True进入报警,False离开报警),暂不使用保留
+            </summary>
+        </member>
+        <member name="E:MotionControlActuation.ActuationManagerAbs.CloseThreadWindowEvent">
+            <summary>
+            关闭线程弹窗事件
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.InitActuationCollections">
+            <summary>
+            初始化指令集
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.Start">
+            <summary>
+            不阻塞调用线程,调用后直接返回
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.Stop(System.Int32,System.Boolean)">
+            <summary>
+            结束管理线程,如果有命令线程没有退出则返回false
+            </summary>
+            <returns>是否成功退出(所有子线程任务是否全部正常退出)</returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.Clear">
+            <summary>
+            清除指令集合,虚拟IO集合
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.ProcessByStepRunOneStep">
+            <summary>
+            单步执行一步
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.ProcessByStepResume">
+            <summary>
+            单步恢复运行
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.ProcessPause">
+            <summary>
+            设置流程暂停
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.ProcessResume">
+            <summary>
+            设置流程恢复
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetManagerProcessManualResetEvent">
+            <summary>
+            获取管理线程ManualResetEvent对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetManagerThreadPauseStatus">
+            <summary>
+            获取管理线程是否暂停
+            </summary>
+            <returns>True:暂停 False:未暂停</returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetTaskList">
+            <summary>
+            获取所有子任务
+            </summary>
+            <returns>环状任务List</returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetTaskNameList">
+            <summary>
+            获取子线程任务的对应名字
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetProcessByStepSts">
+            <summary>
+            执行下一步(下一个Cycle)
+            </summary>
+            <summary>
+            获取是否暂停
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetActuationGroupCounts">
+            <summary>
+            获取指令集数量
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetVIOGroup">
+            <summary>
+            虚拟IO字典
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetVSoftStatusGroup">
+            <summary>
+            获取虚拟状态字典
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.SetForceCloseActuationTimeout(System.Boolean)">
+            <summary>
+            强制设置不进行动作超时检测,不会进行超时报警.谨慎使用
+            </summary>
+            <param name="forceCloseActuationTimeout">True:关闭.False:不关闭.默认不关闭</param>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetVSoftStatus``1(System.String)">
+            <summary>
+            获取虚拟状态
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="moduleName"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.SetVSfotStatus``1(System.String,``0)">
+            <summary>
+            设定虚拟状态
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="moduleName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetAsyncWorkerStatus">
+            <summary>
+            获取管理线程状态
+            </summary>
+            <returns>true:正在执行,false:未在执行</returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetAsyncWorkerResult">
+            <summary>
+            获取线程退出结果
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.SetProcessByStep(System.Boolean)">
+            <summary>
+            设定暂停标志
+            </summary>
+            <param name="ifEnable"></param>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetActuationGroup">
+            <summary>
+            获取动作集合字典
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetCancellationTokenSource">
+            <summary>
+            管理线程取消子线程标志,区别于管理线程取消,子线程取消慢于管理线程
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetManagerThreadCancelStatus">
+            <summary>
+            获取管理线程是否取消
+            </summary>
+            <returns>True:取消, False:未取消</returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.SetVIOSts(System.String,System.Boolean)">
+            <summary>
+            设定虚拟IO状态
+            </summary>
+            <param name="vioName"></param>
+            <param name="sts"></param>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetVIOSts(System.String)">
+            <summary>
+            获取虚拟IO状态
+            </summary>
+            <param name="vioName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetActuationSts(System.String)">
+            <summary>
+            获取指令状态
+            </summary>
+            <param name="actuationName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:MotionControlActuation.ActuationManagerAbs.GetActuationCollectionInitDateTime">
+            <summary>
+            获取指令初始化时间
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.SetActuationInitPickList">
+            <summary>
+            设定ActuationInitPickList
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.GetProcessTaskPauseStatus">
+            <summary>
+            获取动作流程是否程序意义上停止运行,true:停止,false:运行中
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.DeclearActuations">
+            <summary>
+            声明所有指令集合
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.DeclearVIOs">
+            <summary>
+            声明所有虚拟IO集合
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.DeclearSoftStatus">
+            <summary>
+            申明所欲虚拟状态集合
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.ClearDelegateList``1(System.Action{``0}@)">
+            <summary>
+            清空委托,未使用,待后期优化
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="action"></param>
+        </member>
+        <member name="M:MotionControlActuation.ActuationManagerAbs.ActuationDelayAsync(System.Int32)">
+            <summary>
+            供流程中延迟使用,可被取消的延迟,不需要使用await等待.
+            </summary>
+            <param name="delaymillisecond"></param>
+        </member>
+        <member name="T:MotionControlActuation.EdgeTrigger">
+            <summary>
+            边沿触发,上升沿/下降沿触发.仅在一个赋值周期内可以有效获取
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.EdgeTrigger.UpTrigger">
+            <summary>
+            上升沿触发
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.EdgeTrigger.DownTrigger">
+            <summary>
+            下降沿触发
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.IActuaionPauseAndResumeFunction.ActutionPause">
+            <summary>
+            暂停执行
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.IActuaionPauseAndResumeFunction.ActutionResume">
+            <summary>
+            恢复执行
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MotionControlActuation.IActuationErrorFunction">
+            <summary>
+            运动控制DoExecute出错处理接口
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.IActuationErrorFunction.GeneralErrorSolution(MotionControlActuation.ActuationResult{MotionControlActuation.DoExecuteResult})">
+            <summary>
+            DoExecute函数返回错误时,错误处理
+            </summary>
+            <param name="actuationResult"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MotionControlActuation.IActuationImpactFunction">
+            <summary>
+            运动控制指令碰撞检测接口.
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.IActuationImpactFunction.ImpactCheckCondition">
+            <summary>
+            碰撞检测函数.<br/>
+            返回True,会产生碰撞,执行<see cref="M:MotionControlActuation.IActuationImpactFunction.ImpactCheckErrorSolution(MotionControlActuation.ConditionReturn)"/><br/>
+            返回False,不会产生碰撞,不执行<see cref="M:MotionControlActuation.IActuationImpactFunction.ImpactCheckErrorSolution(MotionControlActuation.ConditionReturn)"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.IActuationImpactFunction.ImpactCheckErrorSolution(MotionControlActuation.ConditionReturn)">
+            <summary>
+            产生碰撞时,碰撞处理.<br/>
+            参数<paramref name="impactCheckConditionReturn"/>为<see cref="M:MotionControlActuation.IActuationImpactFunction.ImpactCheckCondition"/>返回值
+            </summary>
+            <param name="impactCheckConditionReturn"><see cref="M:MotionControlActuation.IActuationImpactFunction.ImpactCheckCondition"/>的返回值</param>
+            <returns></returns>
+        </member>
+        <member name="T:MotionControlActuation.IActuationOnRunningFunction">
+            <summary>
+            超时等待过程中运行,供数据采集,数据判断使用,必须先实现IActuationTimeoutFunction接口
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.IActuationOnRunningFunction.OnRunningCheckCondition">
+            <summary>
+            等待超时中判断执行.<br/>
+            <see cref="T:MotionControlActuation.ConditionReturn"/>.Result 返回True:继续等待下一次执行<br/>
+            <see cref="T:MotionControlActuation.ConditionReturn"/>.Result 返回False:<br/>
+            --依次执行如下函数<br/>
+            --执行<see cref="M:MotionControlActuation.IActuationOnRunningFunction.OnRunningErrorSuspend"/><br/>
+            --执行<see cref="M:MotionControlActuation.IActuationOnRunningFunction.OnRunningErrorSolution(MotionControlActuation.ConditionReturn)"/><br/>
+            --执行<see cref="M:MotionControlActuation.IActuationOnRunningFunction.OnRunningErrorContinue"/><br/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.IActuationOnRunningFunction.OnRunningErrorSuspend">
+            <summary>
+            <see cref="M:MotionControlActuation.IActuationOnRunningFunction.OnRunningCheckCondition"/>执行报错后执行此函数,进行需要挂起的内容
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.IActuationOnRunningFunction.OnRunningErrorSolution(MotionControlActuation.ConditionReturn)">
+            <summary>
+            <see cref="M:MotionControlActuation.IActuationOnRunningFunction.OnRunningCheckCondition"/>返回False时执行<br/>
+            参数<paramref name="onRunningCheckConditionReturn"/>为<see cref="M:MotionControlActuation.IActuationOnRunningFunction.OnRunningCheckCondition"/>返回值
+            </summary>
+            <param name="onRunningCheckConditionReturn"><see cref="M:MotionControlActuation.IActuationOnRunningFunction.OnRunningCheckCondition"/>返回值</param>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.IActuationOnRunningFunction.OnRunningErrorContinue">
+            <summary>
+            <see cref="M:MotionControlActuation.IActuationOnRunningFunction.OnRunningCheckCondition"/>执行报错后执行此函数,进行需要恢复的内容
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MotionControlActuation.IActuationTimeoutFunction">
+            <summary>
+            运动控制指令,超时处理接口
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IActuationTimeoutFunction.TimeoutTime">
+            <summary>
+            超时时间,毫秒
+            </summary>
+        </member>
+        <member name="M:MotionControlActuation.IActuationTimeoutFunction.TimeoutCheckCondition">
+            <summary>
+            超时检测函数.<br/>
+            <see cref="T:MotionControlActuation.ConditionReturn"/>.Result 返回True:<br/>
+            --结束超时检测,退出指令,不执行<see cref="M:MotionControlActuation.IActuationTimeoutFunction.TimeOutErrorSolution(MotionControlActuation.ConditionReturn)"/><br/>
+            <see cref="T:MotionControlActuation.ConditionReturn"/>.Result 返回False:<br/>
+            --超时函数继续被执行.直到到达超时时间<see cref="P:MotionControlActuation.IActuationTimeoutFunction.TimeoutTime"/>后执行<see cref="M:MotionControlActuation.IActuationTimeoutFunction.TimeOutErrorSolution(MotionControlActuation.ConditionReturn)"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MotionControlActuation.IActuationTimeoutFunction.TimeOutErrorSolution(MotionControlActuation.ConditionReturn)">
+            <summary>
+            超时时,错误处理.<br/>
+            参数<paramref name="timeoutCheckContionReturn"/>为<see cref="M:MotionControlActuation.IActuationTimeoutFunction.TimeoutCheckCondition"/>返回值
+            </summary>
+            <param name="timeoutCheckContionReturn"><see cref="M:MotionControlActuation.IActuationTimeoutFunction.TimeoutCheckCondition"/>返回值</param>
+            <returns></returns>
+        </member>
+        <member name="E:MotionControlActuation.LogExtension.LogServiceEvent">
+            <summary>
+            日志记录事件
+            </summary>
+        </member>
+        <member name="F:MotionControlActuation.MotionControlResource.AxisResourceDicUpdateLock">
+            <summary>
+            轴资源字典更新时线程安全锁,防止轴状态刷新线程异常
+            </summary>
+        </member>
+        <member name="F:MotionControlActuation.MotionControlResource.IOInputResourceDicUpdateLock">
+            <summary>
+            输入IO资源字典更新时线程安全锁,防止IO资源刷新异常
+            </summary>
+        </member>
+        <member name="F:MotionControlActuation.MotionControlResource.IOOutputResourceDicUpdateLock">
+            <summary>
+            输出IO资源字典更新时线程安全锁,防止IO资源刷新异常
+            </summary>
+        </member>
+        <member name="F:MotionControlActuation.MotionControlResource.IOInputResource">
+            <summary>
+            设备输入点位集合
+            </summary>
+        </member>
+        <member name="F:MotionControlActuation.MotionControlResource.IOOutputResource">
+            <summary>
+            设备输出点集合
+            </summary>
+        </member>
+        <member name="F:MotionControlActuation.MotionControlResource.AxisResource">
+            <summary>
+            轴状态集合
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.VIOModel.Name">
+            <summary>
+            虚拟IO名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.VIOModel.Status">
+            <summary>
+            虚拟IO状态
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.Id">
+            <summary>
+            数据库对应的主键Id
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.Number">
+            <summary>
+            编号
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.Name">
+            <summary>
+            输入点名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.CNName">
+            <summary>
+            中文名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.ENName">
+            <summary>
+            英文名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.VNName">
+            <summary>
+            越语名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.XXName">
+            <summary>
+            预留名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.ReverseEnable">
+            <summary>
+            是否反转
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.ShieldEnable">
+            <summary>
+            屏蔽时返回值
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.ShiedlEnableDefaultValue">
+            <summary>
+            屏蔽时返回值
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.Backup">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.PhysicalLocation">
+            <summary>
+            IO硬件位置
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.Group">
+            <summary>
+            分组
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.Status">
+            <summary>
+            输入点状态
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.ProgramAddressGroup">
+            <summary>
+            软件读取写入用组地址,按8bit计算及从板卡取值
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOInputInfo.ProgramAddressPosition">
+            <summary>
+            软件读取写入用地址,按8bit计算及从板卡取值
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.Id">
+            <summary>
+            数据库对应的主键Id
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.Number">
+            <summary>
+            编号
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.Name">
+            <summary>
+            输出点名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.CNName">
+            <summary>
+            中文名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.ENName">
+            <summary>
+            英文名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.VNName">
+            <summary>
+            越语名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.XXName">
+            <summary>
+            预留语言名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.ReverseEnable">
+            <summary>
+            是否取反
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.ShieldEnable">
+            <summary>
+            是否屏蔽
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.ShiedlEnableDefaultValue">
+            <summary>
+            屏蔽默认值
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.Backup">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.PhysicalLocation">
+            <summary>
+            IO硬定位
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.Group">
+            <summary>
+            分组
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.Status">
+            <summary>
+            输出点状态
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.ProgramAddressGroup">
+            <summary>
+            软件读取写入用组地址,按8bit计算及从板卡取值
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.IOOutputInfo.ProgramAddressPosition">
+            <summary>
+            软件读取写入用地址,按8bit计算及从板卡取值
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.Id">
+            <summary>
+            数据库中存放的主键ID
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.AxisIdOnCard">
+            <summary>
+            轴ID
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.Number">
+            <summary>
+            轴编号,数据库中记录的编号
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.Name">
+            <summary>
+            轴名称,程序用名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.CNName">
+            <summary>
+            中文名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.ENName">
+            <summary>
+            英文名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.VNName">
+            <summary>
+            越南名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.XXName">
+            <summary>
+            预留名称
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.HomeMethod">
+            <summary>
+            回原方式
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.HomeHighVel">
+            <summary>
+            回原高速度
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.HomeLowVel">
+            <summary>
+            回原低速度
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.HomeAcc">
+            <summary>
+            回原加速度
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.HomeTimeout">
+            <summary>
+            回原超时时间ms
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.HomeOffset">
+            <summary>
+            HomeOffset原点偏移
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.Type">
+            <summary>
+            轴类型
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.SoftLimitEnable">
+            <summary>
+            轴软限位是否启用
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.SoftPositiveLimitPos">
+            <summary>
+            轴软正限位
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.SoftNegativeLimitPos">
+            <summary>
+            轴软负限位
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.Group">
+            <summary>
+            轴分组
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.Tag">
+            <summary>
+            Tag
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.JogVel">
+            <summary>
+            Jog速度
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.SafeAxisEnable">
+            <summary>
+            是否为安全轴
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.SafeAxisPosition">
+            <summary>
+            安全轴的安全位
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.Status">
+            <summary>
+            轴状态
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.PrfPos">
+            <summary>
+            轴规划位置
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.PrfVel">
+            <summary>
+            轴规划速度
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.EncPos">
+            <summary>
+            轴当前位置
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.ErrorCode">
+            <summary>
+            轴错误码
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.Proportion">
+            <summary>
+            轴当量
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.AxisInfo.TargetLocationGap">
+            <summary>
+            到达目标位置间隙
+            </summary>
+        </member>
+        <member name="T:MotionControlActuation.ConditionReturn">
+            <summary>
+            条件判断返回
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.ConditionReturn.Result">
+            <summary>
+            Condition的结果
+            </summary>
+        </member>
+        <member name="P:MotionControlActuation.ConditionReturn.Value">
+            <summary>
+            条件判断返回带出的结果
+            </summary>
+        </member>
+    </members>
+</doc>

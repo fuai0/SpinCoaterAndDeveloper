@@ -1,0 +1,342 @@
+﻿
+/*************************************   2025/7/26 15:42:20日志服务启动成功!   **************************************/
+
+[Info] 2025-07-26 15:42:24.460 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 15:42:24.462 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 15:42:24.463 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-26 15:42:31.186 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-26 15:42:31.186 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-26 15:42:31.186 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-26 15:42:31.416 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-26 15:42:31.416 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-26 15:42:32.365 thread:[001] DB : 用户进入首页
+[Info] 2025-07-26 15:42:37.981 thread:[001] DB : 用户离开首页
+[Info] 2025-07-26 15:42:38.003 thread:[001] DB : 用户进入调试页面
+[Info] 2025-07-26 15:42:38.055 thread:[001] DB : 用户进入轴监控页面
+[Error] 2025-07-26 15:42:38.259 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-26 15:42:58.851 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-26 15:42:59.052 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-26 15:43:19.664 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-26 15:43:19.869 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-26 15:43:40.502 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-26 15:43:40.705 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-26 15:44:01.291 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-26 15:44:01.494 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-26 15:44:22.108 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-26 15:44:22.313 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-26 15:44:42.967 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-26 15:44:43.169 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-26 15:45:03.878 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-26 15:45:04.092 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-26 15:45:24.747 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-26 15:45:24.953 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-26 15:45:45.624 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-26 15:45:45.828 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-26 15:46:06.553 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-26 15:46:06.758 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-26 15:46:27.440 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-26 15:46:27.644 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018
+[Error] 2025-07-26 15:46:48.292 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018(重复次数:100)
+[Error] 2025-07-26 15:46:48.497 thread:[004] DB : GetEcatErrorCode failed. Error code:80198018
+
+/*************************************   2025/7/26 17:13:32日志服务启动成功!   **************************************/
+
+[Info] 2025-07-26 17:13:36.511 thread:[004] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 17:13:36.513 thread:[004] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 17:13:36.513 thread:[004] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-26 17:13:45.542 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-26 17:13:45.542 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-26 17:13:45.542 thread:[004] DB : 备份数据库失败
+[Info] 2025-07-26 17:13:45.732 thread:[004] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-26 17:13:45.732 thread:[004] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-26 17:13:46.678 thread:[001] DB : 用户进入首页
+
+/*************************************   2025/7/26 17:13:54日志服务启动成功!   **************************************/
+
+[Info] 2025-07-26 17:13:57.671 thread:[004] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 17:13:57.673 thread:[004] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 17:13:57.674 thread:[004] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-26 17:14:04.207 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-26 17:14:04.207 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-26 17:14:04.208 thread:[004] DB : 备份数据库失败
+[Info] 2025-07-26 17:14:04.386 thread:[004] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-26 17:14:04.386 thread:[004] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-26 17:14:05.362 thread:[001] DB : 用户进入首页
+
+/*************************************   2025/7/26 17:14:18日志服务启动成功!   **************************************/
+
+[Info] 2025-07-26 17:14:21.872 thread:[004] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 17:14:21.874 thread:[004] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 17:14:21.875 thread:[004] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-26 17:14:30.139 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-26 17:14:30.139 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-26 17:14:30.139 thread:[004] DB : 备份数据库失败
+[Info] 2025-07-26 17:14:30.339 thread:[004] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-26 17:14:30.339 thread:[004] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-26 17:14:31.330 thread:[001] DB : 用户进入首页
+[Info] 2025-07-26 17:21:15.846 thread:[001] DB : 用户离开逻辑指令监视页面
+
+/*************************************   2025/7/26 17:33:58日志服务启动成功!   **************************************/
+
+[Info] 2025-07-26 17:34:00.995 thread:[004] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 17:34:00.997 thread:[004] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 17:34:00.997 thread:[004] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-26 17:34:07.503 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-26 17:34:07.503 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-26 17:34:07.503 thread:[004] DB : 备份数据库失败
+[Info] 2025-07-26 17:34:07.707 thread:[004] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-26 17:34:07.707 thread:[004] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-26 17:34:08.709 thread:[001] DB : 用户进入首页
+
+/*************************************   2025/7/26 17:47:53日志服务启动成功!   **************************************/
+
+[Info] 2025-07-26 17:47:56.993 thread:[004] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 17:47:56.995 thread:[004] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 17:47:56.995 thread:[004] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-26 17:48:05.525 thread:[014] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-26 17:48:05.525 thread:[014] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-26 17:48:05.525 thread:[004] DB : 备份数据库失败
+[Info] 2025-07-26 17:48:05.701 thread:[004] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-26 17:48:05.701 thread:[004] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-26 17:48:06.707 thread:[001] DB : 用户进入首页
+
+/*************************************   2025/7/26 17:51:22日志服务启动成功!   **************************************/
+
+[Info] 2025-07-26 17:51:25.544 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 17:51:25.546 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 17:51:25.546 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-26 17:51:33.669 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-26 17:51:33.669 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-26 17:51:33.669 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-26 17:51:33.902 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-26 17:51:33.902 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-26 17:51:34.987 thread:[001] DB : 用户进入首页
+
+/*************************************   2025/7/26 18:01:28日志服务启动成功!   **************************************/
+
+[Info] 2025-07-26 18:01:32.002 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 18:01:32.004 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 18:01:32.005 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-26 18:01:40.160 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-26 18:01:40.160 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-26 18:01:40.160 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-26 18:01:40.330 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-26 18:01:40.330 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-26 18:01:41.283 thread:[001] DB : 用户进入首页
+
+/*************************************   2025/7/26 18:03:52日志服务启动成功!   **************************************/
+
+[Info] 2025-07-26 18:03:55.839 thread:[004] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 18:03:55.840 thread:[004] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 18:03:55.841 thread:[004] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-26 18:04:02.155 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-26 18:04:02.155 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-26 18:04:02.155 thread:[004] DB : 备份数据库失败
+[Info] 2025-07-26 18:04:02.315 thread:[004] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-26 18:04:02.315 thread:[004] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-26 18:04:03.282 thread:[001] DB : 用户进入首页
+
+/*************************************   2025/7/26 18:05:47日志服务启动成功!   **************************************/
+
+[Info] 2025-07-26 18:05:49.762 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 18:05:49.763 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 18:05:49.764 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-26 18:05:58.807 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-26 18:05:58.807 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-26 18:05:58.807 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-26 18:05:58.967 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-26 18:05:58.968 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-26 18:06:00.227 thread:[001] DB : 用户进入首页
+
+/*************************************   2025/7/26 18:06:25日志服务启动成功!   **************************************/
+
+[Info] 2025-07-26 18:06:28.439 thread:[004] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 18:06:28.441 thread:[004] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 18:06:28.441 thread:[004] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-26 18:06:35.190 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-26 18:06:35.190 thread:[003] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-26 18:06:35.190 thread:[004] DB : 备份数据库失败
+[Info] 2025-07-26 18:06:35.373 thread:[004] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-26 18:06:35.373 thread:[004] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-26 18:06:36.449 thread:[001] DB : 用户进入首页
+
+/*************************************   2025/7/26 18:07:34日志服务启动成功!   **************************************/
+
+[Info] 2025-07-26 18:07:37.580 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 18:07:37.582 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 18:07:37.583 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-26 18:07:45.576 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-26 18:07:45.576 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-26 18:07:45.576 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-26 18:07:45.748 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-26 18:07:45.748 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-26 18:07:46.686 thread:[001] DB : 用户进入首页
+[Info] 2025-07-26 18:08:09.577 thread:[001] DB : 用户离开逻辑指令监视页面
+
+/*************************************   2025/7/26 18:11:19日志服务启动成功!   **************************************/
+
+[Info] 2025-07-26 18:11:21.958 thread:[003] DB : DataBaseService.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 18:11:21.960 thread:[003] DB : MotionCardServiceInovance.Service.LogExtension模块注册日志服务
+[Info] 2025-07-26 18:11:21.961 thread:[003] DB : ChartsService.Services.LogExtension模块注册日志服务
+[Fatal] 2025-07-26 18:11:28.138 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。 : 错误信息：未将对象引用设置到对象的实例。
+错误源：DataBaseService
+错误堆栈：   在 DataBaseService.DataBaseService.GetServiceInstallPath(String dbServiceName)
+   在 DataBaseService.DataBaseService.BackupDB(String dbServiceName, List`1 tableNames)
+   在 DataBaseService.DataBaseService.<>c__DisplayClass24_0.<BackupDatabaseWithTables>b__0()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 DataBaseService.DataBaseService.<BackupDatabaseWithTables>d__24.MoveNext()
+错误类型：System.NullReferenceException
+错误方法：System.String GetServiceInstallPath(System.String)
+/=================================================[    Exception    ]================================================/
+[Fatal] 2025-07-26 18:11:28.138 thread:[004] DB : 备份数据库异常:未将对象引用设置到对象的实例。
+[Error] 2025-07-26 18:11:28.138 thread:[003] DB : 备份数据库失败
+[Info] 2025-07-26 18:11:28.338 thread:[003] DB : 获取到运动控制卡数量为:0
+[Error] 2025-07-26 18:11:28.339 thread:[003] DB : 获取卡操作句柄失败,错误码为:0x80048002
+[Info] 2025-07-26 18:11:29.260 thread:[001] DB : 用户进入首页
